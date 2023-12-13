@@ -6,7 +6,7 @@ export default function Header() {
     <header>
       <nav className="navbar navbar-expand-md">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">eKart Shopping</a>
+          <a className="navbar-brand" href="/">eKart Shopping</a>
           <button className="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -16,10 +16,10 @@ export default function Header() {
           </form>
           <div className="collapse navbar-md-collapse d-md-flex justify-content-md-end" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
-              <a className="nav-link" href="#">Categories</a>
-              <a className="nav-link" href="#">Login</a>
-              <a className="nav-link">
+              <a className="nav-link active" aria-current="page" href="/">Home</a>
+              <a className="nav-link" href="/categories">Categories</a>
+              <a className="nav-link" href="/login">Login</a>
+              <a className="nav-link" href='/cart'>
                 <FontAwesomeIcon className='me-1' icon={faCartShopping} />
                 <span>Cart</span>
               </a>
