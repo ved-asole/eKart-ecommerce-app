@@ -1,20 +1,26 @@
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Header() {
   return (
-    <header>
-      <nav className="navbar navbar-expand-md">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">eKart Shopping</a>
+    <header style={{ 'marginTop': "100px" }} >
+      <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
+        <div className="container gap-md-4">
+          <a className="navbar-brand" href="/">
+            <img src="/logo.png" alt="Logo" width="40" height="50" className="d-inline-block" />
+            <span>eKart Shopping</span>
+          </a>
           <button className="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <form className="d-flex flex-fill me-2 mx-md-2 mt-2 mt-md-1 mb-1" role="search">
-            <input className="form-control" type="search" placeholder="Search for products, brands and more" aria-label="Search" />
-            <button className="btn btn-outline-success ms-1" type="submit">Search</button>
+            <input className="form-control" type="search" placeholder="Search for products, brands and more" name="search" aria-label="Search" />
+            {/* <button className="btn btn-outline-success ms-1" type="submit">Search</button> */}
+            <button className="btn btn-outline-success ms-1" type="submit">
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
+            </button>
           </form>
-          <div className="collapse navbar-md-collapse d-md-flex justify-content-md-end" id="navbarNavAltMarkup">
+          <div className="collapse navbar-md-collapse d-md-flex justify-content-center justify-content-md-end" id="navbarNavAltMarkup">
             <div className="navbar-nav">
               <a className="nav-link active" aria-current="page" href="/">Home</a>
               <a className="nav-link" href="/categories">Categories</a>
