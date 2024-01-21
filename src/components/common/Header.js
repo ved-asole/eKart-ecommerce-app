@@ -7,7 +7,7 @@ export default function Header() {
       <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
         <div className="container gap-md-2 mx-auto">
           <a className="navbar-brand mt-1" href="/">
-            <img src="/logo.png" alt="Logo" width="30" height="30"
+            <img src="/logo.webp" alt="Logo" width="30" height="30"
               className="d-inline-block mb-2" />
             <span >eKart Shopping</span>
           </a>
@@ -16,7 +16,7 @@ export default function Header() {
           </button>
           <form className="d-flex flex-fill me-2 mx-md-2 mt-2 mt-md-1 mb-1" role="search">
             <input className="form-control" type="search" placeholder="Search for products, brands and more" name="search" aria-label="Search" />
-            <button className="btn btn-outline-success ms-1" type="submit">
+            <button className="btn btn-outline-success ms-1" aria-label='search' type="submit">
               <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
             </button>
           </form>
