@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Header() {
   return (
-    <header style={{ 'marginTop': "60px" }} >
+    <header style={{ 'marginTop': "65px" }} >
       <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
         <div className="container gap-md-2 mx-auto">
           <a className="navbar-brand mt-1" href="/">
