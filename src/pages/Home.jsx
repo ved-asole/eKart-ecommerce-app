@@ -6,7 +6,7 @@ const Home = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/json/categories.json")
+    axios.get("http://localhost:5173/json/categories.json")
       .then(res => setCategories(res.data.categories))
       .catch(err => console.log(err.msg))
   }, [])
