@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from '../components/home/Categories';
+import ProductBanner from '../components/home/ProductBanner';
 
 const Home = () => {
 
@@ -8,6 +9,9 @@ const Home = () => {
 
       {/* Categories Section */}
       <Categories />
+
+      {/* Carousel Section */}
+      <ProductBanner />
 
     </div>
   )

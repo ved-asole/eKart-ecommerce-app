@@ -6,7 +6,7 @@ export default function Header() {
     <header style={{ 'marginTop': "65px" }} >
       <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
         <div className="container gap-md-2 mx-auto">
-          <a className="navbar-brand mt-1" href="/">
+          <a className="navbar-brand mt-1 ms-2" href="/">
             <img src="/logo.webp" alt="Logo" width="30" height="30"
               className="d-inline-block mb-2" />
             <span >eKart Shopping</span>
@@ -22,10 +22,10 @@ export default function Header() {
           </form>
           <div className="collapse navbar-md-collapse d-md-flex" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="/">Home</a>
-              <a className="nav-link" href="/categories">Categories</a>
-              <a className="nav-link" href="/login">Login</a>
-              <a className="nav-link" href='/cart'>
+              <a className="nav-link active mx-1" aria-current="page" href="/">Home</a>
+              <a className="nav-link mx-1" href="/categories">Categories</a>
+              <a className="nav-link mx-1" href="/login">Login</a>
+              <a className="nav-link mx-2 me-3" href='/cart'>
                 <FontAwesomeIcon className='me-1' icon={faCartShopping} />
                 <span>Cart</span>
               </a>

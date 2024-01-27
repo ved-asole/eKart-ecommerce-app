@@ -16,7 +16,7 @@ const Categories = () => {
   return (
     <section id="categoriesSection">
       <div className='container bg-secondary-subtle rounded'>
-        <div className='row pt-4 mb-3 gap-2'>
+        <div className='row pt-3 mb-3 gap-2'>
           {
             categories?.map((category) =>
               <div key={category.id} className="col-3 col-sm-2 col-lg-1 flex-fill">
