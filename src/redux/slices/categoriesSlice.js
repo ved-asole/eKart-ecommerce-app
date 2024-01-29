@@ -29,13 +29,11 @@ export const fetchCategories = (dispatch, path) => {
 
   dispatch(fetchCategoriesRequest());
 
-  const dataFetchSuccessful = fetchData(
+  fetchData(
     path,
-    (data) => { dispatch(fetchCategoriesSuccess(data.categories)) },
+    (data) => { dispatch(fetchCategoriesSuccess(data)) },
     (errorMsg) => { dispatch(fetchCategoriesFailure(errorMsg)) }
   );
-
-  console.log("dataFetchSuccessful : " + dataFetchSuccessful);
 }
 
 export const { fetchCategoriesRequest, fetchCategoriesSuccess, fetchCategoriesFailure } = categoriesSlice.actions
