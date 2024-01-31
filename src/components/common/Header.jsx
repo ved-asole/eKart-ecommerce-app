@@ -1,5 +1,8 @@
 import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
+import Home from '../../pages/Home'
+import Categories from '../home/Categories'
 
 export default function Header() {
   return (
@@ -22,13 +25,22 @@ export default function Header() {
           </form>
           <div className="collapse navbar-md-collapse d-md-flex" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link active mx-1" aria-current="page" href="/">Home</a>
-              <a className="nav-link mx-1" href="/categories">Categories</a>
-              <a className="nav-link mx-1" href="/login">Login</a>
-              <a className="nav-link mx-2 me-3" href='/cart'>
+              <Link className="nav-link active mx-1" aria-current="page" to={"/"} element={<Home />} >
+                Home
+              </Link>
+              <Link className="nav-link mx-1" aria-current="page"
+                to={"/categories"} element={<Categories />} >
+                Categories
+              </Link>
+              <Link className="nav-link mx-1" aria-current="page"
+                to={"/login"} element={<Home />} >
+                Login
+              </Link>
+              <Link className="nav-link mx-2 me-3" aria-current="page"
+                to={"/cart"} element={<Home />} >
                 <FontAwesomeIcon className='me-1' icon={faCartShopping} />
                 <span>Cart</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
