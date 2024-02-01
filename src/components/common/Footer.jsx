@@ -28,8 +28,8 @@ export const Footer = () => {
           </Link>
         </div>
         <div className='bg-secondary-subtle d-flex flex-column mx-5'>
-          <div className='d-flex gap-5 mb-3'>
-            <div className='categories text-start flex-grow-1 w-25'>
+          <div className='d-flex-row d-md-flex gap-5 mb-3'>
+            <div className='categories text-center text-md-start flex-grow-1'>
               <h6 className='border-bottom pb-2'>Categories</h6>
               <ul className='list-group list-unstyled'>
                 {
@@ -39,7 +39,7 @@ export const Footer = () => {
                 }
               </ul>
             </div>
-            <div className='links text-start flex-grow-1 w-25'>
+            <div className='links text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
               <h6 className='border-bottom pb-2'>Links</h6>
               <ul className='list-group list-unstyled'>
                 <li>Home</li>
@@ -47,18 +47,18 @@ export const Footer = () => {
                 <li>Profile</li>
               </ul>
             </div>
-            <div className='aboutUs text-start flex-grow-1 w-25'>
+            <div className='aboutUs text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
               <h6 className='border-bottom pb-2'>About Us</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
             </div>
-            <div className='contact text-start flex-grow-1 w-25'>
+            <div className='contact text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
               <h6 className='border-bottom pb-2'>Contact</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
             </div>
           </div>
         </div>
         <div className='border-top mb-0 pb-0 px-3'>
-          <div className='fw-small d-flex flex-fill justify-content-between mt-3 align-items-center'>
+          <div className='fw-small d-flex-row d-md-flex flex-fill justify-content-between mt-3 align-items-center'>
             <div>
               <Link to={'/'} element={<Home />} className="navbar-brand">
                 <img src="/logo.webp" alt="Logo" width="30" height="30"
@@ -67,9 +67,9 @@ export const Footer = () => {
               </Link>
             </div>
             <div>© 2024 All rights reserved</div>
-            <div>Terms and Conditions</div>
-            <div>Policies</div>
-            <div>Contact Us</div>
+            <div className='d-none d-md-inline-block'>Terms and Conditions</div>
+            <div className='d-none d-md-inline-block'>Policies</div>
+            <div className='d-none d-md-inline-block'>Contact Us</div>
           </div>
         </div>
       </div>
