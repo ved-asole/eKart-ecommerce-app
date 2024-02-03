@@ -1,7 +1,6 @@
-import { Route, Routes, Outlet, ScrollRestoration } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import './App.css';
 import Header from './components/common/Header';
-import Home from './pages/Home';
 import Footer from './components/common/Footer';
 
 function App() {
