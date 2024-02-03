@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Project Title: 📛
+Ekart E-commerce App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_eKart-ecommerce-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ved-asole_eKart-ecommerce-app)
 
-## Available Scripts
+# Live Link / Demo Link: 🔗
+**[ekart.vedasole.cloud](ekart.vedasole.cloud)**
 
-In the project directory, you can run:
+# Table of Content: 📑
 
-### `npm start`
+1. About the Project
+2. Screenshots
+3. Technologies Used
+4. Setup/Installation
+5. Approach
+6. Status
+7. License
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# About the Project: 📚
+Ekart Ecommerce is an online e-commerce website which provides the facility shopping from any location.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Screenshots: 📷
+Will be added soon😊
 
-### `npm test`
+# Technologies Used: ☕️ 🐍 ⚛️
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Vite
+- Redux Toolkit
+- Axios
+- Bootstrap
 
-### `npm run build`
+# Setup / Installation: 💻
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  ## React + Vite
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  ## Available Scripts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  In the project directory, you can run:
 
-### `npm run eject`
+  To install all the dependencies run :
+  ```bash
+  npm install
+  ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  ### `npm start`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  Runs the app in the development mode.\
+  Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  The page will reload when you make changes.\
+  You may also see any lint errors in the console.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  ### `npm run build`
 
-## Learn More
+  Builds the app for production to the `dist` folder.\
+  It correctly bundles React in production mode and optimizes the build for the best performance.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  The build is minified and the filenames include the hashes.\
+  Your app is ready to be deployed!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  See the section about [deployment](https://vitejs.dev/guide/build.html) for more information.
 
-### Code Splitting
+# Approach: 🚶
+We are using React for frontend UI and Java Spring Boot for backend API.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Status: 📶
+Work in Progress...🛠️
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# License: ©️
+Apache-2.0 License (**[Check Here](https://github.com/ved-asole/eKart-ecommerce-app/blob/master/LICENSE)**)
