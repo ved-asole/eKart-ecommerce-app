@@ -9,11 +9,11 @@ export default function Header() {
     <header style={{ 'marginTop': "65px" }} >
       <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
         <div className="container gap-md-2 mx-auto">
-          <a className="navbar-brand mt-1 ms-2" href="/">
+          <Link to={"/"} element={<Home />} className="navbar-brand mt-1 ms-2">
             <img src="/logo.webp" alt="Logo" width="30" height="30"
               className="d-inline-block mb-2" />
             <span >eKart Shopping</span>
-          </a>
+          </Link>
           <button className="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
