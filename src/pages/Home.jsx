@@ -1,5 +1,5 @@
 import React from 'react';
-import Categories from '../components/home/Categories';
+import CategoriesBar from '../components/home/CategoriesBar';
 import ProductBanner from '../components/home/ProductBanner';
 
 const Home = () => {
@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <div className='home container'>
 
-      {/* Categories Section */}
-      <Categories />
+      {/* CategoriesBar Section */}
+      <CategoriesBar />
 
       {/* Carousel Section */}
       <ProductBanner />
