@@ -1,28 +1,28 @@
-# Project Title: 📛
+# Project Title:
 Ekart E-commerce App
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_eKart-ecommerce-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ved-asole_eKart-ecommerce-app)
 
 # Live Link / Demo Link: 🔗
-**[https://ekart.vedasole.cloud](https://ekart.vedasole.cloud)**
+Access my site at **[ekart.vedasole.cloud](https://ekart.vedasole.cloud)**
 
 # Table of Content: 📑
 
-1. About the Project
-2. Screenshots
-3. Technologies Used
-4. Setup/Installation
-5. Approach
-6. Status
-7. License
+- [About The App](#about-the-app)
+- [Screenshots](#screenshots)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Approach](#approach)
+- [Status](#status)
+- [License](#license)
 
-# About the Project: 📚
-Ekart Ecommerce is an online e-commerce website which provides the facility shopping from any location.
+# About the App: 📚
+Ekart Ecommerce is an online e-commerce app which provides the facility for online shopping from any location.
 
 # Screenshots: 📷
 Will be added soon😊
 
-# Technologies Used: ☕️ 🐍 ⚛️
+# Technologies: ☕️ 🐍 ⚛️
 
 - React
 - Vite
@@ -30,7 +30,7 @@ Will be added soon😊
 - Axios
 - Bootstrap
 
-# Setup / Installation: 💻
+# Setup: 💻
 
   ## React + Vite
 
@@ -38,7 +38,7 @@ Will be added soon😊
 
   In the project directory, you can run:
 
-  To install all the dependencies run :
+  To install all the dependencies :
   ```bash
   npm install
   ```
