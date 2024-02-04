@@ -38,10 +38,9 @@ Will be added soon😊
 
   In the project directory, you can run:
 
-  To install all the dependencies :
-  ```bash
-  npm install
-  ```
+  ### `npm install`
+
+  To install all the dependencies required for the project.
 
   ### `npm start`
 
