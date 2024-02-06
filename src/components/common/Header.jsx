@@ -2,7 +2,7 @@ import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import Home from '../../pages/Home'
-import Categories from '../home/Categories'
+import Categories from '../../pages/Categories'
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
           <Link to={"/"} element={<Home />} className="navbar-brand mt-1 ms-2">
             <img src="/logo.webp" alt="Logo" width="30" height="30"
               className="d-inline-block mb-2" />
-            <span >eKart Shopping</span>
+            <span className='fw-medium' >eKart Shopping</span>
           </Link>
           <button className="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -31,10 +31,6 @@ export default function Header() {
               <Link className="nav-link mx-1" aria-current="page"
                 to={"/categories"} element={<Categories />} >
                 Categories
-              </Link>
-              <Link className="nav-link mx-1" aria-current="page"
-                to={"/login"} element={<Home />} >
-                Login
               </Link>
               <Link className="nav-link mx-2 me-3" aria-current="page"
                 to={"/cart"} element={<Home />} >

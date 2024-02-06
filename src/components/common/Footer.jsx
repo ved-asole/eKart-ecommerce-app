@@ -10,6 +10,11 @@ export const Footer = () => {
 
   const categories = useSelector(state => state.categories.categories);
   const dispatch = useDispatch();
+  const links = [
+    { id: 1, name: "Home", urlPath: "/" },
+    { id: 2, name: "Categories", urlPath: "/categories" },
+    { id: 3, name: "Cart", urlPath: "/cart" }
+  ]
 
   useEffect(() => {
     if (categories === undefined || categories.length === 0)
@@ -30,29 +35,40 @@ export const Footer = () => {
         <div className='bg-secondary-subtle d-flex flex-column mx-5'>
           <div className='d-flex-row d-md-flex gap-5 mb-3'>
             <div className='categories text-center text-md-start flex-grow-1'>
-              <h6 className='border-bottom pb-2'>Categories</h6>
+              <h6 className='border-bottom pb-2 fw-bold'>Categories</h6>
               <ul className='list-group list-unstyled'>
                 {
                   categories?.map(category =>
-                    <li key={category.id}>{category.name}</li>
+                    <li key={category.id}>
+                      <Link to={`/categories/${category.name}`}
+                        className='text-decoration-none text-body-secondary link-light'>
+                        {category.name}
+                      </Link>
+                    </li>
                   )
                 }
               </ul>
             </div>
             <div className='links text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
-              <h6 className='border-bottom pb-2'>Links</h6>
+              <h6 className='border-bottom pb-2 fw-bold'>Links</h6>
               <ul className='list-group list-unstyled'>
-                <li>Home</li>
-                <li>Categories</li>
-                <li>Profile</li>
+                {
+                  links?.map(link =>
+                    <li key={link.id}>
+                      <Link to={link.urlPath} className='text-decoration-none text-body-secondary link-light'>
+                        {link.name}
+                      </Link>
+                    </li>
+                  )
+                }
               </ul>
             </div>
             <div className='aboutUs text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
-              <h6 className='border-bottom pb-2'>About Us</h6>
+              <h6 className='border-bottom pb-2 fw-bold'>About Us</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
             </div>
             <div className='contact text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
-              <h6 className='border-bottom pb-2'>Contact</h6>
+              <h6 className='border-bottom pb-2 fw-bold'>Contact</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
             </div>
           </div>
@@ -63,7 +79,7 @@ export const Footer = () => {
               <Link to={'/'} element={<Home />} className="navbar-brand">
                 <img src="/logo.webp" alt="Logo" width="30" height="30"
                   className="d-inline-block mb-2" />
-                <span >eKart Shopping</span>
+                <span className='fw-medium'>eKart Shopping</span>
               </Link>
             </div>
             <div>© 2024 All rights reserved</div>

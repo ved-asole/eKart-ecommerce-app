@@ -1,11 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchCategories } from '../../redux/slices/categoriesSlice';
 
 const CategoriesBar = () => {
 
   // Getting categories from store
   const categories = useSelector(state => state.categories.categories);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (categories === undefined || categories.length === 0)
+      fetchCategories(dispatch, 'categories')
+  }, [])
 
   return (
     <section id="categoriesBarSection">
@@ -19,7 +26,7 @@ const CategoriesBar = () => {
                   src={category.image}
                   aria-label={category.name.concat(" Category")}>
                 </img>
-                <p className='mt-1'>{category.name}</p>
+                <p className='mt-1 fw-bold'>{category.name}</p>
               </Link>
             )}
         </div>
