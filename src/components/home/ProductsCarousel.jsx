@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProductBanner = () => {
+const ProductsCarousel = () => {
   return (
     <section id="carouselSection">
       <div id='heroCarousel' className="carousel slide" data-bs-ride="carousel">
@@ -38,4 +38,4 @@ const ProductBanner = () => {
   )
 }
 
-export default ProductBanner
+export default ProductsCarousel

@@ -1,6 +1,6 @@
 import React from 'react';
 import CategoriesBar from '../components/home/CategoriesBar';
-import ProductBanner from '../components/home/ProductBanner';
+import ProductsCarousel from '../components/home/ProductsCarousel';
 
 const Home = () => {
 
@@ -11,7 +11,7 @@ const Home = () => {
       <CategoriesBar />
 
       {/* Carousel Section */}
-      <ProductBanner />
+      <ProductsCarousel />
 
     </div>
   )
