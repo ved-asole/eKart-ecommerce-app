@@ -1,5 +1,4 @@
-# Project Title:
-Ekart E-commerce App
+# Ekart - An E-Commerce App
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_eKart-ecommerce-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ved-asole_eKart-ecommerce-app)
 
