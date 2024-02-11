@@ -30,3 +30,4 @@ jobs:
           -Dsonar.organization=ved-asole
           -Dsonar.projectKey=ved-asole_eKart-ecommerce-app
           -Dsonar.verbose=true
+          -X
