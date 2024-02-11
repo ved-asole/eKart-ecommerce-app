@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  push:
+    branches: [ "master", "develop" ]
+  pull_request:
+    branches: [ "master" ]
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+# permissions:
+  # pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: Analyze with SonarCloud
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args:
+          -Dsonar.organization=ved-asole
+          -Dsonar.projectKey=ved-asole_eKart-ecommerce-app
+          -Dsonar.verbose=true
+          -X
