@@ -11,7 +11,7 @@ const CategoriesBar = () => {
 
   useEffect(() => {
     if (categories === undefined || categories.length === 0)
-      fetchCategories(dispatch, 'categories')
+      fetchCategories(dispatch)
   }, [])
 
   return (
@@ -22,10 +22,10 @@ const CategoriesBar = () => {
             categories?.map((category) =>
               <Link to={"/categories/" + category.name} key={category.id}
                 className="col-3 col-sm-2 col-lg-1 flex-fill text-decoration-none text-body-secondary link-light">
-                <img className="rounded-circle m-auto mt-2-circle" width="70" height="70"
+                <img alt={category.name.concat(" Category")}
+                  className="rounded-circle m-auto mt-2-circle" width="70" height="70"
                   src={category.image}
-                  aria-label={category.name.concat(" Category")}>
-                </img>
+                  aria-label={category.name.concat(" Category")} />
                 <p className='mt-1 fw-bold'>{category.name}</p>
               </Link>
             )}

@@ -18,12 +18,12 @@ export const Footer = () => {
 
   useEffect(() => {
     if (categories === undefined || categories.length === 0)
-      fetchCategories(dispatch, 'categories')
+      fetchCategories(dispatch)
   }, [])
 
   return (
     <footer id="footer">
-      <div className='container bg-secondary-subtle pb-2'>
+      <div className='container bg-secondary-subtle pb-2 rounded'>
         <div className='my-4 p-2 bg-secondary-subtle border-bottom'>
           <Link to={'/'} element={<Home />} className='text-decoration-none text-white fw-medium'>
             <div className='m-0 p-1 mb-1 d-flex justify-content-center'>
