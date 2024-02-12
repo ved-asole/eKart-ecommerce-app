@@ -7,13 +7,13 @@ Access my site at **[ekart.vedasole.cloud](https://ekart.vedasole.cloud)**
 
 # Table of Content: 📑
 
-- [About The App](#about-the-app)
-- [Screenshots](#screenshots)
-- [Technologies](#technologies)
-- [Setup](#setup)
-- [Approach](#approach)
-- [Status](#status)
-- [License](#license)
+- [About The App](#about-the-app-)
+- [Screenshots](#screenshots-)
+- [Technologies](#technologies-)
+- [Setup](#setup-)
+- [Approach](#approach-)
+- [Status](#status-)
+- [License](#license-)
 
 # About the App: 📚
 Ekart Ecommerce is an online e-commerce app which provides the facility for online shopping from any location.
