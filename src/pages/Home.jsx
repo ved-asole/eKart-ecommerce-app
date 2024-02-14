@@ -1,6 +1,8 @@
-import React from 'react';
-import CategoriesBar from '../components/home/CategoriesBar';
-import ProductsCarousel from '../components/home/ProductsCarousel';
+import React, { Suspense, lazy } from 'react';
+import AppLoader from '../components/common/AppLoader';
+
+const CategoriesBar = lazy(() => import('../components/home/CategoriesBar'));
+const ProductsCarousel = lazy(() => import('../components/home/ProductsCarousel'));
 
 const Home = () => {
 
@@ -8,10 +10,14 @@ const Home = () => {
     <div className='home container'>
 
       {/* CategoriesBar Section */}
-      <CategoriesBar />
+      <Suspense fallback={<AppLoader />} >
+        <CategoriesBar />
+      </Suspense>
 
       {/* Carousel Section */}
-      <ProductsCarousel />
+      <Suspense fallback={<AppLoader />} >
+        <ProductsCarousel />
+      </Suspense>
 
     </div>
   )

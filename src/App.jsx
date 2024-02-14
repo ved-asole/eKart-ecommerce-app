@@ -2,6 +2,7 @@ import { Outlet, ScrollRestoration, useNavigation } from 'react-router-dom';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import AppLoader from './components/common/AppLoader';
+import { Suspense } from 'react';
 
 function App() {
 
@@ -19,7 +20,9 @@ function App() {
         data-bs-theme="dark">
         <ScrollRestoration />
         <Header />
+        <Suspense fallback={<AppLoader />}>
           <Outlet />
+        </Suspense>
         <Footer />
       </div>
     );
