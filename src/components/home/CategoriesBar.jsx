@@ -20,7 +20,7 @@ const CategoriesBar = () => {
         <div className='row pt-3 mb-3 gap-2'>
           {
             categories?.map((category) =>
-              <Link to={"/categories/" + category.name} key={category.id}
+              <Link to={"/categories/" + category.name} key={category.categoryId}
                 className="col-3 col-sm-2 col-lg-1 flex-fill text-decoration-none text-body-secondary link-light">
                 <img alt={category.name.concat(" Category")}
                   className="rounded-circle m-auto mt-2-circle" width="70" height="70"

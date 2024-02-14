@@ -39,7 +39,7 @@ export const Footer = () => {
               <ul className='list-group list-unstyled'>
                 {
                   categories?.map(category =>
-                    <li key={category.id}>
+                    <li key={category.categoryId}>
                       <Link to={`/categories/${category.name}`}
                         className='text-decoration-none text-body-secondary link-light'>
                         {category.name}

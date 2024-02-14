@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import fetchData from "../../util/ApiDataFetcher"
+import fetchData from "../../util/LocalApiDataFetcher"
 import { CATEGORIES_JSON_PATH } from "../../util/commonConstants"
 
 const initialState = {

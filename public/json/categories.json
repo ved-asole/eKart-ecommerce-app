@@ -1,1 +1,54 @@
-[{"id":1,"name":"Top Offers","image":"/images/categories/top-offers.webp"},{"id":2,"name":"Mobiles & Tablets","image":"/images/categories/mobile-and-tablets.webp"},{"id":3,"name":"Electronics","image":"/images/categories/electronics.webp"},{"id":4,"name":"TVs & Appliances","image":"/images/categories/tv-and-appliances.webp"},{"id":5,"name":"Fashion","image":"/images/categories/fashion.webp"},{"id":6,"name":"Beauty","image":"/images/categories/beauty.webp"},{"id":7,"name":"Home & Kitchen","image":"/images/categories/home-and-kitchen.webp"},{"id":8,"name":"Furniture","image":"/images/categories/furniture.webp"},{"id":9,"name":"Flights","image":"/images/categories/flights.webp"}]
+[
+  {
+    "categoryId": 1,
+    "name": "Top Offers",
+    "image": "/images/categories/top-offers.webp"
+  },
+  {
+    "categoryId": 2,
+    "name": "Mobiles & Tablets",
+    "image": "/images/categories/mobile-and-tablets.webp",
+    "desc": "Mobile phones are no more merely a part of our lives. Whether it's to stay connected with friends and family or to keep abreast of important developments around the world, mobiles are no longer for sending a text or making a call. From budget to state-of-the-art smartphones; indigenous names to global big-wigs - a whole universe of mobiles await you on Flipkart. Whether you’re looking for waterdrop notch screens, a high screen to body ratio, AI-powered sensational cameras, high storage capacity, blazing quick processing engines or reflective glass designs, rest assured you won’t have to venture anywhere else for your smartphone needs."
+  },
+  {
+    "categoryId": 3,
+    "name": "Electronics",
+    "image": "/images/categories/electronics.webp",
+    "desc": "Choose from a wide range of prodcuts such as washing machine, camera, laptop & many more from the top brands & get exciting deals & offers"
+  },
+  {
+    "categoryId": 4,
+    "name": "TVs & Appliances",
+    "image": "/images/categories/tv-and-appliances.webp",
+    "desc": "Choose from a wide range of prodcuts such as TVs, Washing Machine, Refrigerators, Air Conditioners & many more from the top brands & get exciting deals & offers"
+  },
+  {
+    "categoryId": 5,
+    "name": "Fashion",
+    "image": "/images/categories/fashion.webp",
+    "desc": "Be up-to-date with latest fashion. Choose from a wide range of clothes and fashions products. Buy products from the top brands & get exciting deals & offers"
+  },
+  {
+    "categoryId": 6,
+    "name": "Beauty",
+    "image": "/images/categories/beauty.webp",
+    "desc": "Choose from a wide range of products for your Grooming, Healthcare, Nutrition, Safety & many more from the top brands & get exciting deals & offers"
+  },
+  {
+    "categoryId": 7,
+    "name": "Home & Kitchen",
+    "image": "/images/categories/home-and-kitchen.webp",
+    "desc": "Choose from a wide range of products for your home and kitchen such as Home Decor, Kitchen, Dining, Lightings, Electricals, Cleaning, Bath & many more from the top brands & get exciting deals & offers"
+  },
+  {
+    "categoryId": 8,
+    "name": "Furniture",
+    "image": "/images/categories/furniture.webp",
+    "desc": "If you are in search of furniture to bring a new vibe to your home, then look no further. You will find a wide variety of options at your fingertips. Whether for your organisational needs, decorative purposes, or functional utility, you can explore the units available online. Browse the collection of wooden furniture that can offer durability as well as a well-polished look for your interiors, especially when selecting your bedroom furniture. Select from a wide range of beds, cabinets, wardrobes, and more as per your requirements. You will also find living room furniture like sofa sets, centre tables, coffee tables, and more that can uplift the decor of your space. You can also explore the furniture store online for dining tables and chairs, shoe racks, TV units, and more. So shop online with convenient and safe payment options to get your products delivered to your preferred location without any hassle."
+  },
+  {
+    "categoryId": 9,
+    "name": "Flights",
+    "image": "/images/categories/flights.webp"
+  }
+]
