@@ -79,7 +79,7 @@ export const Footer = () => {
               <Link to={'/'} element={<Home />} className="navbar-brand">
                 <img src="/logo.webp" alt="Logo" width="30" height="30"
                   className="d-inline-block mb-2" />
-                <span className='fw-medium'>eKart Shopping</span>
+                <span className='fw-medium fs-5'>eKart Shopping</span>
               </Link>
             </div>
             <div>© 2024 All rights reserved</div>
