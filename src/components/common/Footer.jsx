@@ -24,7 +24,7 @@ export const Footer = () => {
   return (
     <footer id="footer">
       <div className='container bg-secondary-subtle pb-2 rounded'>
-        <div className='my-4 p-2 bg-secondary-subtle border-bottom'>
+        <div id='goToTop' className='my-4 p-2 bg-secondary-subtle border-bottom'>
           <Link to={'/'} element={<Home />} className='text-decoration-none text-white fw-medium'>
             <div className='m-0 p-1 mb-1 d-flex justify-content-center'>
               <p className='m-0'>Go to Top</p>
@@ -32,9 +32,9 @@ export const Footer = () => {
             </div>
           </Link>
         </div>
-        <div className='bg-secondary-subtle d-flex flex-column mx-5'>
-          <div className='d-flex-row d-md-flex gap-5 mb-3'>
-            <div className='categories text-center text-md-start flex-grow-1'>
+        <div id='footerOptions' className='bg-secondary-subtle d-flex flex-column ms-4 ms-sm-5'>
+          <div className='d-flex flex-wrap gap-5 mb-3'>
+            <div className='categories text-start col-5 col-sm-5 col-xl-2 col-lg-5 me-2'>
               <h6 className='border-bottom pb-2 fw-bold'>Categories</h6>
               <ul className='list-group list-unstyled'>
                 {
@@ -49,7 +49,7 @@ export const Footer = () => {
                 }
               </ul>
             </div>
-            <div className='links text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
+            <div id='links' className='text-start col-4 col-sm-5 col-sm-5 col-xl-2 col-lg-5 mt-md-0'>
               <h6 className='border-bottom pb-2 fw-bold'>Links</h6>
               <ul className='list-group list-unstyled'>
                 {
@@ -63,26 +63,26 @@ export const Footer = () => {
                 }
               </ul>
             </div>
-            <div className='aboutUs text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
+            <div id='aboutUs' className='text-start col-12 col-sm-5 col-xl-3 mt-md-0 pe-4'>
               <h6 className='border-bottom pb-2 fw-bold'>About Us</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
             </div>
-            <div className='contact text-center text-md-start flex-grow-1 mt-5 mt-md-0'>
+            <div id='contact' className='text-start col-12 col-sm-5 col-xl-3 mt-md-0 pe-4'>
               <h6 className='border-bottom pb-2 fw-bold'>Contact</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
             </div>
           </div>
         </div>
-        <div className='border-top mb-0 pb-0 px-3'>
+        <div id='footerBase' className='border-top mb-0 pb-0 px-3'>
           <div className='fw-small d-flex-row d-md-flex flex-fill justify-content-between mt-3 align-items-center'>
             <div>
               <Link to={'/'} element={<Home />} className="navbar-brand">
                 <img src="/logo.webp" alt="Logo" width="30" height="30"
                   className="d-inline-block mb-2" />
-                <span className='fw-medium fs-5'>eKart Shopping</span>
+                <span className='fs-6 fw-sm-medium fs-5'>eKart Shopping</span>
               </Link>
             </div>
-            <div>© 2024 All rights reserved</div>
+            <div className='fs-6 fs-sm-5'>© 2024 All rights reserved</div>
             <div className='d-none d-md-inline-block'>Terms and Conditions</div>
             <div className='d-none d-md-inline-block'>Policies</div>
             <div className='d-none d-md-inline-block'>Contact Us</div>
