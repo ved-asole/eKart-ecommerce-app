@@ -3,6 +3,7 @@ import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import { lazy } from "react";
+import RouteLoadError from "./pages/RouteLoadError";
 
 const Categories = lazy(() => import('./pages/Categories'));
 
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: "categories",
         element: <Categories />
+      },
+      {
+        path: "*",
+        element: <RouteLoadError />
       }
     ]
   }
