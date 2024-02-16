@@ -3,6 +3,7 @@ import AppLoader from '../components/common/AppLoader';
 
 const CategoriesBar = lazy(() => import('../components/home/CategoriesBar'));
 const ProductsCarousel = lazy(() => import('../components/home/ProductsCarousel'));
+const TopDeals = lazy(() => import('../components/home/TopDeals'));
 
 const Home = () => {
 
@@ -17,6 +18,10 @@ const Home = () => {
       {/* Carousel Section */}
       <Suspense fallback={<AppLoader />} >
         <ProductsCarousel />
+      </Suspense>
+
+      <Suspense fallback={<AppLoader />} >
+        <TopDeals />
       </Suspense>
 
     </div>

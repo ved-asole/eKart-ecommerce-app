@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Redmi Note 12 Pro 5G",
+    "price": "23,999",
+    "image": "/images/topDeals/redmi-note-12-pro-5g.webp"
+  },
+  {
+    "id": 2,
+    "name": "POCO F5 5G",
+    "price": "26,999",
+    "image": "/images/topDeals/poco-f5-5g.webp"
+  },
+  {
+    "id": 3,
+    "name": "Realme 11 Pro 5G",
+    "price": "22,999",
+    "image": "/images/topDeals/realme-11-pro-5g.webp"
+  },
+  {
+    "id": 4,
+    "name": "vivo V27 5G ",
+    "price": "40,999",
+    "image": "/images/topDeals/vivo-v27-5g.webp"
+  },
+  {
+    "id": 5,
+    "name": "SAMSUNG Galaxy S22 5G",
+    "price": "39,999",
+    "image": "/images/topDeals/samsung-galaxy-s22-5g.webp"
+  },
+  {
+    "id": 6,
+    "name": "PUMA, New Balance & more",
+    "price": "22,999",
+    "image": "/images/topDeals/puma-newBalance-and-more.webp"
+  },
+  {
+    "id": 7,
+    "name": "U.S Polo, Peter England...",
+    "price": "22,999",
+    "image": "/images/topDeals/usPolo-PeterEngland.webp"
+  },
+  {
+    "id": 8,
+    "name": "Red Tape, Wildcraft & more",
+    "price": "22,999",
+    "image": "/images/topDeals/redTape-wildcraft.webp"
+  },
+  {
+    "id": 9,
+    "name": "Jack & Jones, UCB, Wrogn...",
+    "price": "22,999",
+    "image": "/images/topDeals/jackAndJones-UCB-Wrogn.webp"
+  },
+  {
+    "id": 10,
+    "name": "ADIDAS, Skechers & more",
+    "price": "22,999",
+    "image": "/images/topDeals/adidas-sketchers-and-more.webp"
+  }
+]
