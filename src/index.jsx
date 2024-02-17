@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { RouterProvider } from 'react-router-dom';
 import router from './routes.jsx';
+import reportWebVitals from './reportWebVitals';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+import AppLoader from './components/common/AppLoader.jsx';
+const App = lazy(() => import('./App'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router}>
-        <App />
+        <Suspense fallback={<AppLoader />}>
+          <App />
+        </Suspense>
       </RouterProvider>
     </Provider>
   </React.StrictMode>
