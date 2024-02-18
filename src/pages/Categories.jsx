@@ -9,7 +9,7 @@ const Categories = () => {
 
   return (
     <section id="categoriesSection">
-      <div className='container bg-secondary-subtle text-start rounded p-3 mt-3'>
+      <div className='container bg-secondary-subtle text-start rounded p-3'>
         <h1 className='fs-1'>All Categories : </h1>
         <p>We have all categories of products for you. </p>
       </div>
