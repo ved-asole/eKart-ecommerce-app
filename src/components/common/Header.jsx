@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import Home from '../../pages/Home'
 import Categories from '../../pages/Categories'
+import Products from '../../pages/Products';
 
 export default function Header() {
   return (
@@ -31,6 +32,10 @@ export default function Header() {
               <Link className="nav-link mx-1" aria-current="page"
                 to={"/categories"} element={<Categories />} >
                 Categories
+              </Link>
+              <Link className="nav-link mx-1" aria-current="page"
+                to={"/products"} element={<Products />} >
+                Products
               </Link>
               <Link className="nav-link mx-2 me-3" aria-current="page"
                 to={"/cart"} element={<Home />} >
