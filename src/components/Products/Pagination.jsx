@@ -10,17 +10,17 @@ const Pagination = ({ currentPage, setCurrentPage, productsPerPage, totalProduct
   return (
     <nav className='my-4' aria-label="Page Navigation">
       <ul className="pagination justify-content-center">
-        <li className={currentPage === 1 ? 'page-item disabled' : 'page-item'} >
+        <li key={'previous'} className={currentPage === 1 ? 'page-item disabled' : 'page-item'} >
           <a href='#' className="page-link">Previous</a>
         </li>
         {
           pageNumbers.map((pageNumber) =>
-            <li className="page-item">
-              <a key={pageNumber} href='#' className="page-link" onClick={() => setCurrentPage(pageNumber)} >{pageNumber}</a>
+            <li key={pageNumber} className="page-item">
+              <a href='#' className="page-link" onClick={() => setCurrentPage(pageNumber)} >{pageNumber}</a>
             </li>
           )
         }
-        <li className={currentPage >= Math.floor(totalProducts / productsPerPage) - 1 ? 'page-item disabled' : 'page-item'} >
+        <li key={'next'} className={currentPage >= Math.floor(totalProducts / productsPerPage) - 1 ? 'page-item disabled' : 'page-item'} >
           <a href='#' className="page-link">Next</a>
         </li>
       </ul>
