@@ -19,7 +19,7 @@ const Categories = () => {
             categories?.map((category) =>
               <Link key={category.categoryId} to={"/categories/" + category.name}
                 className="card bg-secondary-subtle text-decoration-none p-1 p-sm-2 col-12 col-md-6 col-lg-4">
-                <img src={category.image}
+                <img src={category.image.replace('.', '-200x200.')}
                   className="rounded mx-auto mt-2 mb-4" width={"200px"} height={"200px"} alt={category.name} />
                 <div className="c-body text-center mt-2" >
                   <p className="card-title ms-2 ms-md-0 fw-bold fs-4">{category.name}</p>

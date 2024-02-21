@@ -2,7 +2,8 @@
   {
     "categoryId": 1,
     "name": "Top Offers",
-    "image": "/images/categories/top-offers.webp"
+    "image": "/images/categories/top-offers.webp",
+    "desc": "All the top deals for today. Best products at lowest discounted value."
   },
   {
     "categoryId": 2,
