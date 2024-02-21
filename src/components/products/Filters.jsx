@@ -58,7 +58,7 @@ const Filters = ({ setFilteredProducts }) => {
       </div>
       <div className='pe-3 py-3 border-top'>
         <label htmlFor="priceRange" className="form-label">Price :</label>
-        <input type="range" className="form-range" min={0} max={100000} step={1000} id="priceRange" value={100000} onChange={priceChange}></input>
+        <input type="range" className="form-range" min={0} max={100000} step={1000} id="priceRange" value={maxPrice} onChange={priceChange}></input>
         <div className="d-flex flex-wrap justify-content-between">
           <span>Min: {minPrice}</span>
           <span>to</span>
