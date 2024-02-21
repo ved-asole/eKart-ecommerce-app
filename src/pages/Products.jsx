@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import ProductCard from '../components/Products/ProductCard'
-import Filters from '../components/common/Filters'
-import Pagination from '../components/Products/Pagination';
+import ProductCard from '../components/products/ProductCard'
+import Filters from '../components/products/Filters'
+import Pagination from '../components/products/Pagination';
 
 const Products = () => {
 
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(15);
+
+  const getFilteredProducts = () => filteredProducts;
 
   //Get current products 
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -21,10 +23,10 @@ const Products = () => {
         <p>We have all categories of products for you. </p>
       </div>
       <hr className='mt-3 mb-2' />
-      <div className='mx-2'>
+      <div className='ms-1 mx-2'>
         <div className="d-flex">
-          <div className="col-2 border-end pt-3 d-none d-lg-block ms-1">
-            <Filters setFilteredProducts={setFilteredProducts} />
+          <div className="col-2 border-end pt-3 d-none d-lg-block">
+            <Filters getFilteredProducts={getFilteredProducts} setFilteredProducts={setFilteredProducts} />
           </div>
           <div className='vr d-none d-lg-block'></div>
           <div className='ps-lg-2 pt-2'>
