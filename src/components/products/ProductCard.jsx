@@ -7,9 +7,6 @@ const ProductCard = ({ product: { productId, name, image, price, discount, categ
         <div key={productId} className="card p-1 p-sm-2 mb-3" >
           <img src={image}
             className="card-img-top rounded mx-auto mt-2 w-auto" height={"170px"} alt={name} />
-          {/* d-none d-md-block */}
-          {/* <img src={image}
-            className="card-img-top rounded mx-auto mt-2 w-auto d-md-none" height={"120px"} alt={name} /> */}
           <div className="card-body mt-2 text-center p-2 pb-0" >
             <p className="card-title fw-medium text-wrap">
               {name.substr(0, name.indexOf('('))}
