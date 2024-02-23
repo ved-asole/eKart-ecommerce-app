@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Notes
 notes.txt
+.env
