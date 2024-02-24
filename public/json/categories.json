@@ -15,13 +15,13 @@
     "categoryId": 3,
     "name": "Electronics",
     "image": "/images/categories/electronics.webp",
-    "desc": "Choose from a wide range of prodcuts such as washing machine, camera, laptop & many more from the top brands & get exciting deals & offers"
+    "desc": "Choose from a wide range of products such as washing machine, camera, laptop & many more from the top brands & get exciting deals & offers"
   },
   {
     "categoryId": 4,
     "name": "TVs & Appliances",
     "image": "/images/categories/tv-and-appliances.webp",
-    "desc": "Choose from a wide range of prodcuts such as TVs, Washing Machine, Refrigerators, Air Conditioners & many more from the top brands & get exciting deals & offers"
+    "desc": "Choose from a wide range of products such as TVs, Washing Machine, Refrigerators, Air Conditioners & many more from the top brands & get exciting deals & offers"
   },
   {
     "categoryId": 5,
