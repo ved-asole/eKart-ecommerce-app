@@ -1,6 +1,6 @@
 import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Home from '../../pages/Home'
 import Categories from '../../pages/Categories'
 import Products from '../../pages/Products';
@@ -10,7 +10,7 @@ export default function Header() {
     <header style={{ 'marginTop': "65px" }} >
       <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
         <div className="container gap-md-2 mx-auto">
-          <Link to={"/"} element={<Home />} className="navbar-brand mt-1 ms-2">
+          <Link to={"/"} className="navbar-brand mt-1 ms-2">
             <img src="/logo.webp" alt="Logo" width="30" height="30"
               className="d-inline-block mb-2" />
             <span className='fw-medium' >eKart Shopping</span>
@@ -26,22 +26,22 @@ export default function Header() {
           </form>
           <div className="collapse navbar-md-collapse d-md-flex" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <Link className="nav-link active mx-1" aria-current="page" to={"/"} element={<Home />} >
+              <NavLink className="nav-link mx-1" aria-current="page" to={"/"} >
                 Home
-              </Link>
-              <Link className="nav-link mx-1" aria-current="page"
-                to={"/categories"} element={<Categories />} >
+              </NavLink>
+              <NavLink className="nav-link mx-1" aria-current="page"
+                to={"/categories"} >
                 Categories
-              </Link>
-              <Link className="nav-link mx-1" aria-current="page"
-                to={"/products"} element={<Products />} >
+              </NavLink>
+              <NavLink className="nav-link mx-1" aria-current="page"
+                to={"/products"} >
                 Products
-              </Link>
-              <Link className="nav-link mx-2 me-3" aria-current="page"
-                to={"/cart"} element={<Home />} >
+              </NavLink>
+              <NavLink className="nav-link mx-2 me-3" aria-current="page"
+                to={"/cart"} >
                 <FontAwesomeIcon className='me-1' icon={faCartShopping} />
                 <span>Cart</span>
-              </Link>
+              </NavLink>
             </div>
           </div>
         </div>
