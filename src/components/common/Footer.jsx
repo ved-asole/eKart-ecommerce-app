@@ -24,7 +24,7 @@ export const Footer = () => {
   return (
     <footer id="footer">
       <div className='container bg-secondary-subtle pb-2 rounded'>
-        <div id='goToTop' className='my-4 p-2 bg-secondary-subtle border-bottom'>
+        <div id='goToTop' className='my-4 mt-3 p-2 bg-secondary-subtle border-bottom'>
           <Link to={'/'} element={<Home />} className='text-decoration-none text-white fw-medium'>
             <div className='m-0 p-1 mb-1 d-flex justify-content-center'>
               <p className='m-0'>Go to Top</p>
