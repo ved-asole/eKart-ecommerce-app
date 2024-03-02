@@ -65,11 +65,11 @@ export const Footer = () => {
             </div>
             <div id='aboutUs' className='text-start col-12 col-sm-5 col-xl-3 mt-md-0 pe-4'>
               <h6 className='border-bottom pb-2 fw-bold'>About Us</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
+              <p className='text-body-secondary'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
             </div>
             <div id='contact' className='text-start col-12 col-sm-5 col-xl-3 mt-md-0 pe-4'>
               <h6 className='border-bottom pb-2 fw-bold'>Contact</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
+              <p className='text-body-secondary'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
             </div>
           </div>
         </div>
