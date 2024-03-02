@@ -21,7 +21,7 @@ function App() {
         <ScrollRestoration />
         <Header />
         <Suspense fallback={<AppLoader />}>
-          <div className='pt-2'>
+          <div className='pt-2 pt-md-1'>
             <Outlet />
           </div>
         </Suspense>
