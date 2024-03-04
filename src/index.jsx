@@ -6,7 +6,7 @@ import { RouterProvider } from 'react-router-dom';
 import router from './routes.jsx';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
 import AppLoader from './components/common/AppLoader.jsx';
 const App = lazy(() => import('./App'));
 
