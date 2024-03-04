@@ -7,7 +7,6 @@ const Filters = ({ getFilteredProducts, setFilteredProducts }) => {
   const categories = useSelector((state) => state.categories.categories)
   const products = useSelector((state) => state.products.products)
   const dispatch = useDispatch();
-  // const categories = [...new Set(products?.map((product) => product.categoryId))];
   let minPrice = 0;
   const [maxPrice, setMaxPrice] = useState(100000);
 
