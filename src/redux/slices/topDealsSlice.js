@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchData from '../../util/LocalApiDataFetcher';
+import { fetchLocalData } from '../../util/DataFetcher';
 import { TOP_DEALS_JSON_PATH } from './../../util/commonConstants';
 
 const initialState = {
@@ -30,7 +30,7 @@ export const fetchTopDeals = (dispatch) => {
 
   dispatch(fetchTopDealsRequest());
 
-  fetchData(
+  fetchLocalData(
     TOP_DEALS_JSON_PATH,
     (data) => dispatch(fetchTopDealsSuccess(data)),
     (errorMsg) => { dispatch(fetchTopDealsFailure(errorMsg)) }
