@@ -7,7 +7,7 @@ const Products = () => {
 
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(16);
+  const [productsPerPage, setProductsPerPage] = useState(15);
 
   const getFilteredProducts = () => filteredProducts;
 
@@ -23,7 +23,7 @@ const Products = () => {
         <p>We have all categories of products for you. </p>
       </div>
       <hr className='mt-3 mb-2' />
-      <div className='ms-2'>
+      <div className='ms-1 mx-2'>
         <div className="d-flex">
           <div className="col-2 border-end pt-3 d-none d-lg-block">
             <Filters getFilteredProducts={getFilteredProducts} setFilteredProducts={setFilteredProducts} />
