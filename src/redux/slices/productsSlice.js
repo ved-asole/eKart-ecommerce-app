@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import fetchData from "../../util/LocalApiDataFetcher";
+import fetchData from "../../util/DataFetcher";
 import { PRODUCTS_JSON_PATH } from "../../util/commonConstants";
 
 
@@ -35,6 +35,7 @@ export const fetchProducts = (dispatch) => {
     PRODUCTS_JSON_PATH,
     (data) => dispatch(fetchProductsSuccess(data)),
     (errorMsg) => dispatch(fetchProductsFailure(errorMsg)),
+    "products"
   );
 
 }

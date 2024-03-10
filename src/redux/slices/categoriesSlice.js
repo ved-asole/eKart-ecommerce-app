@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import fetchData from "../../util/LocalApiDataFetcher"
+import fetchData from "../../util/DataFetcher"
 import { CATEGORIES_JSON_PATH } from "../../util/commonConstants"
 
 const initialState = {
@@ -33,7 +33,8 @@ export const fetchCategories = (dispatch) => {
   fetchData(
     CATEGORIES_JSON_PATH,
     (data) => { dispatch(fetchCategoriesSuccess(data)) },
-    (errorMsg) => { dispatch(fetchCategoriesFailure(errorMsg)) }
+    (errorMsg) => { dispatch(fetchCategoriesFailure(errorMsg)) },
+    "categories"
   );
 }
 
