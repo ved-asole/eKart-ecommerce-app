@@ -25,7 +25,7 @@ const Products = () => {
       <hr className='mt-3 mb-2' />
       <div className='ms-1 mx-2'>
         <div className="d-flex">
-          <div className="col-2 pt-3 d-none d-lg-block">
+          <div className="col-3 col-xl-2 pt-3 d-none d-lg-block me-3">
             <Filters getFilteredProducts={getFilteredProducts} setFilteredProducts={setFilteredProducts} />
           </div>
           <div className='vr d-none d-lg-block'></div>
@@ -35,7 +35,7 @@ const Products = () => {
                 ?
                 <h3 className='text-center'>No Products Found</h3>
                 :
-                < div className="d-flex flex-wrap justify-content-center  ms-lg-3 gap-2">
+                <div className="d-flex flex-wrap justify-content-center ms-lg-3 gap-2">
                   {
                     currentProducts.map((product) =>
                       <ProductCard key={product.productId} product={product} />
