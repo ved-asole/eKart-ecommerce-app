@@ -1,6 +1,6 @@
 # Ekart - An E-Commerce App
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_eKart-ecommerce-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ved-asole_eKart-ecommerce-app)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_eKart-ecommerce-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ved-asole_eKart-ecommerce-app) [![Netlify Status](https://api.netlify.com/api/v1/badges/1d421f38-c264-4023-9474-ba91e53d9fda/deploy-status)](https://app.netlify.com/sites/ekart-shopping/deploys)
 
 # Live Link / Demo Link: 🔗
 Access my site at **[ekart.vedasole.cloud](https://ekart.vedasole.cloud)**
