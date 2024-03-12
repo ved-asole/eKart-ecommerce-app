@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import ErrorPage from "./pages/ErrorPage";
 import { lazy } from "react";
-import RouteLoadError from "./pages/RouteLoadError";
 
+const ErrorPage = lazy(() => import('./pages/ErrorPage'));
+const RouteLoadError = lazy(() => import('./pages/RouteLoadError'));
 const Home = lazy(() => import('./pages/Home'));
 const Categories = lazy(() => import('./pages/Categories'));
 const Products = lazy(() => import('./pages/Products'));
