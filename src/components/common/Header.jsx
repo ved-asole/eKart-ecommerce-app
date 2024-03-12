@@ -1,9 +1,6 @@
 import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link, NavLink } from 'react-router-dom'
-import Home from '../../pages/Home'
-import Categories from '../../pages/Categories'
-import Products from '../../pages/Products';
 
 export default function Header() {
   return (
@@ -25,7 +22,7 @@ export default function Header() {
             </button>
           </form>
           <div className="collapse navbar-md-collapse d-md-flex" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
+            <div className="navbar-nav fw-medium">
               <NavLink className="nav-link mx-1" aria-current="page" to={"/"} >
                 Home
               </NavLink>
