@@ -25,7 +25,7 @@ const Products = () => {
       <hr className='mt-3 mb-2' />
       <div className='ms-1 mx-2'>
         <div className="d-flex">
-          <div className="col-3 col-xl-2 pt-3 d-none d-lg-block me-3">
+          <div className="col-3 col-xl-2 pt-3 d-none d-lg-block">
             <Filters getFilteredProducts={getFilteredProducts} setFilteredProducts={setFilteredProducts} />
           </div>
           <div className='vr d-none d-lg-block'></div>
