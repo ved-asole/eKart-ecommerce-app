@@ -8,7 +8,7 @@ const TopDeals = lazy(() => import('../components/home/TopDeals'));
 const Home = () => {
 
   return (
-    <div className='home container'>
+    <div className='home container px-0'>
 
       {/* CategoriesBar Section */}
       <Suspense fallback={<AppLoader />} >
