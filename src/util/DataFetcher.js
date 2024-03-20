@@ -1,6 +1,8 @@
 import axios from "axios";
 import { BASE_APP_JSON_URL, JSON_EXTENSION } from "./commonConstants";
 
+axios.defaults.withCredentials = true;
+
 export const fetchData = (path, successFunction, failureFunction, arrayName) => {
   const fetchFromApi = import.meta.env.VITE_FETCH_API_DATA;
   if (fetchFromApi) {
