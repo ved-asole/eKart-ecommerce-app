@@ -2,6 +2,11 @@ import axios from "axios";
 import { BASE_APP_JSON_URL, JSON_EXTENSION } from "./commonConstants";
 
 axios.defaults.withCredentials = true;
+axios.defaults.proxy = {
+  protocol: 'http',
+  host: import.meta.env.VITE_API_URL,
+  port: 8000
+}
 
 export const fetchData = (path, successFunction, failureFunction, arrayName) => {
   const fetchFromApi = import.meta.env.VITE_FETCH_API_DATA;
