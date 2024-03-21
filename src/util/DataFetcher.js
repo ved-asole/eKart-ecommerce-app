@@ -22,7 +22,7 @@ const fetchApiData = async (path, successFunction, failureFunction) => {
 
   try {
     let url = import.meta.env.VITE_API_URL.concat(path);
-    console.info("Data fetching for url : " + url);
+    // console.info("Data fetching for url : " + url);
     const response = await axios.get(url);
     // console.info("Data fetched successfully for " + path);
     successFunction(response.data);
@@ -40,7 +40,7 @@ const fetchMultipleApiData = async (path, successFunction, failureFunction, arra
 
   try {
     let url = import.meta.env.VITE_API_URL.concat(path);
-    console.info("Multiple Data fetching for url : " + url);
+    // console.info("Multiple Data fetching for url : " + url);
     const response = await axios.get(url);
     // console.info("Data fetched successfully for " + path);
     // console.info("Data  : " + response.data._embedded[arrayName]);
@@ -59,7 +59,7 @@ export const fetchLocalData = async (path, successFunction, failureFunction) => 
 
   try {
     let url = BASE_APP_JSON_URL.concat(path).concat(JSON_EXTENSION)
-    console.log("Sending request to url : " + url);
+    // console.log("Sending request to url : " + url);
     const response = await axios.get(url);
     // console.info("Data fetched successfully for " + path);
     successFunction(response.data)
