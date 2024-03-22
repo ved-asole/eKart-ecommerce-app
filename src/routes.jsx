@@ -7,6 +7,7 @@ const RouteLoadError = lazy(() => import('./pages/RouteLoadError'));
 const Home = lazy(() => import('./pages/Home'));
 const Categories = lazy(() => import('./pages/Categories'));
 const Products = lazy(() => import('./pages/Products'));
+const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 
 export const router = createBrowserRouter([
   {
@@ -23,8 +24,16 @@ export const router = createBrowserRouter([
         element: <Categories />
       },
       {
+        path: "categories/:categoryId",
+        element: <Products />
+      },
+      {
         path: "products",
         element: <Products />
+      },
+      {
+        path: "products/:productId",
+        element: <ProductDetails />
       },
       {
         path: "*",
