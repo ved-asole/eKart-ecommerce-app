@@ -47,7 +47,7 @@ const ProductDetails = () => {
           <img src={product.image} alt={product.name} className='rounded w-50 w-md-75' />
         </div>
         <div className="vr ms-4 ps-1 d-none d-md-block"></div>
-        <div className="col-12 col-md-7 text-start ms-4 lh-lg mt-4">
+        <div className="col-11 col-md-7 text-start mx-4 lh-lg mt-4">
           <p className='mb-1'> Category : {product.categoryId}</p>
           <h4>{product.name}</h4>
           <h3 className='d-inline-block mt-3'>₹{Math.trunc(product.price * (1 - product.discount / 100))}</h3>
@@ -63,10 +63,10 @@ const ProductDetails = () => {
               onClick={updateCountToAddToCart}>+</button>
           </div>
           <div className="buttons mt-5">
-            <button className='btn btn-dark p-5 py-3 me-5'
+            <button className='btn btn-dark px-3 px-md-5 py-3 me-5'
             //  onClick={addProductToCart}
             >Add to Cart</button>
-            <button className='btn btn-dark p-5 py-3 mt-3 mt-md-0'>Buy Now</button>
+            <button className='btn btn-dark px-4 px-md-5 py-3 mt-md-3 mt-lg-0'>Buy Now</button>
           </div>
         </div>
       </div>
