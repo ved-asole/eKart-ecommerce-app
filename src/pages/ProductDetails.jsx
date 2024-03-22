@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import fetchData from '../util/DataFetcher';
-import { addToCart } from '../redux/slices/cartSlice';
+// import { addToCart } from '../redux/slices/cartSlice';
 
 const ProductDetails = () => {
 
@@ -11,9 +11,9 @@ const ProductDetails = () => {
   const [countToAddInCart, setCountToAddInCart] = useState(1)
   const dispatch = useDispatch();
 
-  const addProductToCart = (event) => {
-    dispatch(addToCart({ ...product, countToAddInCart: countToAddInCart }));
-  }
+  // const addProductToCart = (event) => {
+  //   dispatch(addToCart({ ...product, countToAddInCart: countToAddInCart }));
+  // }
 
   useEffect(() => {
     if (import.meta.env.VITE_FETCH_API_DATA) {
@@ -63,7 +63,9 @@ const ProductDetails = () => {
               onClick={updateCountToAddToCart}>+</button>
           </div>
           <div className="buttons mt-5">
-            <button className='btn btn-dark p-5 py-3 me-5' onClick={addProductToCart}>Add to Cart</button>
+            <button className='btn btn-dark p-5 py-3 me-5'
+            //  onClick={addProductToCart}
+            >Add to Cart</button>
             <button className='btn btn-dark p-5 py-3 mt-3 mt-md-0'>Buy Now</button>
           </div>
         </div>
