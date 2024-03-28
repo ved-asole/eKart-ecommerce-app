@@ -1,8 +1,12 @@
 import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 
 export default function Header() {
+
+  let cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
+
   return (
     <header style={{ 'marginTop': "65px" }} >
       <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
@@ -36,8 +40,8 @@ export default function Header() {
               </NavLink>
               <NavLink className="nav-link mx-2 me-3" aria-current="page"
                 to={"/cart"} >
-                <FontAwesomeIcon className='me-1' icon={faCartShopping} />
-                <span>Cart</span>
+                <FontAwesomeIcon className={cartTotalQuantity > 0 ? '' : 'me-1'} icon={faCartShopping} />
+                <span> {cartTotalQuantity || 'Cart'}</span>
               </NavLink>
             </div>
           </div>
