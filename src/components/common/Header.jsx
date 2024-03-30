@@ -2,10 +2,20 @@ import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
+import { Collapse } from 'bootstrap';
 
 export default function Header() {
 
   let cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
+
+  const toggleCollapse = (event) => {
+    try {
+      const collapse = Collapse.getOrCreateInstance(document.getElementById('navbarNavAltMarkup'));
+      collapse.toggle();
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <header style={{ 'marginTop': "65px" }} >
@@ -27,19 +37,20 @@ export default function Header() {
           </form>
           <div className="collapse navbar-md-collapse d-md-flex" id="navbarNavAltMarkup">
             <div className="navbar-nav fw-medium">
-              <NavLink className="nav-link mx-1" aria-current="page" to={"/"} >
+              <NavLink className="nav-link mx-1" aria-current="page" to={"/"}
+                onClick={toggleCollapse}>
                 Home
               </NavLink>
               <NavLink className="nav-link mx-1" aria-current="page"
-                to={"/categories"} >
+                to={"/categories"} onClick={toggleCollapse}>
                 Categories
               </NavLink>
               <NavLink className="nav-link mx-1" aria-current="page"
-                to={"/products"} >
+                to={"/products"} onClick={toggleCollapse}>
                 Products
               </NavLink>
               <NavLink className="nav-link mx-2 me-3" aria-current="page"
-                to={"/cart"} >
+                to={"/cart"} onClick={toggleCollapse}>
                 <FontAwesomeIcon className={cartTotalQuantity > 0 ? '' : 'me-1'} icon={faCartShopping} />
                 <span> {cartTotalQuantity || 'Cart'}</span>
               </NavLink>
