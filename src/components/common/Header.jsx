@@ -10,7 +10,7 @@ export default function Header() {
 
   const toggleCollapse = (event) => {
     try {
-      if (document.getElementById(navbarToggler).getAttribute('aria-expanded') == 'true') {
+      if (document.getElementById(navbarToggler) && document.getElementById(navbarToggler).getAttribute('aria-expanded') == 'true') {
         const collapse = Collapse.getOrCreateInstance(document.getElementById('navbarNavAltMarkup'));
         collapse.toggle();
       }
