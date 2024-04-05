@@ -10,8 +10,10 @@ export default function Header() {
 
   const toggleCollapse = (event) => {
     try {
-      const collapse = Collapse.getOrCreateInstance(document.getElementById('navbarNavAltMarkup'));
-      collapse.toggle();
+      if (document.getElementById(navbarToggler).getAttribute('aria-expanded') == 'true') {
+        const collapse = Collapse.getOrCreateInstance(document.getElementById('navbarNavAltMarkup'));
+        collapse.toggle();
+      }
     } catch (e) {
       console.log(e);
     }
@@ -21,15 +23,15 @@ export default function Header() {
     <header style={{ 'marginTop': "65px" }} >
       <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
         <div className="container gap-md-2 mx-auto">
-          <Link to={"/"} className="navbar-brand mt-1 ms-2">
+          <Link to={"/"} className="navbar-brand mt-1 ms-md-2">
             <img src="/logo.webp" alt="Logo" width="30" height="30"
               className="d-inline-block mb-2" />
             <span className='fw-medium' >eKart Shopping</span>
           </Link>
-          <button className="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <button id='navbarToggler' className="navbar-toggler me-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <form className="d-flex flex-fill me-2 mx-md-2 mt-2 mt-md-1 mb-1" role="search">
+          <form className="d-flex flex-fill me-md-2 mx-md-2 mt-2 mt-md-1 mb-1" role="search">
             <input className="form-control" type="search" placeholder="Search for products, brands and more" name="search" aria-label="Search" />
             <button className="btn btn-outline-success ms-1" aria-label='search' type="submit">
               <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
