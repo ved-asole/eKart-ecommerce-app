@@ -17,7 +17,7 @@ const Categories = () => {
         <div className='row justify-content-lg-evenly'>
           {
             categories?.map((category) =>
-              <Link key={category.categoryId} to={"/categories/" + category.categoryId}
+              <Link key={category.categoryId} to={"/products?category=" + category.categoryId}
                 className="card bg-secondary-subtle text-decoration-none p-1 p-sm-2 col-12 col-md-6 col-lg-4">
                 <img src={category.image.replace('.', '-200x200.')}
                   className="rounded mx-auto mt-2 mb-4" width={"200px"} height={"200px"} alt={category.name} />
