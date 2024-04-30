@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CartItem from '../components/cart/CartItem';
-import { clearCart } from '../redux/slices/cartSlice';
+import { clearCart, getPreviousCart } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
+import { getFormattedPrice } from '../util/appUtil';
 
 const Cart = () => {
 
@@ -12,6 +13,10 @@ const Cart = () => {
   const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
   const cartTotalDiscount = useSelector((state) => state.cart.cartTotalDiscount);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPreviousCart());
+  }, [])
 
   return (
     <div id='cart' className="container d-flex flex-wrap flex-md-nowrap mx-auto px-0 
@@ -42,11 +47,11 @@ const Cart = () => {
               <hr />
               <div className='d-flex justify-content-between align-content-center mx-2'>
                 <p>Price ({cartTotalQuantity} item)</p>
-                <p>₹{cartTotalPrice}</p>
+                <p>₹{getFormattedPrice(cartTotalPrice)}</p>
               </div>
               <div className='d-flex justify-content-between mx-2'>
                 <p>Discount</p>
-                <p>₹{Math.trunc(cartTotalDiscount)}</p>
+                <p>₹{getFormattedPrice(Math.trunc(cartTotalDiscount))}</p>
               </div>
               <div className='d-flex justify-content-between mx-2'>
                 <p>Delivery Charges</p>
@@ -64,10 +69,10 @@ const Cart = () => {
               <hr className='my-2' />
               <div className='d-flex justify-content-between mx-2'>
                 <p className='my-2'>Total Amount</p>
-                <p className='my-2'>₹{Math.trunc(cartFinalAmount)}</p>
+                <p className='my-2'>₹{getFormattedPrice(Math.trunc(cartFinalAmount))}</p>
               </div>
               <hr className='my-2' />
-              <p className='mt-3 ms-1 text-body fw-bold'>You will save ₹{Math.trunc(cartTotalDiscount)} on this order</p>
+              <p className='mt-3 ms-1 text-body fw-bold'>You will save ₹{getFormattedPrice(Math.trunc(cartTotalDiscount))} on this order</p>
             </div>
           </div>
           <div className='col-12 mt-3 flex-fill'>

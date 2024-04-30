@@ -25,7 +25,7 @@ const CartItem = ({ cartItem }) => {
       else {
         dispatch(updateCart(tempCartItem))
       }
-
+      
     } else if (event.target.name === 'increaseCount') {
       ++tempCartItem.cartQuantity;
       dispatch(updateCart(tempCartItem))
