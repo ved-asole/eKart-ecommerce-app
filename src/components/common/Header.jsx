@@ -1,16 +1,24 @@
 import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import { Collapse } from 'bootstrap';
+import { useEffect } from 'react';
+import { getPreviousCart } from '../../redux/slices/cartSlice';
 
 export default function Header() {
 
   let cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPreviousCart());
+  }, [])
+
 
   const toggleCollapse = (event) => {
     try {
-      if (document.getElementById('navbarToggler') && document.getElementById('navbarToggler').getAttribute('aria-expanded') == 'true') {
+      if (document.getElementById(navbarToggler) && document.getElementById(navbarToggler).getAttribute('aria-expanded') == 'true') {
         const collapse = Collapse.getOrCreateInstance(document.getElementById('navbarNavAltMarkup'));
         collapse.toggle();
       }
