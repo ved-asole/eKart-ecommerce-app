@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import fetchData from '../util/DataFetcher';
 import { addToCart } from '../redux/slices/cartSlice';
+import { getFormattedPrice } from '../util/appUtil';
 
 const ProductDetails = () => {
 
@@ -12,6 +13,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const addProductToCart = (event) => {
+    delete product.qtyInStock;
     dispatch(addToCart({ ...product, countToAddInCart: countToAddInCart }));
   }
 
@@ -29,7 +31,7 @@ const ProductDetails = () => {
         (errorMsg) => dispatch(fetchProductsFailure(errorMsg))
       );
     }
-  }, [])
+  }, [productId])
 
   const updateCountToAddToCart = (event) => {
     let newCount = countToAddInCart;
@@ -50,8 +52,8 @@ const ProductDetails = () => {
         <div className="col-11 col-md-7 text-start mx-4 lh-lg mt-4">
           <p className='mb-1'> Category : {product.categoryId}</p>
           <h4>{product.name}</h4>
-          <h3 className='d-inline-block mt-3'>₹{Math.trunc(product.price * (1 - product.discount / 100))}</h3>
-          <h5 className='d-inline-block text-decoration-line-through text-secondary ms-3'>₹{product.price}</h5>
+          <h3 className='d-inline-block mt-3'>₹{getFormattedPrice(Math.floor(product.price * ((100 - product.discount) / 100)))}</h3>
+          <h5 className='d-inline-block text-decoration-line-through text-secondary ms-3'>₹{getFormattedPrice(product.price)}</h5>
           <p className='d-inline-block ms-2 fw-medium'>{product.discount}% off</p>
           {/* <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, minus impedit illo magni delectus tempore, blanditiis ad maiores reprehenderit iusto laborum aliquam rerum quo dolorum? Ut consequuntur repellendus fugit! Eligendi, at similique.</p> */}
           <p>{product.desc}</p>
