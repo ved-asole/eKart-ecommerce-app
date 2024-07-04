@@ -36,7 +36,7 @@ const ProductDetails = () => {
   const updateCountToAddToCart = (event) => {
     let newCount = countToAddInCart;
     if (event.target.name === 'decreaseCount') {
-      --newCount < 1 ? setCountToAddInCart(++newCount) : setCountToAddInCart(--newCount);
+      newCount < 1 ? setCountToAddInCart(++newCount) : setCountToAddInCart(--newCount);
     } else if (event.target.name === 'increaseCount') {
       setCountToAddInCart(++newCount);
     }
