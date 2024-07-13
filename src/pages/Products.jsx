@@ -29,7 +29,7 @@ const Products = () => {
             <Filters getFilteredProducts={getFilteredProducts} setFilteredProducts={setFilteredProducts} />
           </div>
           <div className='vr d-none d-lg-block'></div>
-          <div className='ps-lg-2 pt-2'>
+          <div className='ps-lg-2 pt-2 flex-fill'>
             {
               filteredProducts.length === 0
                 ?
@@ -40,13 +40,13 @@ const Products = () => {
                     currentProducts.map((product) =>
                       <ProductCard key={product.productId} product={product} />
                     )
-                  }{
+                  }
+                  {
                     filteredProducts.length > productsPerPage
                       ? <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} productsPerPage={productsPerPage} totalProducts={filteredProducts.length} />
                       : ''
                   }
                 </div>
-
             }
           </div>
         </div>
