@@ -34,9 +34,20 @@ export default function Header() {
   }
 
   const toggleSearchBar = (event) => {
-    setSearchKey('');
-    const dropdownElementList = document.querySelectorAll('#searchBar');
-    [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
+    console.log(event.type);
+    if (event.type === 'click') {
+      console.log("toggleSearchBar called");
+      console.log("setSearchResults : " + searchResults.length);
+      const dropdownElementList = document.querySelectorAll('#searchBar');
+      [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
+      setSearchKey('');
+      setSearchResults([]);
+    } else {
+      const dropdownElementList = document.querySelectorAll('#searchBar');
+      [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).hide());
+    }
+    console.log("setSearchResults : " + searchKey);
+    console.log("setSearchResults : " + searchResults.length);
   }
 
   const handleSearchKey = (event) => {
@@ -54,6 +65,7 @@ export default function Header() {
           return { ...product, name: product.name.substring(0, product.name.indexOf('(')) }
         })),
         (errorMsg) => {
+          console.log(errorMsg);
           setSearchResults([])
         }
       )
@@ -75,7 +87,7 @@ export default function Header() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div id='searchBar' className="d-flex flex-fill me-md-2 mx-md-2 mt-2 mt-md-1 mb-1 dropdown" role="search">
-            <input onKeyUp={handleSearchKey} onChange={e => setSearchKey(e.target.value)}
+            <input onKeyUp={handleSearchKey} onChange={e => setSearchKey(e.target.value)} onBlur={toggleSearchBar} onpoin
               className="form-control" type="search" autoComplete="false"
               placeholder="Search for products, brands and more"
               data-bs-toggle="dropdown" data-bs-auto-close="true"
@@ -90,7 +102,7 @@ export default function Header() {
                       to={`/products/${result.productId}`}>{result.name}</Link>
                   )
                   :
-                  <li className="dropdown-item" onClick={toggleSearchBar}>
+                  <li className="dropdown-item">
                     <p className="dropdown-item-text text-body-secondary mb-0 py-0">No results found</p>
                   </li>
               }
