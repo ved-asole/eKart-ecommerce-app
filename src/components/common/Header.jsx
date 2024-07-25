@@ -1,7 +1,7 @@
 import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { Collapse, Dropdown } from 'bootstrap';
 import { useEffect, useState } from 'react';
 import { getPreviousCart } from '../../redux/slices/cartSlice';
@@ -11,6 +11,7 @@ export default function Header() {
 
   let cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [searchKey, setSearchKey] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -36,8 +37,8 @@ export default function Header() {
   const toggleSearchBar = (event) => {
     console.log(event.type);
     if (event.type === 'click') {
-      console.log("toggleSearchBar called");
-      console.log("setSearchResults : " + searchResults.length);
+      // console.log("toggleSearchBar called");
+      // console.log("setSearchResults : " + searchResults.length);
       const dropdownElementList = document.querySelectorAll('#searchBar');
       [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
       setSearchKey('');
@@ -46,8 +47,8 @@ export default function Header() {
       const dropdownElementList = document.querySelectorAll('#searchBar');
       [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).hide());
     }
-    console.log("setSearchResults : " + searchKey);
-    console.log("setSearchResults : " + searchResults.length);
+    // console.log("setSearchResults : " + searchKey);
+    // console.log("setSearchResults : " + searchResults.length);
   }
 
   const handleSearchKey = (event) => {
@@ -87,19 +88,38 @@ export default function Header() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div id='searchBar' className="d-flex flex-fill me-md-2 mx-md-2 mt-2 mt-md-1 mb-1 dropdown" role="search">
-            <input onKeyUp={handleSearchKey} onChange={e => setSearchKey(e.target.value)} onBlur={toggleSearchBar} onpoin
-              className="form-control" type="search" autoComplete="false"
+            <input
+              onKeyUp={handleSearchKey}
+              onChange={e => setSearchKey(e.target.value)}
+              onBlur={(event) => { toggleSearchBar(event) }}
+              className="form-control"
+              type="search"
+              autoComplete="false"
               placeholder="Search for products, brands and more"
-              data-bs-toggle="dropdown" data-bs-auto-close="true"
-              name="search" aria-label="Search" value={searchKey}
+              data-bs-toggle="dropdown"
+              data-bs-auto-close="true"
+              name="search"
+              aria-label="Search"
+              value={searchKey}
             />
             <ul className="dropdown-menu">
               {
                 searchResults.length > 0 ?
                   searchResults.map((result) =>
-                    <Link key={result.productId} className="dropdown-item"
-                      onClick={toggleSearchBar}
-                      to={`/products/${result.productId}`}>{result.name}</Link>
+                    <Link
+                      key={result.productId}
+                      className="dropdown-item"
+                      onMouseDown={(event) => {
+                        navigate(`/products/${result.productId}`);
+                      }}
+                      onMouseUp={(event) => {
+                        toggleSearchBar(event);
+                        console.log("toggleSearchBar Completed");
+                      }}
+                      to={`/products/${result.productId}`}
+                    >
+                      {result.name}
+                    </Link>
                   )
                   :
                   <li className="dropdown-item">
