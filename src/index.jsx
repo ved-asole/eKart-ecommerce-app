@@ -7,18 +7,21 @@ import router from './routes.jsx';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 import AppLoader from './components/common/AppLoader.jsx';
+import { CookiesProvider } from 'react-cookie';
 const App = lazy(() => import('./App'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router}>
-        <Suspense fallback={<AppLoader />}>
-            <App />
-        </Suspense>
-      </RouterProvider>
-    </Provider>
+  <Provider store={store}>
+    <RouterProvider router={router}>
+      <Suspense fallback={<AppLoader />}>
+        <CookiesProvider defaultSetOptions={{ path: '/' }}>
+          <App />
+        </CookiesProvider>
+      </Suspense>
+    </RouterProvider>
+  </Provider>
   </React.StrictMode>
 );
 
