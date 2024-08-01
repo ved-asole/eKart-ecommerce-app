@@ -65,11 +65,18 @@ export const Footer = () => {
             </div>
             <div id='aboutUs' className='text-start col-12 col-sm-5 col-xl-3 mt-md-0 pe-4'>
               <h6 className='border-bottom pb-2 fw-bold'>About Us</h6>
-              <p className='text-body-secondary'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
+              <p className='text-body-secondary text-wrap'>
+                Welcome to eKart Shopping, your number one source for shopping.
+                We're dedicated to giving you the very best of products, with a focus on three characteristics, e.g., dependability, customer service and uniqueness.
+              </p>
             </div>
             <div id='contact' className='text-start col-12 col-sm-5 col-xl-3 mt-md-0 pe-4'>
               <h6 className='border-bottom pb-2 fw-bold'>Contact</h6>
-              <p className='text-body-secondary'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at lorem ut nibh semper iaculis a quis mauris. Integer leo eros, molestie at urna sit amet, blandit egestas diam. Praesent sollicitudin facilisis efficitur.</p>
+              <p className='text-body-secondary text-wrap'>
+                Email: support@ekartshopping.com <br />
+                Phone: +91 123 456 7890 <br />
+                Address: <br />123 Main St, Anytown, USA 12345 <br />
+              </p>
             </div>
           </div>
         </div>
