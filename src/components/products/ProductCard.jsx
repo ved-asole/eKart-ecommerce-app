@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ProductCard = ({ product: { productId, name, image, price, discount, categoryId } }) => {
+const ProductCard = ({ product: { productId, name, image, price, discount } }) => {
   return (
     <Link to={`/products/${productId}`} className='text-decoration-none'>
       <div className='products-card' style={{ "width": "250px" }}>
