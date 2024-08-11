@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import AppLoader from '../components/common/AppLoader';
 
 const CategoriesBar = lazy(() => import('../components/home/CategoriesBar'));
-const ProductsCarousel = lazy(() => import('../components/home/ProductsCarousel'));
+const HomeCarousel = lazy(() => import('../components/home/HomeCarousel'));
 const TopDeals = lazy(() => import('../components/home/TopDeals'));
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
 
       {/* Carousel Section */}
       <Suspense fallback={<AppLoader />} >
-        <ProductsCarousel />
+        <HomeCarousel />
       </Suspense>
 
       <Suspense fallback={<AppLoader />} >
