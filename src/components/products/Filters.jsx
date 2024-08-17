@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../redux/slices/productsSlice';
+import { fetchProducts, fetchProductsByCategory } from '../../redux/slices/productsSlice';
+import { Link } from 'react-router-dom';
 
-const Filters = ({ getFilteredProducts, setFilteredProducts }) => {
+const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
 
   const categories = useSelector((state) => state.categories.categories)
   const products = useSelector((state) => state.products.products)
+  // const error = useSelector((state) => state.products.error)
   const dispatch = useDispatch();
   let minPrice = 0;
   const [maxPrice, setMaxPrice] = useState(150000);
@@ -40,13 +42,39 @@ const Filters = ({ getFilteredProducts, setFilteredProducts }) => {
     }
   }
 
-  useEffect(() => {
-    if (products === undefined || products?.length === 0) {
-      fetchProducts(dispatch);
-    }
-    setFilteredProducts(products);
+  // useEffect(() => {
+  //   console.log("categoryId : " + categoryId);
+  //   if (products.length == 0) {
+  //     console.log("products.length : " + products.length);
+  //     if (categoryId == null) {
+  //       fetchProducts(dispatch);
+  //       setFilteredProducts(products);
+  //     }
+  //     else {
+  //       fetchProductsByCategory(dispatch, categoryId);
+  //     }
+  //   }
+  //   setFilteredProducts(products);
+  // }, [products, categoryId]);
 
-  }, [products]);
+  useEffect(() => {
+    // This useEffect is dedicated to fetching products when the component mounts.
+    if (categoryId == null) {
+      fetchProducts(dispatch);
+    } else {
+      fetchProductsByCategory(dispatch, categoryId);
+    }
+  }, [categoryId]); // Empty dependency array means this runs once on mount.
+
+  useEffect(() => {
+    // This useEffect is for any other side effects that need to run when products or categoryId changes.
+    console.log("categoryId : " + categoryId);
+    if (products.length > 0) {
+      setFilteredProducts(products);
+    } else {
+      setFilteredProducts([]);
+    }
+  }, [products, categoryId]); // This will run on products or categoryId changes.
 
   return (
     <div>
@@ -54,7 +82,11 @@ const Filters = ({ getFilteredProducts, setFilteredProducts }) => {
       <div className="ps-2">
         <div className='mt-3'>
           <div className='mb-3'>Categories :</div>
-          {categories.map((category) => <p key={category.categoryId} className='fs-6 ms-3 lh-1'>{category.name}</p>)}
+          {categories.map((category) =>
+            <Link className='text-decoration-none text-body-secondary' key={category.categoryId} to={`/products?category=${category.categoryId}`}>
+              <p className='fs-6 ms-3 lh-1'>{category.name}</p>
+            </Link>
+          )}
         </div>
         <div className='pe-3 py-3 border-top'>
           <label htmlFor="priceRange" className="form-label">Price :</label>
