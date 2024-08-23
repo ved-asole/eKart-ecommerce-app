@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, fetchProductsByCategory } from '../../redux/slices/productsSlice';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
 
@@ -27,14 +28,17 @@ const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
       case 'none':
         setFilteredProducts(products);
         break;
-      case 'low-to-high-price':
-        setFilteredProducts(arrayForSorting.sort((product1, product2) => Math.trunc(product1.price * (1 - product1.discount / 100)) - Math.trunc(product2.price * (1 - product2.discount / 100))));
-        break;
+        case 'low-to-high-price':
+          arrayForSorting.sort((product1, product2) => Math.trunc(product1.price * (1 - product1.discount / 100)) - Math.trunc(product2.price * (1 - product2.discount / 100)));
+          setFilteredProducts(arrayForSorting);
+          break;
       case 'high-to-low-price':
-        setFilteredProducts(arrayForSorting.sort((product1, product2) => Math.trunc(product2.price * (1 - product2.discount / 100)) - Math.trunc(product1.price * (1 - product1.discount / 100))));
+        arrayForSorting.sort((product1, product2) => Math.trunc(product2.price * (1 - product2.discount / 100)) - Math.trunc(product1.price * (1 - product1.discount / 100)));
+        setFilteredProducts(arrayForSorting);
         break;
       case 'discount':
-        setFilteredProducts(arrayForSorting.sort((product1, product2) => product2.discount - product1.discount));
+        arrayForSorting.sort((product1, product2) => product2.discount - product1.discount)
+        setFilteredProducts(arrayForSorting);
         break;
       default:
         setFilteredProducts(arrayForSorting);
@@ -121,3 +125,9 @@ const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
   )
 }
 export default Filters
+
+Filters.propTypes = {
+  getFilteredProducts: PropTypes.func.isRequired,
+  setFilteredProducts: PropTypes.func.isRequired,
+  categoryId: PropTypes.number,
+};
