@@ -27,7 +27,7 @@ const Products = () => {
       <div className='ms-1 mx-2'>
         <div className="d-flex">
           <div className="col-3 col-xl-2 pt-3 d-none d-lg-block mb-2">
-            <Filters getFilteredProducts={getFilteredProducts} setFilteredProducts={setFilteredProducts} categoryId={searchParams.get('category')} />
+            <Filters getFilteredProducts={getFilteredProducts} setFilteredProducts={setFilteredProducts} categoryId={Number(searchParams.get('category'))} />
           </div>
           <div className='vr d-none d-lg-block'></div>
           <div className='ps-lg-2 pt-2 flex-fill'>
