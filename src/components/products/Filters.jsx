@@ -28,10 +28,10 @@ const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
       case 'none':
         setFilteredProducts(products);
         break;
-        case 'low-to-high-price':
-          arrayForSorting.sort((product1, product2) => Math.trunc(product1.price * (1 - product1.discount / 100)) - Math.trunc(product2.price * (1 - product2.discount / 100)));
-          setFilteredProducts(arrayForSorting);
-          break;
+      case 'low-to-high-price':
+        arrayForSorting.sort((product1, product2) => Math.trunc(product1.price * (1 - product1.discount / 100)) - Math.trunc(product2.price * (1 - product2.discount / 100)));
+        setFilteredProducts(arrayForSorting);
+        break;
       case 'high-to-low-price':
         arrayForSorting.sort((product1, product2) => Math.trunc(product2.price * (1 - product2.discount / 100)) - Math.trunc(product1.price * (1 - product1.discount / 100)));
         setFilteredProducts(arrayForSorting);
@@ -46,29 +46,14 @@ const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
     }
   }
 
-  // useEffect(() => {
-  //   console.log("categoryId : " + categoryId);
-  //   if (products.length == 0) {
-  //     console.log("products.length : " + products.length);
-  //     if (categoryId == null) {
-  //       fetchProducts(dispatch);
-  //       setFilteredProducts(products);
-  //     }
-  //     else {
-  //       fetchProductsByCategory(dispatch, categoryId);
-  //     }
-  //   }
-  //   setFilteredProducts(products);
-  // }, [products, categoryId]);
-
   useEffect(() => {
     // This useEffect is dedicated to fetching products when the component mounts.
-    if (categoryId == null) {
+    if (categoryId == null || categoryId == 0) {
       fetchProducts(dispatch);
     } else {
       fetchProductsByCategory(dispatch, categoryId);
     }
-  }, [categoryId]); // Empty dependency array means this runs once on mount.
+  }, [categoryId]); // This will run only when categoryId changes.
 
   useEffect(() => {
     // This useEffect is for any other side effects that need to run when products or categoryId changes.
@@ -86,6 +71,9 @@ const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
       <div className="ps-2">
         <div className='mt-3'>
           <div className='mb-3'>Categories :</div>
+          <Link className='text-decoration-none text-body-secondary' key={0} to="/products">
+            <p className='fs-6 ms-3 lh-1'>All</p>
+          </Link>
           {categories.map((category) =>
             <Link className='text-decoration-none text-body-secondary' key={category.categoryId} to={`/products?category=${category.categoryId}`}>
               <p className='fs-6 ms-3 lh-1'>{category.name}</p>
