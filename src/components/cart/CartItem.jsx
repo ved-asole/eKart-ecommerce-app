@@ -61,9 +61,9 @@ const CartItem = ({ cartItem }) => {
         </p>
         <div className="cart-count d-inline-block">
           <button className='btn btn-dark px-3 py-1 rounded-start-2' name='decreaseCount'
-            onClick={updateCountToAddToCart} disabled={cartItem.quantity < 1}
+            onClick={updateCountToAddToCart} disabled={cartItem.cartQuantity < 1}
           >-</button>
-          <span id='add-to-cart-count' className='p-2'>{cartItem.quantity}</span>
+          <span id='add-to-cart-count' className='p-2'>{cartItem.cartQuantity}</span>
           <button className='btn btn-dark px-3 py-1 rounded-end-2' name='increaseCount'
             onClick={updateCountToAddToCart}
           >+</button>
