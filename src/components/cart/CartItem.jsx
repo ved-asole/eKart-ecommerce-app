@@ -39,35 +39,35 @@ const CartItem = ({ cartItem }) => {
   return (
 
     <div key={cartItem.productId}
-      className='d-flex mb-4 mx-md-4 justify-content-between 
-      justify-content-md-evenly align-items-center gap-4 pb-4 border-bottom'>
-      <div className='col-4 col-md-6 mx-3 mx-md-0 text-center'>
+      className='d-flex mb-sm-4 mx-md-4 flex-column flex-md-row justify-content-between 
+      justify-content-md-evenly align-items-center gap-4 pb-4 border-bottom pt-5 pt-sm-0'>
+      <div className='col-sm-4 mx-3 mx-md-0 text-center'>
         <img className='rounded-3' src={cartItem.image} alt={cartItem.name}
-          height={isMobileSize < 768 ? "140px" : "560px"}
+          height={isMobileSize < 768 ? "130px" : "460px"}
         />
       </div>
-      <div className='col-md-6 mt-1 mx-3 mx-md-0'>
-        <p>
+      <div className='col-10 text-center text-md-start col-md-6 mt-1 mx-3 mx-md-0'>
+        <p className='text-wrap'>
           {cartItem.name}
         </p>
         {/* <div className='d-flex justify-content-between'>
-          <p>{cartItem.name}</p>
-          <p>Delivery by </p>
-        </div> */}
+          <p>{product.name}</p> */}
+        <p className='text-body-secondary text-sm'>Delivery by {new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toLocaleDateString()} </p>
+        {/* </div> */}
         <p>
           <span className='fs-md-5 fw-medium'>₹{getFormattedPrice(Math.trunc(cartItem.price * (1 - cartItem.discount / 100)))}</span>
-          <span className='mx-2 text-decoration-line-through'>{getFormattedPrice(cartItem.price)}</span>
+          <span className='mx-2 text-body-secondary text-decoration-line-through'>{getFormattedPrice(cartItem.price)}</span>
           <span className='fs-md-6 fw-bold'>{`${cartItem.discount}% Off`}</span>
         </p>
-        <div className="cart-count mt-3 d-inline-block">
+        <div className="cart-count d-inline-block">
           <button className='btn btn-dark px-3 py-1 rounded-start-2' name='decreaseCount'
-            onClick={updateCountToAddToCart} disabled={cartItem.cartQuantity <= 1}
+            onClick={updateCountToAddToCart} disabled={cartItem.quantity < 1}
           >-</button>
-          <span id='add-to-cart-count' className='p-2'>{cartItem.cartQuantity}</span>
+          <span id='add-to-cart-count' className='p-2'>{cartItem.quantity}</span>
           <button className='btn btn-dark px-3 py-1 rounded-end-2' name='increaseCount'
             onClick={updateCountToAddToCart}
           >+</button>
-          <button className='fw-medium ms-md-5 pt-4 bg-transparent border-0'
+          <button className='fw-medium ms-5 pt-4 bg-transparent border-0'
             onClick={(event) => dispatch(removeFromCart(cartItem))}>REMOVE</button>
         </div>
       </div>
