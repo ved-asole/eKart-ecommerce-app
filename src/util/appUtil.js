@@ -1,3 +1,5 @@
+import * as bootstrap from 'bootstrap';
+
 export const getFormattedPrice = (price) => {
   return Number(price).toLocaleString('en-IN');
 }
