@@ -14,6 +14,16 @@ export default function Header() {
   const navigate = useNavigate();
   const [searchKey, setSearchKey] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [isMobileSize, setIsMobileSize] = useState(false);
+
+  //choose the screen size 
+  const handleResize = () => {
+    if (window.innerWidth < 1200) {
+      setIsMobileSize(true)
+    } else {
+      setIsMobileSize(false)
+    }
+  }
 
   useEffect(() => {
     dispatch(getPreviousCart());
@@ -37,8 +47,6 @@ export default function Header() {
   const toggleSearchBar = (event) => {
     console.log(event.type);
     if (event.type === 'click') {
-      // console.log("toggleSearchBar called");
-      // console.log("setSearchResults : " + searchResults.length);
       const dropdownElementList = document.querySelectorAll('#searchBar');
       [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
       setSearchKey('');
@@ -46,9 +54,9 @@ export default function Header() {
     } else {
       const dropdownElementList = document.querySelectorAll('#searchBar');
       [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).hide());
+      setSearchKey('');
+      setSearchResults([]);
     }
-    // console.log("setSearchResults : " + searchKey);
-    // console.log("setSearchResults : " + searchResults.length);
   }
 
   const handleSearchKey = (event) => {
@@ -76,7 +84,7 @@ export default function Header() {
   }
 
   return (
-    <header style={{ 'marginTop': "65px" }} >
+    <header style={isMobileSize ? { 'marginTop': "65px" } : { 'marginTop': "50px" }} >
       <nav className="navbar navbar-expand-md fixed-top bg-secondary-subtle">
         <div className="container gap-md-2 mx-auto">
           <Link to={"/"} className="navbar-brand mt-1 ms-md-2">
@@ -146,6 +154,44 @@ export default function Header() {
                 to={"/products"} onClick={toggleCollapse}>
                 Products
               </NavLink>
+              {document.cookie.includes("customerId") ?
+                <div className="nav-item dropdown">
+                  <button className="btn dropdown-toggle" data-bs-toggle="dropdown"
+                    onClick={toggleDropdown} aria-expanded="false">
+                    {document.cookie.split('username=')[1].split(';')[0].split('%20')[0]}
+                  </button>
+                  <ul className="dropdown-menu dropdown-menu-dark">
+                    <li>
+                      <NavLink className="nav-link mx-1" aria-current="page"
+                        to={"/profile"} onClick={toggleDropdownAndCollapse}>
+                        Profile
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink className="nav-link mx-1" aria-current="page"
+                        to={"/orders"} onClick={toggleDropdownAndCollapse}>
+                        Orders
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink className="nav-link mx-1" aria-current="page"
+                        to={"/admin"} onClick={toggleDropdownAndCollapse}>
+                        Admin Panel
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink className="nav-link mx-1" aria-current="page"
+                        to={"/auth?mode=logout"} onClick={toggleDropdownAndCollapse}>
+                        Logout
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div> :
+                <NavLink className="nav-link mx-1" aria-current="page"
+                  to={"/auth"} onClick={toggleCollapse}>
+                  Login
+                </NavLink>
+              }
               <NavLink className="nav-link mx-2 me-3" aria-current="page"
                 to={"/cart"} onClick={toggleCollapse}>
                 <FontAwesomeIcon className={cartTotalQuantity > 0 ? '' : 'me-1'} icon={faCartShopping} />
