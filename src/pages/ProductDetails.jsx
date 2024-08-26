@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import fetchData from '../util/DataFetcher';
-import { addToCart } from '../redux/slices/cartSlice';
+import { addItemToCart, fetchPreviousCart } from '../redux/slices/cartSlice';
 import { getFormattedPrice } from '../util/appUtil';
 
 const ProductDetails = () => {
@@ -14,8 +14,11 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const addProductToCart = (event) => {
-    delete product.qtyInStock;
-    dispatch(addToCart({ ...product, countToAddInCart: countToAddInCart }));
+    if (localStorage.getItem('cartId')) {
+      fetchPreviousCart(dispatch);
+    }
+    addItemToCart(dispatch, product, countToAddInCart);
+    fetchPreviousCart(dispatch);
   }
 
   useEffect(() => {
