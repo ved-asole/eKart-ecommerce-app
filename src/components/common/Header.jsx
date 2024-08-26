@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { Collapse, Dropdown } from 'bootstrap';
 import { useEffect, useState } from 'react';
-import { getPreviousCart } from '../../redux/slices/cartSlice';
+import { fetchPreviousCart } from '../../redux/slices/cartSlice';
 import fetchData from '../../util/DataFetcher';
 
 export default function Header() {
@@ -26,7 +26,13 @@ export default function Header() {
   }
 
   useEffect(() => {
-    dispatch(getPreviousCart());
+    fetchPreviousCart(dispatch);
+    if (window.innerWidth < 1200) {
+      setIsMobileSize(true)
+    } else {
+      setIsMobileSize(false)
+    }
+    window.addEventListener("resize", handleResize);
   }, [])
 
 

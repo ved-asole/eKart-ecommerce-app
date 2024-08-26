@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CartItem from '../components/cart/CartItem';
-import { clearCart, getPreviousCart } from '../redux/slices/cartSlice';
+import { clearAllItemsFromCart, fetchPreviousCart } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
-import { getFormattedPrice } from '../util/appUtil';
+import { getFormattedPrice} from '../util/appUtil';
 
 const Cart = () => {
-
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartFinalAmount = useSelector((state) => state.cart.cartFinalAmount);
   const cartTotalPrice = useSelector((state) => state.cart.cartTotalPrice);
@@ -15,7 +14,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPreviousCart());
+    fetchPreviousCart(dispatch);
   }, [])
 
   return (
@@ -26,9 +25,9 @@ const Cart = () => {
         <hr />
         <div className="cartItems my-5 px-md-2 rounded">
           {
-            cartItems.length >= 1
+            cartItems.length > 0
               ? cartItems.map((cartItem) =>
-                <CartItem key={cartItem.productId} cartItem={cartItem} />
+                <CartItem key={cartItem.product.productId} cartItem={cartItem} />
               )
               : <div className='text-center mt-5 text-body h-100'>
                 <h5>Your cart is empty!</h5>
@@ -80,7 +79,7 @@ const Cart = () => {
             </div>
             <div className="cart-buttons mt-3">
               <button className='btn btn-secondary text-white fs-5 fw-medium w-100 py-3'
-                onClick={(event) => dispatch(clearCart())}
+                onClick={(event) => clearAllItemsFromCart(dispatch)}
               >Clear Cart</button>
             </div>
           </div>
