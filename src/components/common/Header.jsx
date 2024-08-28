@@ -50,6 +50,16 @@ export default function Header() {
     }
   }
 
+  const toggleDropdown = (event) => {
+    const dropdownElementList = document.querySelectorAll('.dropdown-menu-dark');
+    [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
+  }
+
+  const toggleDropdownAndCollapse = (event) => {
+    toggleDropdown();
+    toggleCollapse();
+  }
+
   const toggleSearchBar = (event) => {
     console.log(event.type);
     if (event.type === 'click') {
