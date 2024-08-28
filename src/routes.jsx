@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import { lazy } from "react";
-
 const ErrorPage = lazy(() => import('./pages/ErrorPage'));
 const RouteLoadError = lazy(() => import('./pages/RouteLoadError'));
 const Home = lazy(() => import('./pages/Home'));
@@ -9,6 +8,7 @@ const Categories = lazy(() => import('./pages/Categories'));
 const Products = lazy(() => import('./pages/Products'));
 const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 const Cart = lazy(() => import('./pages/Cart'));
+const Auth = lazy(() => import('./pages/Auth'));
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />
+      },
+      {
+        path: "auth",
+        element: <Auth />
       },
       {
         path: "*",
