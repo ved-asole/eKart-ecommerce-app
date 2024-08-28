@@ -1,0 +1,274 @@
+import axios from 'axios';
+import React, { useEffect } from 'react'
+import { useCookies } from 'react-cookie';
+import { useForm } from 'react-hook-form'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { showToast } from '../util/appUtil';
+import { clearCart, fetchPreviousCart } from '../redux/slices/cartSlice';
+import { useDispatch } from 'react-redux';
+
+const AuthForm = () => {
+
+  let [searchParams] = useSearchParams();
+  let mode = searchParams.get("mode");
+  const { register, handleSubmit, formState, reset } = useForm();
+  const { errors, isSubmitted, isSubmitting, isSubmitSuccessful, isValid } = formState;
+  const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies([]);
+  const dispatch = useDispatch();
+
+  const formSubmitHandler = (data) => {
+    axios.defaults.headers.common.Authorization = '';
+    localStorage.removeItem('token');
+    removeCookie('username');
+    removeCookie('customerId');
+
+    if (mode == 'signup') processSignUp(data);
+    else processSignIn(data);
+  };
+
+  const processSignUp = (data) => {
+    axios.post(
+      import.meta.env.VITE_API_URL.concat("customers"),
+      {
+        email: data.email,
+        password: data.password,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phoneNumber: data.phoneNumber,
+        role: "USER"
+      },
+      {
+        headers: { 'Authorization': '' }
+      }
+    )
+      .then((response) => {
+        const token = response.headers.getAuthorization().replace('Bearer ', '');
+        setCookie('token', token, { httpOnly: true });
+        setCookie('customerId', response.data.customerId);
+        setCookie('username', response.data.firstName + " " + response.data.lastName);
+        setCookie('role', response.data.role);
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+        localStorage.setItem('token', token);
+        localStorage.setItem('cartId', cartId);
+        console.log("Logged in successfully");
+        showToast("Logged in successfully");
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  const processSignIn = (data) => {
+    axios.post(
+      import.meta.env.VITE_API_URL.concat("auth/authenticate"),
+      {
+        email: data.email,
+        password: data.password
+      },
+      {
+        headers: {
+          Authorization: ''
+        }
+      }
+    )
+      .then((response) => {
+        const token = response.headers.getAuthorization().replace('Bearer ', '');
+        setCookie('customerId', response.data.customerId);
+        setCookie('username', response.data.firstName + " " + response.data.lastName);
+        setCookie('role', response.data.role);
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+        localStorage.setItem('token', token);
+        localStorage.setItem('cartId', response.data.cartId);
+        showToast("Logged In");
+        fetchPreviousCart(dispatch);
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error?.response?.data?.message);
+        showToast("Invalid Credentials");
+        reset({
+          email: '',
+          password: ''
+        })
+      }
+      );
+  }
+
+  const processLogout = () => {
+    localStorage.clear();
+    removeCookie('username');
+    removeCookie('customerId');
+    removeCookie('role');
+    dispatch(clearCart());
+    showToast("Logged out successfully");
+    navigate('/');
+  }
+
+  const checkAuthentication = () => {
+    //Making api call to check if token is valid
+    axios.get(import.meta.env.VITE_API_URL.concat("auth/check-token"))
+      .then((response) => {
+        console.log(response.data);
+        showToast("Welcome back");
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+        removeCookie('username');
+        removeCookie('customerId');
+        localStorage.removeItem('token');
+      })
+  }
+
+  useEffect(() => {
+    if (mode == 'logout') processLogout();
+    if (cookies.customerId != undefined) {
+      if (localStorage.getItem('token')) {
+        checkAuthentication();
+      }
+    }
+    if (isSubmitting) {
+      console.log("Form Submitting");
+    }
+    if (isSubmitSuccessful) {
+      console.log("Form Submitted Successfully");
+    }
+
+  }, [isSubmitting, isSubmitSuccessful])
+
+
+  return (
+    <div className="container bg-secondary-subtle p-2 p-md-5">
+      <div className="row d-flex flex-wrap justify-content-center align-items-center">
+        <div className="col-md-6 text-start p-5 pb-3 align-self-stretch border-end">
+          <h1>{mode == 'signup' ? 'Sign Up' : 'Login'}</h1>
+          <h5 className='text-secondary'>
+            {
+              mode == 'signup' ?
+                'Join us today and unlock exclusive deals, personalized recommendations, and more!'
+                : 'Get access to your Orders, Wishlist and Recommendations'
+            }
+          </h5>
+        </div>
+        <div className="col-md-6 gap-2 py-0 pb-5 py-md-5 px-5">
+          <form id='authForm'>
+            <div className="signupFields" hidden={mode != 'signup'} >
+              <div className="form-floating">
+                <input type="text" className={errors.firstName ? "form-control is-invalid" : "form-control"} id="firstName" placeholder="ABC" autoComplete='name' required
+                  {...register("firstName", {
+                    required: mode == 'signup',
+                    minLength: {
+                      value: 3,
+                      message: "Should have atleast 3 characters"
+                    },
+                    maxLength: {
+                      value: 20,
+                      message: "Should not be more than 20 characters"
+                    }
+                  })}
+                />
+                <label htmlFor="firstName">First name</label>
+                <div className="form-text text-start" hidden={errors.firstName}>Should be between 3 to 20 characters</div>
+                {errors.firstName && <div className="invalid-feedback text-start">{errors.firstName.message}</div>}
+              </div>
+              <div className="form-floating mt-3">
+                <input type="text" className={errors.lastName ? "form-control is-invalid" : "form-control"} id="lastName" placeholder="XYZ" autoComplete='family-name' required
+                  {...register("lastName", {
+                    required: mode == 'signup',
+                    minLength: {
+                      value: 3,
+                      message: "Should have atleast 3 characters"
+                    },
+                    maxLength: {
+                      value: 20,
+                      message: "Should not be more than 20 characters"
+                    }
+                  })}
+                />
+                <label htmlFor="lastName">Last name</label>
+                <div className="form-text text-start" hidden={errors.lastName}>Should be between 3 to 20 characters</div>
+                {errors.lastName && <div className="invalid-feedback text-start">{errors.lastName.message}</div>}
+              </div>
+              <div className="form-floating mt-3">
+                <input type="number" className={errors.phoneNumber ? "form-control is-invalid" : "form-control"} id="phoneNumber" placeholder="1234567" autoComplete='tel' required
+                  {...register("phoneNumber", {
+                    required: mode == 'signup',
+                    minLength: {
+                      value: 10,
+                      message: "Should have atleast 10 digits"
+                    }
+                  })}
+                />
+                <label htmlFor="phoneNumber">Phone Number</label>
+                <div className="form-text text-start" hidden={errors.phoneNumber}>Should be atleast 20 characters</div>
+                {errors.phoneNumber && <div className="invalid-feedback text-start">{errors.phoneNumber.message}</div>}
+              </div>
+            </div>
+            <div className="form-floating mt-3">
+              <input type="email" className={errors.email ? "form-control is-invalid" : "form-control"} id="email" placeholder="name@example.com" autoComplete='email' required
+                {...register("email", {
+                  required: true,
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Please enter a valid email address"
+                  }
+                })}
+              />
+              <label htmlFor="email">Email address</label>
+              <div className="form-text text-start" hidden={errors.email}>Should be a valid email</div>
+              {errors.email && <div className="invalid-feedback text-start">{errors.email.message}</div>}
+            </div>
+            <div className="form-floating mt-3">
+              <input type="password" className={errors.password ? "form-control is-invalid" : "form-control"} id="password" placeholder="Password" autoComplete='current-password' required
+                {...register("password", {
+                  required: true,
+                  minLength: {
+                    value: 8,
+                    message: "Should have atleast 8 characters"
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Should not be more than 20 characters"
+                  }
+                })}
+              />
+              <label htmlFor="password">Password</label>
+              <div className="form-text text-start" hidden={errors.password}>Should be between 8 to 20 characters</div>
+              {errors.password && <div className="invalid-feedback text-start">{errors.password.message}</div>}
+            </div>
+            <div className="form-check text-start my-3">
+              <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" />
+              <label className="form-check-label" htmlFor="flexCheckDefault">
+                Remember me
+              </label>
+            </div>
+            {/* <div className="form-check text-start my-3">
+              <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" />
+              <label className="form-check-label" htmlFor="flexCheckDefault">
+                Forgot Password?
+              </label>
+            </div> */}
+            <button className="btn btn-primary w-100 py-2" type="submit"
+              onClick={handleSubmit(formSubmitHandler)}
+              disabled={errors && isValid && isSubmitSuccessful && (isSubmitting || isSubmitted || isSubmitSuccessful)}
+            >
+              {
+                errors && isValid && (isSubmitting || isSubmitted || isSubmitSuccessful) ?
+                  <p className='text-center mb-0'>
+                    <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <output className='ms-1'>Signing in...</output>
+                  </p>
+                  : mode == 'signup' ? "Sign up" : "Sign in"
+              }
+            </button>
+            <Link to={mode == 'signup' ? '?mode=login' : '?mode=signup'} className="btn btn-dark w-100 py-2 mt-2">{mode != 'signup' ? "Sign up" : "Sign in"}</Link>
+          </form>
+        </div>
+      </div>
+    </div >
+  )
+}
+
+export default AuthForm
