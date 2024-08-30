@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import CartItem from '../components/cart/CartItem';
 import { clearAllItemsFromCart, fetchPreviousCart } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
-import { getFormattedPrice} from '../util/appUtil';
+import { getFormattedPrice } from '../util/appUtil';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -18,12 +18,15 @@ const Cart = () => {
   }, [])
 
   return (
-    <div id='cart' className="container d-flex flex-wrap flex-md-nowrap mx-auto px-0 
+    <div id='cart' className="container d-flex flex-wrap flex-column flex-lg-row flex-md-nowrap mx-auto px-0 
     justify-content-center align-items-stretch">
-      <div className='container col-md- bg-secondary-subtle text-start rounded me-md-2'>
+      <div className='container bg-secondary-subtle text-start rounded me-md-2'>
         <h1 className='text-center mt-3'>YOUR CART</h1>
         <hr />
-        <div className="cartItems my-5 px-md-2 rounded">
+        <div className="cartItems my-5 px-md-2 rounded overflow-auto"
+          style={{
+            "height": "calc(100vh - 300px)", "maxHeight": "100vh", "scrollbarWidth": "none"
+          }}>
           {
             cartItems.length > 0
               ? cartItems.map((cartItem) =>
@@ -75,8 +78,10 @@ const Cart = () => {
             </div>
           </div>
           <div className='col-12 mt-3 flex-fill'>
-            <div className="btn btn-secondary text-white fs-5 fw-medium w-100 py-3">Proceed to Checkout
-            </div>
+            <button className="btn btn-secondary text-white fs-5 fw-medium w-100 py-3"
+            >
+              Proceed to Checkout
+            </button>
             <div className="cart-buttons mt-3">
               <button className='btn btn-secondary text-white fs-5 fw-medium w-100 py-3'
                 onClick={(event) => clearAllItemsFromCart(dispatch)}
