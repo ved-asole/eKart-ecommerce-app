@@ -37,10 +37,10 @@ const CategoriesBar = () => {
               [1, 2, 3, 4, 5, 6, 7, 8, 9].map(() =>
                 <div className="col-3 col-sm-2 col-lg-1 placeholder-glow text-decoration-none text-body-secondary">
                   <img alt='...'
-                    className="rounded-circle placeholder m-auto" width="70" height="70"
+                    className="rounded-circle placeholder" width="70" height="70"
                     src="..."
                     aria-label="Category" />
-                  <p className='mt-2 placeholder col-12'></p>
+                  <p className='mt-2 ms-1 ms-md-0 rounded placeholder col-12'></p>
                 </div>
               )
           }
