@@ -13,7 +13,7 @@ const HomeCarousel = () => {
         </div>
         <div className="carousel-inner rounded">
           <div className="carousel-item active">
-            <img fetchPriority="high" src="/images/carousel/new-online-store-yellow.webp"
+            <img fetchpriority="high" src="/images/carousel/new-online-store-yellow.webp"
               className="d-block w-100 mx-auto img-fluid" alt="Banner 1" />
           </div>
           <div className="carousel-item">
