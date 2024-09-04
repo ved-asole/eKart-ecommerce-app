@@ -17,11 +17,11 @@ const HomeCarousel = () => {
               className="d-block w-100 mx-auto img-fluid" alt="Banner 1" />
           </div>
           <div className="carousel-item">
-            <img src="/images/carousel/shopping-time-blue.webp"
+            <img fetchpriority="low" src="/images/carousel/shopping-time-blue.webp"
               className="d-block w-100 mx-auto img-fluid" alt="Banner 2" />
           </div>
           <div className="carousel-item">
-            <img src="/images/carousel/enjoy-purchase-yellow.webp"
+            <img fetchpriority="low" src="/images/carousel/enjoy-purchase-yellow.webp"
               className="d-block w-100 mx-auto  img-fluid" alt="Banner 3" />
           </div>
         </div>
