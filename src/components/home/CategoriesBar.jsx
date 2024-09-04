@@ -9,6 +9,7 @@ const CategoriesBar = () => {
   // Getting categories from store
   const categories = useSelector(state => state.categories.categories);
   const isLoading = useSelector(state => state.categories.loading);
+  const error = useSelector(state => state.categories.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,28 +17,37 @@ const CategoriesBar = () => {
       fetchCategories(dispatch)
   }, [])
 
-  return isLoading
-    ? <AppLoader />
-    : (
-      <section id="categoriesBarSection">
-        <div className='container bg-secondary-subtle rounded'>
-          <div className='row pt-3 mb-3 gap-2'>
-            {
+  return (
+    <section id="categoriesBarSection">
+      <div className='container bg-secondary-subtle rounded'>
+        <div className='row pt-3 mb-3 gap-2 justify-content-evenly'>
+          {
+            !isLoading && !error ?
               categories?.map((category) =>
                 <Link to={"/products?category=" + category.categoryId} key={category.categoryId}
                   className="col-3 col-sm-2 col-lg-1 flex-fill text-decoration-none text-body-secondary link-light">
                   <img alt={category.name.concat(" Category")}
                     className="rounded-circle m-auto mt-2-circle" width="70" height="70"
                     src={category.image}
+                    // src="..."
                     aria-label={category.name.concat(" Category")} />
                   <p className='mt-1 fw-bold'>{category.name}</p>
                 </Link>
-              )}
-          </div>
+              ) :
+              [1, 2, 3, 4, 5, 6, 7, 8, 9].map(() =>
+                <div className="col-3 col-sm-2 col-lg-1 placeholder-glow text-decoration-none text-body-secondary">
+                  <img alt='...'
+                    className="rounded-circle placeholder m-auto" width="70" height="70"
+                    src="..."
+                    aria-label="Category" />
+                  <p className='mt-2 placeholder col-12'></p>
+                </div>
+              )
+          }
         </div>
-      </section>
-
-    )
+      </div>
+    </section>
+  )
 }
 
 export default CategoriesBar
