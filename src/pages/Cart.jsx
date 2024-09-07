@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CartItem from '../components/cart/CartItem';
 import { clearAllItemsFromCart, fetchPreviousCart } from '../redux/slices/cartSlice';
-import { Link } from 'react-router-dom';
-import { getFormattedPrice } from '../util/appUtil';
+import { Link, useNavigate } from 'react-router-dom';
+import { getFormattedPrice, showToast } from '../util/appUtil';
+import createCheckoutSession from '../util/payment';
+import { useCookies } from 'react-cookie';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -11,11 +13,22 @@ const Cart = () => {
   const cartTotalPrice = useSelector((state) => state.cart.cartTotalPrice);
   const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
   const cartTotalDiscount = useSelector((state) => state.cart.cartTotalDiscount);
+  const [cookies, setCookie, removeCookie] = useCookies([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPreviousCart(dispatch);
   }, [])
+
+  const requestForCheckoutSession = () => {
+    if (cookies['customerId'] != undefined) {
+      createCheckoutSession(cookies['customerId'], cartItems);
+    } else {
+      showToast("Please login first");
+      navigate('/auth');
+    }
+  }
 
   return (
     <div id='cart' className="container d-flex flex-wrap flex-column flex-lg-row flex-md-nowrap mx-auto px-0 
@@ -79,6 +92,7 @@ const Cart = () => {
           </div>
           <div className='col-12 mt-3 flex-fill'>
             <button className="btn btn-secondary text-white fs-5 fw-medium w-100 py-3"
+              onClick={requestForCheckoutSession}
             >
               Proceed to Checkout
             </button>
