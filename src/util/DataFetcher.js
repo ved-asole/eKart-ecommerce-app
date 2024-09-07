@@ -40,10 +40,10 @@ const fetchMultipleApiData = async (path, successFunction, failureFunction, arra
     successFunction(response.data._embedded ? response.data._embedded[arrayName] : []);
     return true;
   } catch (error) {
-    console.log(error);
     console.log(error?.response?.status);
     errorMessage = error.message;
-    if (error.response.data.message.includes("JWT") || error?.response?.message == "Unauthorized") {
+    if (error.code != "ERR_NETWORK" && (error?.response?.data?.message?.includes("JWT") || error?.response?.message == "Unauthorized")) {
+      console.log("Invalid token or Unauthorized");
       fetchMultipleApiData(path, successFunction, failureFunction, arrayName);
     } else {
       failureFunction(errorMessage);
