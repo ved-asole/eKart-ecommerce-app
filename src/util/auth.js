@@ -1,6 +1,6 @@
 import axios from "axios";
 import { showToast } from "./appUtil";
-import { fetchPreviousCart } from "../redux/slices/cartSlice";
+import { clearCart, fetchPreviousCart } from "../redux/slices/cartSlice";
 
 export const processSignUp = (data, setCookie, navigate) => {
   axios.post(
