@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import { lazy } from "react";
+const PaymentConfirmation = lazy(() => import('./pages/PaymentConfirmation'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage'));
 const RouteLoadError = lazy(() => import('./pages/RouteLoadError'));
 const Home = lazy(() => import('./pages/Home'));
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "auth",
         element: <Auth />
+      },
+      {
+        path: "paymentConfirmation",
+        element: <ProtectedRoute> <PaymentConfirmation /> </ProtectedRoute>
       },
       {
         path: "*",
