@@ -32,10 +32,8 @@ export const setAxiosInterceptors = (setIsLoading) => {
     error => {
       // setIsLoading(false);
       // return Promise.reject(new Error(error));
-      console.log(error);
-      console.log("Unauthorized : " + error?.response?.message == "Unauthorized");
-      console.log("JWT Error : " + error.response.data.message.includes("JWT"));
-      if (error.response.data.message.includes("JWT") || error?.response?.message == "Unauthorized") {
+      console.log(error.message);
+      if (error?.response?.data?.message?.includes("JWT") || error?.response?.message == "Unauthorized") {
         localStorage.removeItem("token");
         delete axios.defaults.headers.common["Authorization"];
         // window.location.href = "/";
