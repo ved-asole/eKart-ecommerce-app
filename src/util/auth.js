@@ -1,6 +1,6 @@
 import axios from "axios";
 import { showToast } from "./appUtil";
-import { fetchPreviousCart } from "../redux/slices/cartSlice";
+import { clearCart, fetchPreviousCart } from "../redux/slices/cartSlice";
 
 export const processSignUp = (data, setCookie, navigate) => {
   axios.post(
@@ -35,7 +35,7 @@ export const processSignUp = (data, setCookie, navigate) => {
     });
 }
 
-export const processSignIn = (data, setCookie, navigate, reset) => {
+export const processSignIn = (data, setCookie, navigate, reset, dispatch) => {
   axios.post(
     import.meta.env.VITE_API_URL.concat("auth/authenticate"),
     {
@@ -61,6 +61,7 @@ export const processSignIn = (data, setCookie, navigate, reset) => {
       navigate('/');
     })
     .catch((error) => {
+      console.log(error);
       console.log(error?.response?.data?.message);
       showToast("Invalid Credentials");
       reset({
