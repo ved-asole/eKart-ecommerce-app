@@ -19,7 +19,7 @@ const AuthForm = () => {
     removeUserData(removeCookie);
 
     if (mode == 'signup') processSignUp(data, setCookie, navigate);
-    else processSignIn(data, setCookie, navigate, reset);
+    else processSignIn(data, setCookie, navigate, reset, dispatch);
   };
 
   useEffect(() => {
