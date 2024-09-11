@@ -10,6 +10,7 @@ const Products = lazy(() => import('./pages/Products'));
 const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 const Cart = lazy(() => import('./pages/Cart'));
 const Auth = lazy(() => import('./pages/Auth'));
+const ProtectedRoute = lazy(() => import('./components/auth/ProtectedRoute'));
 
 export const router = createBrowserRouter([
   {
