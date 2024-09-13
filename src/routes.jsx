@@ -11,6 +11,7 @@ const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 const Cart = lazy(() => import('./pages/Cart'));
 const Auth = lazy(() => import('./pages/Auth'));
 const ProtectedRoute = lazy(() => import('./components/auth/ProtectedRoute'));
+const Orders = lazy(() => import('./pages/Orders'));
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: "paymentConfirmation",
         element: <ProtectedRoute> <PaymentConfirmation /> </ProtectedRoute>
+      },
+      {
+        path: "orders",
+        element: <ProtectedRoute> <Orders /> </ProtectedRoute>
       },
       {
         path: "*",
