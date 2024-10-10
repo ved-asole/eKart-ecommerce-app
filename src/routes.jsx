@@ -12,6 +12,7 @@ const Cart = lazy(() => import('./pages/Cart'));
 const Auth = lazy(() => import('./pages/Auth'));
 const ProtectedRoute = lazy(() => import('./components/auth/ProtectedRoute'));
 const Orders = lazy(() => import('./pages/Orders'));
+const OrderDetails = lazy(() => import('./pages/OrderDetails'));
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "orders",
         element: <ProtectedRoute> <Orders /> </ProtectedRoute>
+      },
+      {
+        path: "orders/:orderId",
+        element: <ProtectedRoute> <OrderDetails /> </ProtectedRoute>
       },
       {
         path: "*",
