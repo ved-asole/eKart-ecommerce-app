@@ -9,7 +9,7 @@ import RouteLoadError from '../../pages/RouteLoadError';
 
 const ProtectedRoute = ({ children, roles }) => {
 
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookies] = useCookies();
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAccessDenied, setIsAccessDenied] = useState(false);
