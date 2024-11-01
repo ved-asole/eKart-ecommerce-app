@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCategories } from '../../redux/slices/categoriesSlice';
-import AppLoader from '../common/AppLoader';
 
 const CategoriesBar = () => {
 
@@ -34,8 +33,8 @@ const CategoriesBar = () => {
                   <p className='mt-1 fw-bold'>{category.name}</p>
                 </Link>
               ) :
-              [1, 2, 3, 4, 5, 6, 7, 8, 9].map(() =>
-                <div className="col-3 col-sm-2 col-lg-1 placeholder-glow text-decoration-none text-body-secondary">
+              [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) =>
+                <div key={i} className="col-3 col-sm-2 col-lg-1 placeholder-glow text-decoration-none text-body-secondary">
                   <img alt='...'
                     className="rounded-circle placeholder" width="70" height="70"
                     src="..."
