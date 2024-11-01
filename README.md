@@ -1,6 +1,7 @@
 # Ekart Shopping - An E-Commerce App
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ved-asole_eKart-ecommerce-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ved-asole_eKart-ecommerce-app) 
+[![Build Checks - CI](https://github.com/ved-asole/eKart-ecommerce-app/actions/workflows/build-checks.yml/badge.svg)](https://github.com/ved-asole/eKart-ecommerce-app/actions/workflows/build-checks.yml)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1d421f38-c264-4023-9474-ba91e53d9fda/deploy-status)](https://app.netlify.com/sites/ekart-shopping/deploys)
 [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v1/monitor/1h2u2.svg)](https://coders-arena.betteruptime.com)
 
