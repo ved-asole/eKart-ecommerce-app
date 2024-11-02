@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie';
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { processLogout, processSignIn, processSignUp, removeUserData } from '../util/auth';
+import { checkAuthentication, processLogout, processSignIn, processSignUp, removeUserData } from '../util/auth';
 
 const AuthForm = () => {
 
