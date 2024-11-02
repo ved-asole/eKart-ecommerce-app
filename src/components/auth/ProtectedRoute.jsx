@@ -12,39 +12,38 @@ const ProtectedRoute = ({ children, roles }) => {
   const [cookies] = useCookies();
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isAccessDenied, setIsAccessDenied] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
   useEffect(() => {
-    if (!roles) roles = ['USER'];
     if (localStorage.getItem('token')) {
+      setIsCheckingAuth(true);
       fetchData(
         "auth/check-token",
-        (data) => {
-          if (roles.includes(cookies['role'])) setIsAuthenticated(true)
+        () => {
+          if (roles == undefined || roles.includes(cookies['role'])) setIsAuthenticated(true);
           else {
-            setIsAccessDenied(true);
+            setIsAuthenticated(false);
             showToast("Access Denied");
+            navigate('/auth');
           }
+          setIsCheckingAuth(false);
         },
-        (errorMsg) => {
+        () => {
+          setIsAuthenticated(false);
           showToast("Please login first");
           navigate('/auth');
+          setIsCheckingAuth(false);
         }
       )
     } else {
+      setIsAuthenticated(false);
+      setIsCheckingAuth(false);
       showToast("Please login first");
       navigate('/auth');
     }
-  }, [isAuthenticated, isAccessDenied]);
+  }, [isAuthenticated]);
 
-  // logic to check if the user is authenticated
-  let content = <AppLoader />;
-  if (isAccessDenied) {
-    content = <RouteLoadError message="Access Denied!" />;
-  } else {
-    content = children;
-  }
-  return content;
+  return isCheckingAuth ? <AppLoader /> : isAuthenticated ? children : <RouteLoadError message="Access Denied!" />;
 }
 
 ProtectedRoute.propTypes = {
