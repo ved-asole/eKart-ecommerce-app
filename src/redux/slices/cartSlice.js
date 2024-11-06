@@ -211,7 +211,7 @@ export const clearAllItemsFromCart = (dispatch) => {
   ) {
     deleteData(
       `shopping-cart/${localStorage.getItem('cartId')}/items`,
-      (data) => {
+      () => {
         dispatch(clearCart());
       },
       (error) => {
