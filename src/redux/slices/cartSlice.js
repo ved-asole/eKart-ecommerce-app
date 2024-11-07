@@ -164,14 +164,11 @@ export const addItemToCart = (dispatch, product, quantity) => {
     dispatch(addToCart({ product, quantity }));
   }
   showToast("Item added to cart");
+  fetchPreviousCart(dispatch);
 }
 
 export const updateItemInCart = (dispatch, cartItem) => {
-  if (document.cookie.includes('customerId')
-    // || localStorage.getItem('cartId')
-  ) {
-    // console.log("updateItemInCart : cartItem : " + JSON.stringify(cartItem));
-    // console.log("updateItemInCart : cartItem : " + { ...cartItem, cartId: localStorage.getItem('cartId') });
+  if (document.cookie.includes('customerId')) {
     updateData(
       `shopping-cart/${localStorage.getItem('cartId')}/items`,
       { ...cartItem, cartId: localStorage.getItem('cartId') },
@@ -186,6 +183,7 @@ export const updateItemInCart = (dispatch, cartItem) => {
     dispatch(updateCart(cartItem));
   }
   showToast("Cart Updated");
+  fetchPreviousCart(dispatch);
 }
 
 export const processRemoveFromCart = (dispatch, cartItem) => {
@@ -204,6 +202,8 @@ export const processRemoveFromCart = (dispatch, cartItem) => {
   } else {
     dispatch(removeFromCart(cartItem.product.productId));
   }
+  showToast("Item removed successfully");
+  fetchPreviousCart(dispatch);
 }
 
 export const clearAllItemsFromCart = (dispatch) => {
