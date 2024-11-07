@@ -25,7 +25,7 @@ const ProductDetails = () => {
     if (import.meta.env.VITE_FETCH_API_DATA) {
       fetchData(
         `products/${productId}`,
-        (data) => setProduct(data),
+        ({ _links, qtyInStock, ...data }) => setProduct(data),
         (errorMsg) => console.log(errorMsg)
       );
     } else {
@@ -35,7 +35,6 @@ const ProductDetails = () => {
         (errorMsg) => dispatch(fetchProductsFailure(errorMsg))
       );
     }
-    delete product.qtyInStock;
   }, [productId])
 
   const updateCountToAddToCart = (event) => {
