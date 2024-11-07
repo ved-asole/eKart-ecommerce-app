@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { clearCart, clearAllItemsFromCart } from '../redux/slices/cartSlice';
+import { clearAllItemsFromCart } from '../redux/slices/cartSlice';
 
 const PaymentConfirmation = () => {
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
   const [orderId, setOrderId] = useState("");
@@ -24,8 +24,7 @@ const PaymentConfirmation = () => {
       setMessage("You will receive an email confirmation.");
       setOrderId(searchParams.get("order_id"));
       setClientReferenceId(searchParams.get("client_reference_id"));
-      // TODO : clear cart
-      // clearAllItemsFromCart(dispatch);
+      clearAllItemsFromCart(dispatch);
     } else if (
       searchParams.size >= 2 && searchParams.size <= 4 &&
       searchParams.get("canceled") &&
