@@ -74,8 +74,8 @@ export const processSignIn = (data, setCookie, navigate, reset, dispatch) => {
 
 export const processLogout = (removeCookie, navigate, dispatch) => {
   localStorage.clear();
-  removeUserData(removeCookie);
   dispatch(clearCart());
+  removeUserData(removeCookie);
   showToast("Logged out successfully");
   navigate('/');
 }
