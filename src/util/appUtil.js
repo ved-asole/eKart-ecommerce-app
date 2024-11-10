@@ -1,6 +1,5 @@
 import * as bootstrap from 'bootstrap';
 import axios from "axios";
-import { removeUserData } from './auth';
 
 export const getFormattedPrice = (price) => {
   return Number(price).toLocaleString('en-IN');
@@ -31,12 +30,10 @@ export const setAxiosInterceptors = (setIsLoading) => {
       return response;
     },
     error => {
-      // setIsLoading(false);
-      // return Promise.reject(new Error(error));
-      console.log(error);
-      console.log(error.message);
+      console.error(error);
+      console.error(error.message);
       if (error?.response?.data?.message?.includes("JWT") || error?.response?.message == "Unauthorized" || error?.response?.status == 401) {
-        removeUserData();
+        document.cookie = '';
         delete axios.defaults.headers.common["Authorization"];
         // window.location.href = "/";
       }
