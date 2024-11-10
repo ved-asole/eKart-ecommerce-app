@@ -57,7 +57,6 @@ const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
 
   useEffect(() => {
     // This useEffect is for any other side effects that need to run when products or categoryId changes.
-    console.log("categoryId : " + categoryId);
     if (products.length > 0) {
       setFilteredProducts(products);
     } else {
