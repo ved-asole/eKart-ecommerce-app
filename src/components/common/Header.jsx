@@ -126,7 +126,7 @@ export default function Header() {
               aria-label="Search"
               value={searchKey}
             />
-            <ul className="dropdown-menu">
+            <ul className="dropdown-menu mt-5">
               {
                 searchResults.length > 0 ?
                   searchResults.map((result) =>
