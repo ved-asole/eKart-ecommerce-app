@@ -61,7 +61,6 @@ export default function Header() {
   }
 
   const toggleSearchBar = (event) => {
-    console.log(event.type);
     if (event.type === 'click') {
       const dropdownElementList = document.querySelectorAll('#searchBar');
       [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
