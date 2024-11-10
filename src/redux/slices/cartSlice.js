@@ -128,17 +128,13 @@ export const fetchPreviousCart = (dispatch) => {
 }
 
 export const addItemToCart = (dispatch, product, quantity) => {
-  if (document.cookie.includes('customerId')
-    // || localStorage.getItem('cartId')
-  ) {
+  if (document.cookie.includes('customerId')) {
     let cartItems = JSON.parse(localStorage.getItem('cartItems'));
-    console.log(cartItems);
     let cartItem;
     if (cartItems && cartItems.length != 0) {
       cartItem = cartItems.filter(cartItem =>
         cartItem.product.productId === product.productId
       )[0];
-      console.log(cartItem);
     }
     if (cartItem != undefined) {
       cartItem.quantity += quantity;
