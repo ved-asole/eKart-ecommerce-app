@@ -18,7 +18,6 @@ const ProductDetails = () => {
       fetchPreviousCart(dispatch);
     }
     addItemToCart(dispatch, product, countToAddInCart);
-    fetchPreviousCart(dispatch);
   }
 
   useEffect(() => {
