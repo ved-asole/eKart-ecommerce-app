@@ -1,12 +1,12 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { RouterProvider } from 'react-router-dom';
 import App from './App';
 import router from './routes.jsx';
-import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import AppLoader from './components/common/AppLoader.jsx';
 import { CookiesProvider } from 'react-cookie';
 
