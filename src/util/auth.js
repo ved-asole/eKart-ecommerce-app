@@ -25,7 +25,7 @@ export const processSignUp = (data, setCookie, navigate) => {
       setCookie('role', response.data.role);
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('token', token);
-      localStorage.setItem('cartId', cartId);
+      localStorage.setItem('cartId', response.data.shoppingCart.cartId);
       console.log("Logged in successfully");
       showToast("Logged in successfully");
       navigate('/');
@@ -55,7 +55,7 @@ export const processSignIn = (data, setCookie, navigate, reset, dispatch) => {
       setCookie('role', response.data.role);
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('token', token);
-      localStorage.setItem('cartId', response.data.cartId);
+      localStorage.setItem('cartId', response.data.shoppingCart.cartId);
       showToast("Logged In");
       fetchPreviousCart(dispatch);
       navigate('/');
