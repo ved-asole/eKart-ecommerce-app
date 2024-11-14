@@ -13,7 +13,7 @@ const Cart = () => {
   const cartTotalPrice = useSelector((state) => state.cart.cartTotalPrice);
   const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
   const cartTotalDiscount = useSelector((state) => state.cart.cartTotalDiscount);
-  const [cookies, setCookie, removeCookie] = useCookies([]);
+  const [cookies] = useCookies([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -98,7 +98,7 @@ const Cart = () => {
             </button>
             <div className="cart-buttons mt-3">
               <button className='btn btn-secondary text-white fs-5 fw-medium w-100 py-3'
-                onClick={(event) => clearAllItemsFromCart(dispatch)}
+                onClick={() => clearAllItemsFromCart(dispatch)}
               >Clear Cart</button>
             </div>
           </div>
