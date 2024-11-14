@@ -92,13 +92,19 @@ const Cart = () => {
           </div>
           <div className='col-12 mt-3 flex-fill'>
             <button className="btn btn-secondary text-white fs-5 fw-medium w-100 py-3"
-              onClick={requestForCheckoutSession}
+              onClick={() => {
+                if (cartItems.length != 0) return requestForCheckoutSession
+                else showToast("Your cart is empty")
+              }}
             >
               Proceed to Checkout
             </button>
             <div className="cart-buttons mt-3">
               <button className='btn btn-secondary text-white fs-5 fw-medium w-100 py-3'
-                onClick={() => clearAllItemsFromCart(dispatch)}
+                onClick={() => {
+                  if (cartItems.length != 0) return clearAllItemsFromCart(dispatch)
+                  else showToast("Your cart is empty")
+                }}
               >Clear Cart</button>
             </div>
           </div>
