@@ -52,7 +52,7 @@ export default function Header() {
 
   const toggleDropdown = (event) => {
     const dropdownElementList = document.querySelectorAll('.dropdown-menu-dark');
-    [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
+    [...dropdownElementList].forEach(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
   }
 
   const toggleDropdownAndCollapse = (event) => {
@@ -63,12 +63,12 @@ export default function Header() {
   const toggleSearchBar = (event) => {
     if (event.type === 'click') {
       const dropdownElementList = document.querySelectorAll('#searchBar');
-      [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
+      [...dropdownElementList].forEach(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).toggle());
       setSearchKey('');
       setSearchResults([]);
     } else {
       const dropdownElementList = document.querySelectorAll('#searchBar');
-      [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).hide());
+      [...dropdownElementList].forEach(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).hide());
       setSearchKey('');
       setSearchResults([]);
     }
@@ -80,7 +80,7 @@ export default function Header() {
     if (searchKey === '') {
       setSearchResults([]);
       const dropdownElementList = document.querySelectorAll('#searchBar');
-      [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).hide());
+      [...dropdownElementList].forEach(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).hide());
     }
     else {
       fetchData(
@@ -94,7 +94,7 @@ export default function Header() {
         }
       )
       const dropdownElementList = document.querySelectorAll('#searchBar');
-      [...dropdownElementList].map(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).show());
+      [...dropdownElementList].forEach(dropdownToggleEl => Dropdown.getOrCreateInstance(dropdownToggleEl).show());
     }
   }
 
