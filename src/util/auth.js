@@ -55,7 +55,7 @@ export const processSignIn = (data, setCookie, navigate, reset, dispatch) => {
       setCookie('role', response.data.role);
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('token', token);
-      localStorage.setItem('cartId', response.data.shoppingCart.cartId);
+      localStorage.setItem('cartId', response.data.cartId);
       showToast("Logged In");
       fetchPreviousCart(dispatch);
       navigate('/');
