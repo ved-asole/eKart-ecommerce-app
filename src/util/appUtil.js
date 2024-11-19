@@ -31,7 +31,7 @@ export const setAxiosInterceptors = (setIsLoading) => {
     },
     error => {
       console.error(error);
-      console.error(error.message);
+      console.error(error?.message);
       if (error?.response?.data?.message?.includes("JWT") || error?.response?.message == "Unauthorized" || error?.response?.status == 401) {
         document.cookie = '';
         delete axios.defaults.headers.common["Authorization"];
@@ -47,4 +47,19 @@ export const showToast = (message) => {
   toast.getElementsByClassName('toast-body')[0].innerHTML = message;
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast)
   toastBootstrap.show();
+}
+
+export const appendAlert = (elementId, message, type, closeButtonRequired) => {
+  const alertPlaceholder = document.getElementById(elementId);
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} text-start text-sm" role="alert">`,
+    `   <div>${message}</div>`,
+    closeButtonRequired ?
+      '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
+      : '',
+    '</div>'
+  ].join('')
+
+  alertPlaceholder.append(wrapper)
 }
