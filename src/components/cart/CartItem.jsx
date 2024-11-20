@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { processRemoveFromCart, updateItemInCart } from '../../redux/slices/cartSlice';
 import { useDispatch } from 'react-redux';
 import { getFormattedPrice } from '../../util/appUtil';
+import PropTypes from 'prop-types';
 
 const CartItem = ({ cartItem }) => {
 
@@ -80,3 +81,17 @@ const CartItem = ({ cartItem }) => {
 }
 
 export default CartItem
+
+CartItem.propTypes = {
+  cartItem: PropTypes.shape({
+    product: PropTypes.shape({
+      productId: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      discount: PropTypes.number.isRequired,
+      categoryId: PropTypes.number.isRequired
+    }),
+    quantity: PropTypes.number.isRequired
+  }).isRequired,
+};
