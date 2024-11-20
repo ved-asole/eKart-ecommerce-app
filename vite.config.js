@@ -9,10 +9,20 @@ export default defineConfig({
     viteCompression({
       algorithm: "brotliCompress",
       ext: ".br",
+      deleteOriginFile: false
     }),
     viteCompression({
       algorithm: 'gzip',
       ext: '.gz',
+      deleteOriginFile: false
     })
-  ]
+  ],
+  build: {
+    minify: 'terser', // Use 'terser' for minification
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console logs
+      },
+    },
+  },
 });
