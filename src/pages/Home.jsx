@@ -8,7 +8,7 @@ const TopDeals = lazy(() => import('../components/home/TopDeals.jsx'));
 const Home = () => {
 
   return (
-    <div className='home container px-0'>
+    <div className='home container vh-100 px-0'>
 
       {/* CategoriesBar Section */}
       <Suspense fallback={<AppLoader />} >
