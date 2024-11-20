@@ -1,9 +1,9 @@
 import React, { Suspense, lazy } from 'react';
 import AppLoader from '../components/common/AppLoader';
 
-const CategoriesBar = lazy(() => import('../components/home/CategoriesBar'));
-const HomeCarousel = lazy(() => import('../components/home/HomeCarousel'));
-const TopDeals = lazy(() => import('../components/home/TopDeals'));
+const CategoriesBar = lazy(() => import('../components/home/CategoriesBar.jsx'));
+const HomeCarousel = lazy(() => import('../components/home/HomeCarousel.jsx'));
+const TopDeals = lazy(() => import('../components/home/TopDeals.jsx'));
 
 const Home = () => {
 

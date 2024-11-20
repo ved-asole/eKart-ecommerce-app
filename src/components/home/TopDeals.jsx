@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { lazy, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTopDeals } from '../../redux/slices/topDealsSlice';
+import { fetchTopDeals } from '../../redux/slices/topDealsSlice.js';
 import { Link } from 'react-router-dom';
-import AppLoader from '../common/AppLoader';
+const AppLoader = lazy(() => import('../common/AppLoader.jsx'));
 
 const TopDeals = () => {
 
