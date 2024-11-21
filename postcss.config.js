@@ -7,8 +7,8 @@ export default {
         './**/*.html',
         './src/**/*.jsx',
         './src/**/*.js',
-        'node_modules/bootstrap/css/**/*.css',
-        'node_modules/bootstrap/js/**/*.js'
+        'node_modules/bootstrap/dist/css/**/*.css',
+        'node_modules/bootstrap/dist/js/**/*.js'
       ]
     })
   ]

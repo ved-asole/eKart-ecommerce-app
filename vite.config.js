@@ -17,12 +17,16 @@ export default defineConfig({
       deleteOriginFile: false
     })
   ],
+  css: {
+    postcss: './postcss.config.js'
+  },
   build: {
     minify: 'terser', // Use 'terser' for minification
     terserOptions: {
       compress: {
         drop_console: true, // Remove console logs
-      },
+      }
     },
+    cssCodeSplit: true
   },
 });
