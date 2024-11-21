@@ -4,9 +4,11 @@ export default {
   plugins: [
     purgecss({
       content: [
+        './index.html',
         './**/*.html',
         './src/**/*.jsx',
         './src/**/*.js',
+        './src/**/*.{js,jsx,ts,tsx}',
         './node_modules/bootstrap/dist/css/**/*.css',
         './node_modules/bootstrap/dist/js/**/*.js',
         './node_modules/bootstrap/css/**/*.css',
