@@ -14,7 +14,7 @@ export default {
         'node_modules/bootstrap/css/**/*.css',
         'node_modules/bootstrap/js/**/*.js'
       ],
-      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+      defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
     })
   ]
 }
