@@ -53,7 +53,7 @@ export const appendAlert = (elementId, message, type, closeButtonRequired) => {
   const alertPlaceholder = document.getElementById(elementId);
   const wrapper = document.createElement('div')
   wrapper.innerHTML = [
-    `<div class="alert alert-${type} text-start text-sm" role="alert">`,
+    `<div class="alert alert-${type} text-sm" role="alert">`,
     `   <div>${message}</div>`,
     closeButtonRequired ?
       '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
