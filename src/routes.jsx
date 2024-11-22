@@ -13,6 +13,8 @@ const Auth = lazy(() => import('./pages/Auth'));
 const ProtectedRoute = lazy(() => import('./components/auth/ProtectedRoute'));
 const Orders = lazy(() => import('./pages/Orders'));
 const OrderDetails = lazy(() => import('./pages/OrderDetails'));
+const ForgotPassword = lazy(() => import('./components/auth/ForgotPassword'));
+const ResetPassword = lazy(() => import('./components/auth/ResetPassword'));
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +51,14 @@ export const router = createBrowserRouter([
         element: <Auth />
       },
       {
+        path: "reset-password",
+        element: <ResetPassword />
+      },
+      {
+        path: "forgot-password",
+        element: <ForgotPassword />
+      },
+      {
         path: "paymentConfirmation",
         element: <ProtectedRoute> <PaymentConfirmation /> </ProtectedRoute>
       },
@@ -59,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path: "orders/:orderId",
         element: <ProtectedRoute> <OrderDetails /> </ProtectedRoute>
+      },
+      {
+        path: "not-found",
+        element: <RouteLoadError />
       },
       {
         path: "*",

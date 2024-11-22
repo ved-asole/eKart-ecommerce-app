@@ -3,7 +3,8 @@ import { useCookies } from 'react-cookie';
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { checkAuthentication, processLogout, processSignIn, processSignUp, removeUserData } from '../util/auth';
+import { checkAuthentication, processLogout, processSignIn, processSignUp, removeUserData } from '../util/auth.js';
+import { showToast } from '../util/appUtil.js';
 
 const AuthForm = () => {
 
@@ -19,16 +20,15 @@ const AuthForm = () => {
     removeUserData(removeCookie);
 
     if (mode == 'signup') processSignUp(data, setCookie, navigate);
-    else processSignIn(data, setCookie, navigate, reset, dispatch);
+    else if (mode == 'login') processSignIn(data, setCookie, navigate, reset, dispatch);
+    else showToast('Invalid request')
   };
 
   useEffect(() => {
     if (mode == 'logout') processLogout(removeCookie, navigate, dispatch);
     if (cookies.customerId != undefined && localStorage.getItem('token'))
       checkAuthentication(removeCookie, navigate);
-    isSubmitting && console.log("Form Submitting");
     isSubmitSuccessful && console.log("Form Submitted Successfully");
-
   }, [isSubmitting, isSubmitSuccessful])
 
 
@@ -131,18 +131,15 @@ const AuthForm = () => {
               <div className="form-text text-start" hidden={errors.password}>Should be between 8 to 20 characters</div>
               {errors.password && <div className="invalid-feedback text-start">{errors.password.message}</div>}
             </div>
-            <div className="form-check text-start my-3">
-              <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" />
-              <label className="form-check-label" htmlFor="flexCheckDefault">
-                Remember me
-              </label>
+            <div className="d-flex flex-column flex-md-row justify-content-md-between form-check text-start my-3 mb-4 my-md-3">
+              <div className='me-5 me-md-0'>
+                <input className="form-check-input" type="checkbox" value="remember-me" id="rememberMe" />
+                <label className="form-check-label" htmlFor="rememberMe">
+                  Remember me
+                </label>
+              </div>
+              <Link to="/forgot-password" className='mt-2 mt-md-0 link-secondary link-offset-2'>Forgot Password? Click here</Link>
             </div>
-            {/* <div className="form-check text-start my-3">
-              <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" />
-              <label className="form-check-label" htmlFor="flexCheckDefault">
-                Forgot Password?
-              </label>
-            </div> */}
             <button className="btn btn-primary w-100 py-2" type="submit"
               onClick={handleSubmit(formSubmitHandler)}
               disabled={errors && isValid && isSubmitSuccessful && (isSubmitting || isSubmitted || isSubmitSuccessful)}
