@@ -1,4 +1,4 @@
-import * as bootstrap from 'bootstrap';
+import { Toast } from 'bootstrap';
 import axios from "axios";
 
 export const getFormattedPrice = (price) => {
@@ -37,7 +37,7 @@ export const setAxiosInterceptors = (setIsLoading) => {
         delete axios.defaults.headers.common["Authorization"];
         // window.location.href = "/";
       }
-      return Promise.reject(error);
+      return Promise.reject(new Error(error));
     }
   );
 }
@@ -45,7 +45,7 @@ export const setAxiosInterceptors = (setIsLoading) => {
 export const showToast = (message) => {
   const toast = document.getElementById('toast-alert');
   toast.getElementsByClassName('toast-body')[0].innerHTML = message;
-  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast)
+  const toastBootstrap = Toast.getOrCreateInstance(toast)
   toastBootstrap.show();
 }
 
