@@ -18,13 +18,13 @@ const AuthForm = () => {
 
   const formSubmitHandler = (data) => {
     removeUserData(removeCookie);
-
     if (mode == 'signup') processSignUp(data, setCookie, navigate);
     else if (mode == 'login') processSignIn(data, setCookie, navigate, reset, dispatch);
     else showToast('Invalid request')
   };
 
   useEffect(() => {
+    if (!mode) navigate('/auth?mode=login');
     if (mode == 'logout') processLogout(removeCookie, navigate, dispatch);
     if (cookies.customerId != undefined && localStorage.getItem('token'))
       checkAuthentication(removeCookie, navigate);
