@@ -188,12 +188,15 @@ export default function Header() {
                         Orders
                       </NavLink>
                     </li>
-                    <li>
-                      <NavLink className="nav-link mx-1" aria-current="page"
-                        to={"/admin"} onClick={toggleDropdownAndCollapse}>
-                        Admin Panel
-                      </NavLink>
-                    </li>
+                    {
+                      document.cookie.includes("role") && document.cookie.split('role=')[1].split(';')[0] == 'ADMIN' &&
+                      <li>
+                        <NavLink className="nav-link mx-1" aria-current="page"
+                          to={"/admin"} onClick={toggleDropdownAndCollapse}>
+                          Admin Panel
+                        </NavLink>
+                      </li>
+                    }
                     <li>
                       <NavLink className="nav-link mx-1" aria-current="page"
                         to={"/auth?mode=logout"} onClick={toggleDropdownAndCollapse}>
