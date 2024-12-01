@@ -73,7 +73,6 @@ export const processSignIn = (data, setCookie, navigate, reset, dispatch) => {
 }
 
 export const processLogout = (removeCookie, navigate, dispatch) => {
-  localStorage.clear();
   dispatch(clearCart());
   removeUserData(removeCookie);
   showToast("Logged out successfully");
@@ -88,14 +87,15 @@ export const checkAuthentication = (removeCookie, navigate) => {
       showToast("Welcome back");
       navigate('/');
     })
-    .catch((error) => {
+    .catch(() => {
       removeUserData(removeCookie);
     })
 }
 
 export const removeUserData = (removeCookie) => {
   axios.defaults.headers.common.Authorization = '';
-  localStorage.removeItem('token');
+  localStorage.clear();
+  document.cookie = [];
   removeCookie('username');
   removeCookie('customerId');
   removeCookie('role');
