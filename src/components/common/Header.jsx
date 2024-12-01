@@ -105,7 +105,7 @@ export default function Header() {
           <Link to={"/"} className="navbar-brand mt-1 ms-md-2">
             <img src="/logo.webp" alt="Logo" width="30" height="30"
               className="d-inline-block mb-2" />
-            <span className='fw-medium' >eKart Shopping</span>
+            <span className='fw-medium'>eKart Shopping</span>
           </Link>
           <button id='navbarToggler' className="navbar-toggler me-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -125,7 +125,7 @@ export default function Header() {
               aria-label="Search"
               value={searchKey}
             />
-            <ul className="dropdown-menu mt-5">
+            <ul className="dropdown-menu">
               {
                 searchResults.length > 0 ?
                   searchResults.map((result) =>
