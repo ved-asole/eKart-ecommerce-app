@@ -1,10 +1,10 @@
 import { Outlet, ScrollRestoration, useNavigation } from 'react-router-dom';
-import Header from './components/common/Header';
-import AppLoader from './components/common/AppLoader';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { setAxiosInterceptors } from './util/appUtil';
 const Footer = lazy(() => import('./components/common/Footer'));
 const Toast = lazy(() => import('./components/common/Toast'));
+const AppLoader = lazy(() => import('./components/common/AppLoader'));
+const Header = lazy(() => import('./components/common/Header'));
 
 function App() {
 
