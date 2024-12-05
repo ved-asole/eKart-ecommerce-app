@@ -19,7 +19,7 @@ const ProtectedRoute = ({ children, roles }) => {
       setIsCheckingAuth(true);
       fetchData(
         "auth/check-token",
-        () => {
+        (data) => {
 
           if (
             // If roles are defined and user has one of the roles
@@ -27,14 +27,13 @@ const ProtectedRoute = ({ children, roles }) => {
               && cookies['role'] !== undefined && roles.indexOf(cookies['role']) !== -1)
             ||
             // If roles are not defined and user has USER role
-            (roles === undefined && cookies['role'] !== undefined && cookies['role'] === 'USER')
+            (roles === undefined && cookies['role'] !== undefined && data)
           ) {
             setIsAuthenticated(true);
           }
           else {
             setIsAuthenticated(false);
             showToast("Access Denied");
-            // navigate('/auth');
           }
           setIsCheckingAuth(false);
         },
@@ -50,7 +49,7 @@ const ProtectedRoute = ({ children, roles }) => {
       showToast("Please login first");
       navigate('/auth');
     }
-  }, [isAuthenticated, roles, cookies]);
+  }, [roles]);
 
   if (isCheckingAuth) {
     return <AppLoader status={true} />;
