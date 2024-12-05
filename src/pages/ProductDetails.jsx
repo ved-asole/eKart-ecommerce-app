@@ -47,12 +47,12 @@ const ProductDetails = () => {
 
   return (
     <div className='container bg-secondary-subtle text-center rounded p-3 px-3'>
-      <div className="d-flex flex-wrap flex-md-nowrap mx-sm-5 my-3">
-        <div className="col-12 col-md-5 rounded py-md-5">
+      <div className="d-flex flex-wrap flex-xl-nowrap mx-sm-5 my-3">
+        <div className="col-12 col-xl-5 rounded py-md-5">
           <img src={product.image} alt={product.name} className='rounded-4 img-fluid' />
         </div>
-        <div className="vr mx-4 ps-1 d-none d-md-block"></div>
-        <div className="col-11 col-md-6 text-start mx-4 mt-4">
+        <div className="vr mx-md-4 ps-1 d-none d-xl-block"></div>
+        <div className="col-11 col-xl-6 text-start mx-md-4 mt-4">
           <p className='mb-1'> Category : {categories.filter(category => category.categoryId === product.categoryId)[0]?.name}</p>
           <h4>{product.name}</h4>
           <h3 className='d-inline-block mt-3'>₹{getFormattedPrice(Math.floor(product.price * ((100 - product.discount) / 100)))}</h3>
@@ -60,18 +60,18 @@ const ProductDetails = () => {
           <p className='d-inline-block ms-2 fw-medium'>{product.discount}% off</p>
           {/* <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, minus impedit illo magni delectus tempore, blanditiis ad maiores reprehenderit iusto laborum aliquam rerum quo dolorum? Ut consequuntur repellendus fugit! Eligendi, at similique.</p> */}
           <p className='text-body-secondary text-wrap'>{product.desc}</p>
-          <div className="cart-count mt-5">
+          <div className="cart-count mt-5 d-inline-block">
             <button className='btn btn-dark p-3 py-2' name='decreaseCount'
               onClick={updateCountToAddToCart} disabled={countToAddInCart <= 1}>-</button>
             <span id='add-to-cart-count' className='px-3'>{countToAddInCart}</span>
             <button className='btn btn-dark p-3 py-2' name='increaseCount'
               onClick={updateCountToAddToCart}>+</button>
           </div>
-          <div className="buttons mt-5">
+          <div className="buttons ms-0 ms-md-3 ms-lg-3 ms-xl-0 mt-5 d-md-inline-block d-xl-block">
             <button className='btn btn-dark px-3 px-md-5 py-3 me-5'
               onClick={addProductToCart}
             >Add to Cart</button>
-            <button className='btn btn-dark px-4 px-md-5 py-3 mt-md-3 mt-lg-0'>Buy Now</button>
+            <button className='btn btn-dark px-4 px-md-5 py-3'>Buy Now</button>
           </div>
         </div>
       </div>
