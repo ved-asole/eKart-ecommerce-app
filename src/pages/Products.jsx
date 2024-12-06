@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import ProductCard from '../components/products/ProductCard'
-import Filters from '../components/products/Filters'
-import Pagination from '../components/products/Pagination';
+import React, { lazy, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
+const ProductCard = lazy(() => import('../components/products/ProductCard.jsx'));
+const Filters = lazy(() => import('../components/products/Filters.jsx'));
+const Pagination = lazy(() => import('../components/products/Pagination.jsx'));
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams({});

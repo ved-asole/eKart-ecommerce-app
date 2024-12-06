@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import fetchData, { postData } from '../../util/DataFetcher.js';
 import { showToast } from '../../util/appUtil.js';
-import FormScreen from '../common/FormScreen.jsx';
 import { useForm } from 'react-hook-form';
-import RouteLoadError from '../../pages/RouteLoadError.jsx';
+const RouteLoadError = lazy(() => import('../../pages/RouteLoadError.jsx'));
+const FormScreen = lazy(() => import('../common/FormScreen.jsx'));
 
 const ResetPassword = () => {
 

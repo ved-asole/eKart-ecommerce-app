@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
-import Header from '../components/common/Header';
+const Header = lazy(() => import('../components/common/Header.jsx'));
 
 const ErrorPage = () => {
 

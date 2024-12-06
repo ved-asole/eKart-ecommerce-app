@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { lazy, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import FormScreen from '../common/FormScreen.jsx';
 import { postData } from '../../util/DataFetcher.js';
 import { appendAlert } from '../../util/appUtil.js';
+const FormScreen = lazy(() => import('../common/FormScreen.jsx'));
 
 const ForgotPassword = () => {
 

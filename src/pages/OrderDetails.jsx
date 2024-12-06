@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { lazy, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import fetchData, { updateData } from '../util/DataFetcher';
-import OrderDetailsItem from '../components/order/OrderDetailsItem';
-import { getFormattedPrice, showToast } from '../util/appUtil';
-import AppLoader from '../components/common/AppLoader';
+import fetchData, { updateData } from '../util/DataFetcher.js';
+import { getFormattedPrice, showToast } from '../util/appUtil.js';
+const OrderDetailsItem = lazy(() => import('../components/order/OrderDetailsItem.jsx'));
+const AppLoader = lazy(() => import('../components/common/AppLoader.jsx'));
 
 const OrderDetails = () => {
   const { orderId } = useParams();

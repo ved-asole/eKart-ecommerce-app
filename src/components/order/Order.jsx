@@ -1,7 +1,7 @@
-import React from 'react'
-import OrderItem from './OrderItem'
+import React, { lazy } from 'react'
 import { Link } from 'react-router-dom'
-import { getFormattedPrice } from '../../util/appUtil'
+import { getFormattedPrice } from '../../util/appUtil.js'
+const OrderItem = lazy(() => import('./OrderItem.jsx'));
 
 const Order = ({ order }) => {
 

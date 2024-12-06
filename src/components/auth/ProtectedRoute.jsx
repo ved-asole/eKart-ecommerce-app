@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AppLoader from '../common/AppLoader';
 import { useCookies } from 'react-cookie';
 import fetchData from '../../util/DataFetcher';
 import { showToast } from '../../util/appUtil';
 import { PropTypes } from 'prop-types';
-import RouteLoadError from '../../pages/RouteLoadError';
+const RouteLoadError = lazy(() => import('../../pages/RouteLoadError.jsx'));
+const AppLoader = lazy(() => import('../common/AppLoader.jsx'));
 
 const ProtectedRoute = ({ children, roles }) => {
 

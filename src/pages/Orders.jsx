@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { fetchAllOrders } from '../redux/slices/orderSlice';
-import Order from '../components/order/Order';
-import AppLoader from '../components/common/AppLoader';
-import Pagination from '../components/products/Pagination';
+import { fetchAllOrders } from '../redux/slices/orderSlice.js';
+const Order = lazy(() => import('../components/order/Order.jsx'));
+const AppLoader = lazy(() => import('../components/common/AppLoader.jsx'));
+const Pagination = lazy(() => import('../components/products/Pagination.jsx'));
 
 const Orders = () => {
   const orders = useSelector((state) => state.orders.orders);
