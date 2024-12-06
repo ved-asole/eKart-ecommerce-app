@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Pagination = ({ currentPage, setCurrentPage, productsPerPage, totalProducts }) => {
 
@@ -26,6 +27,13 @@ const Pagination = ({ currentPage, setCurrentPage, productsPerPage, totalProduct
       </ul>
     </div >
   )
+}
+
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  productsPerPage: PropTypes.number.isRequired,
+  totalProducts: PropTypes.number.isRequired
 }
 
 export default Pagination

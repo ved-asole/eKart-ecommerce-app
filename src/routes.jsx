@@ -15,6 +15,7 @@ const Orders = lazy(() => import('./pages/Orders'));
 const OrderDetails = lazy(() => import('./pages/OrderDetails'));
 const ForgotPassword = lazy(() => import('./components/auth/ForgotPassword'));
 const ResetPassword = lazy(() => import('./components/auth/ResetPassword'));
+const AdminPanel = lazy(() => import('./pages/AdminPanel.jsx'));
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,15 @@ export const router = createBrowserRouter([
       {
         path: "orders/:orderId",
         element: <ProtectedRoute> <OrderDetails /> </ProtectedRoute>
+      },
+      // Only users with the 'ADMIN' role can access the AdminPanel
+      {
+        path: "admin",
+        element: <ProtectedRoute roles={['ADMIN']}> <AdminPanel /> </ProtectedRoute>
+      },
+      {
+        path: "admin/*",
+        element: <ProtectedRoute roles={['ADMIN']}> <AdminPanel /> </ProtectedRoute>
       },
       {
         path: "not-found",
