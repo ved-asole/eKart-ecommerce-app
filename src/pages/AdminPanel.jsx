@@ -1,9 +1,10 @@
-import { faCubes } from '@fortawesome/free-solid-svg-icons';
+import { faCubes, faShirt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { lazy, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const Products = lazy(() => import('../components/admin/product/Products.jsx'));
+const Categories = lazy(() => import('../components/admin/category/Categories.jsx'));
 
 const AdminPanel = () => {
 
@@ -13,6 +14,11 @@ const AdminPanel = () => {
     {
       key: 'products',
       label: 'Products',
+      icon: faShirt
+    },
+    {
+      key: 'categories',
+      label: 'Categories',
       icon: faCubes
     }
   ];
@@ -31,6 +37,8 @@ const AdminPanel = () => {
     switch (selectedOption) {
       case 'products':
         return <Products />;
+      case 'categories':
+        return <Categories />;
       default:
         return <Products />;
     }
@@ -44,7 +52,7 @@ const AdminPanel = () => {
           <div className="nav flex-row flex-lg-column justify-content-around mt-lg-4">
             {
               options.map((option) =>
-                <Link key={option} to={`/admin/${option.key}`} className="nav-link text-white"
+                <Link key={option.key} to={`/admin/${option.key}`} className="nav-link text-white"
                   onClick={() => handleOptionClick(option)}>
                   <FontAwesomeIcon icon={option.icon} className='me-2' aria-hidden="true" />
                   {option.label}

@@ -1,4 +1,4 @@
-import { Toast } from 'bootstrap';
+import { Toast, Modal } from 'bootstrap';
 import axios from "axios";
 
 export const getFormattedPrice = (price) => {
@@ -62,4 +62,14 @@ export const appendAlert = (elementId, message, type, closeButtonRequired) => {
   ].join('')
 
   alertPlaceholder.append(wrapper)
+}
+
+export const hideModel = (modalId) => {
+  const modal = document.getElementById(modalId);
+  const modalBootstrap = Modal.getInstance(modal);
+  modalBootstrap.hide();
+  const modalBackdrops = document.getElementsByClassName('modal-backdrop');
+  for (let i = 0; i < modalBackdrops.length; i++) {
+    modalBackdrops.item(i).remove();
+  }
 }
