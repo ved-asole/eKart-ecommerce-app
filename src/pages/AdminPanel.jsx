@@ -1,10 +1,11 @@
-import { faCubes, faShirt } from '@fortawesome/free-solid-svg-icons';
+import { faCubes, faShirt, faTruckFast } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { lazy, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const Products = lazy(() => import('../components/admin/product/Products.jsx'));
 const Categories = lazy(() => import('../components/admin/category/Categories.jsx'));
+const Orders = lazy(() => import('../components/admin/order/Orders.jsx'));
 
 const AdminPanel = () => {
 
@@ -20,6 +21,11 @@ const AdminPanel = () => {
       key: 'categories',
       label: 'Categories',
       icon: faCubes
+    },
+    {
+      key: 'orders',
+      label: 'Orders',
+      icon: faTruckFast
     }
   ];
 
@@ -39,6 +45,8 @@ const AdminPanel = () => {
         return <Products />;
       case 'categories':
         return <Categories />;
+      case 'orders':
+        return <Orders />;
       default:
         return <Products />;
     }
