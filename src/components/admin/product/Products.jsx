@@ -76,8 +76,8 @@ const Products = () => {
         <Pagination
           currentPage={currentPage == 0 ? 1 : currentPage}
           setCurrentPage={setCurrentPage}
-          productsPerPage={size}
-          totalProducts={size * totalPages}
+          itemsPerPage={size}
+          totalItems={size * totalPages}
         />
       </div>
 

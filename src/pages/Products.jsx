@@ -5,10 +5,10 @@ const Filters = lazy(() => import('../components/products/Filters.jsx'));
 const Pagination = lazy(() => import('../components/products/Pagination.jsx'));
 
 const Products = () => {
-  const [searchParams, setSearchParams] = useSearchParams({});
+  const [searchParams] = useSearchParams({});
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(12);
+  const productsPerPage = 12;
 
   const getFilteredProducts = () => filteredProducts;
 
@@ -45,11 +45,11 @@ const Products = () => {
                     }
                   </div>
                   <div>
-                    {
-                      filteredProducts.length > productsPerPage
-                        ? <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} productsPerPage={productsPerPage} totalProducts={filteredProducts.length} />
-                        : ''
-                    }
+                    <Pagination currentPage={currentPage}
+                      setCurrentPage={setCurrentPage}
+                      itemsPerPage={productsPerPage}
+                      totalItems={filteredProducts.length}
+                    />
                   </div>
                 </div>
             }
