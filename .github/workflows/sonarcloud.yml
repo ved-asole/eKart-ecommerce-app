@@ -1,13 +1,8 @@
 name: SonarCloud Analysis
 
 on:
-  push:
-    branches: [ "master", "develop" ]
-  pull_request:
-    branches: [ "master" ]
-    types: [opened, synchronize, reopened]
   workflow_run:
-    workflows: ["Build Checks - CI"]
+    workflows: ["Build Checks"]
     types:
       - completed
 
