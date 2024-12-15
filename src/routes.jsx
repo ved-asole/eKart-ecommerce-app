@@ -73,11 +73,7 @@ export const router = createBrowserRouter([
       },
       // Only users with the 'ADMIN' role can access the AdminPanel
       {
-        path: "admin",
-        element: <ProtectedRoute roles={['ADMIN']}> <AdminPanel /> </ProtectedRoute>
-      },
-      {
-        path: "admin/*",
+        path: "admin/:option?",
         element: <ProtectedRoute roles={['ADMIN']}> <AdminPanel /> </ProtectedRoute>
       },
       {
