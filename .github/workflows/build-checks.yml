@@ -5,9 +5,10 @@ on:
     branches:
       - master
       - develop
+      - EK-* #Run for all branches starting with EK- (For JIRA branches)
   pull_request:
     branches:
-      - master 
+      - master
       - develop
 
 jobs:
