@@ -14,7 +14,7 @@ const CategoriesBar = () => {
   useEffect(() => {
     if (categories === undefined || categories.length === 0)
       fetchCategories(dispatch)
-  }, [])
+  }, [categories])
 
   return (
     <section id="categoriesBarSection">
