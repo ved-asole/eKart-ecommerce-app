@@ -12,11 +12,11 @@ const Dashboard = () => {
   const [totalIncomeByMonth, setTotalIncomeByMonth] = useState([]);
 
   const dashboardElements = [
-    { id: 'totalOrders', title: 'Total Orders', endpoint: 'orders/count', setter: setTotalOrders, value: totalOrders },
-    { id: 'totalIncome', title: 'Total Income', endpoint: 'orders/income', setter: setTotalIncome, value: `₹${getFormattedPrice(totalIncome)}` },
-    { id: 'totalCustomers', title: 'Total Customers', endpoint: 'customers/count', setter: setTotalCustomers, value: totalCustomers },
     { id: 'totalProducts', title: 'Total Products', endpoint: 'products/count', setter: setTotalProducts, value: totalProducts },
-    { id: 'totalCategories', title: 'Total Categories', endpoint: 'categories/count', setter: setTotalCategories, value: totalCategories }
+    { id: 'totalIncome', title: 'Total Income', endpoint: 'orders/income', setter: setTotalIncome, value: `₹${getFormattedPrice(totalIncome)}` },
+    { id: 'totalCategories', title: 'Total Categories', endpoint: 'categories/count', setter: setTotalCategories, value: totalCategories },
+    { id: 'totalOrders', title: 'Total Orders', endpoint: 'orders/count', setter: setTotalOrders, value: totalOrders },
+    { id: 'totalCustomers', title: 'Total Customers', endpoint: 'customers/count', setter: setTotalCustomers, value: totalCustomers }
   ];
 
   useEffect(() => {
@@ -63,14 +63,16 @@ const Dashboard = () => {
   return (
     <div className="container rounded bg-secondary-subtle">
       <h3 className="text-center mb-5">Dashboard</h3>
-      <div className="row justify-content-evenly">
+      <div className="row justify-content-between">
         {dashboardElements.map((element, index) => (
-          <div key={element.id} className="col-sm-6 col-xl-4 col-xxl-2 gap-2 mb-3">
-            <div className={`card text-white ${index % 2 == 0 ? 'bg-primary' : 'bg-secondary'
-              }`}>
-              <div className="card-body">
-                <h5 className="card-title">{element.title}</h5>
-                <p className="card-text">{element.value}</p>
+          <div key={element.id} className={`col-sm-6 col-xl-4 mb-3
+            ${element.id == 'totalIncome' || element.id == 'totalOrders' ? 'col-xxl-3' : 'col-xxl-2'}`}>
+            <div className={`card text-white pt-1
+              ${index % 2 == 0 ? 'bg-primary' : 'bg-secondary'}`
+            }>
+              <div className="card-body pb-2">
+                <h1 className="card-text">{element.value}</h1>
+                <h6 className="card-title text-nowrap mt-2">{element.title}</h6>
               </div>
             </div>
           </div>
