@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import fetchData from '../../util/DataFetcher.js';
 import { getFormattedPrice } from '../../util/appUtil.js';
-import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis } from 'victory';
+import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis, VictoryTooltip, VictoryVoronoiContainer } from 'victory';
 
 const Dashboard = () => {
   const [totalOrders, setTotalOrders] = useState(0);
@@ -60,6 +60,12 @@ const Dashboard = () => {
     }, timing);
   }
 
+  const voronoiContainer = useMemo(() => (
+    <VictoryVoronoiContainer
+      labels={({ datum }) => `₹${getFormattedPrice(datum.y)}`}
+    />
+  ), []);
+
   return (
     <div className="container rounded bg-secondary-subtle">
       <h3 className="text-center mb-5">Dashboard</h3>
@@ -82,6 +88,20 @@ const Dashboard = () => {
       <div className="chart bg-light rounded w-md-75 mx-auto mt-4 mb-3">
         <h4 className="text-center pt-4 text-dark text-uppercase">Total Income By Month</h4>
         <VictoryChart
+          containerComponent={voronoiContainer}
+          labelComponent={
+            <VictoryTooltip
+              pointerOrientation="bottom"
+              dy={-5}
+              dx={0}
+              pointerWidth={5}
+              flyoutHeight={25}
+              flyoutWidth={25}
+              cornerRadius={0}
+              centerOffset={{ x: -0 }}
+              style={{ fill: "black" }}
+            />
+          }
           colorScale={'warm'}
           width={500}
           height={250}
