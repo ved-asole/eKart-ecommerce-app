@@ -5,6 +5,10 @@ export const getFormattedPrice = (price) => {
   return Number(price).toLocaleString('en-IN');
 }
 
+export const getFormattedDate = (date) => {
+  return date.replaceAll('T', ' ');
+}
+
 export const setAxiosInterceptors = (setIsLoading) => {
   axios.interceptors.request.use(
     config => {
