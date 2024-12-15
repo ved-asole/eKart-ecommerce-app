@@ -23,7 +23,7 @@ const fetchApiData = async (path, successFunction, failureFunction) => {
   let errorMessage = '';
   try {
     const response = await axios.get(url);
-    successFunction(response.data ? response.data : {});
+    successFunction(response.data ? response.data : response);
     return true;
   } catch (error) {
     errorMessage = error.message;
