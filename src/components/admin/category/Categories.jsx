@@ -41,7 +41,7 @@ const Categories = () => {
 
   return (
     <div>
-      <section id="categories-section" className="mt-5">
+      <section id="categories-section" className="mt-2">
         <h3>Categories</h3>
         <div className="d-flex justify-content-between mb-3">
           <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
