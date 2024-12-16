@@ -13,7 +13,6 @@ const Pagination = ({ currentPage, setCurrentPage, itemsPerPage, totalItems }) =
       pages.push(i);
     }
     setPageNumbers(pages);
-    console.log(pageNumbers);
   }, [currentPage, setCurrentPage, itemsPerPage, totalItems]);
 
   return (
