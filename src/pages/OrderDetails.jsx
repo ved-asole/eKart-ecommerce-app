@@ -41,8 +41,9 @@ const OrderDetails = () => {
 
   const cancelOrder = () => {
     // TODO: implement confirm dialog
-    isLoading(true);
+    setIsLoading(true);
     order.orderStatus = "ORDER_CANCELLED";
+    delete order._links;
     updateData(
       `orders/${orderId}`,
       order,
@@ -57,7 +58,7 @@ const OrderDetails = () => {
   }
 
   return (
-    <div id='orders' className="container d-flex flex-column flex-wrap flex-md-nowrap mx-auto px-0 
+    <div id='orders' className="container d-flex flex-column flex-wrap flex-md-nowrap mx-auto px-0
     justify-content-center align-items-stretch">
       <div className='container bg-secondary-subtle text-start rounded me-md-2 mb-2 pb-2'>
         <h1 className='text-center mt-3'>ORDER DETAILS</h1>
@@ -89,8 +90,6 @@ const OrderDetails = () => {
 
                 <span className="fw-medium text-secondary">${getFormattedPrice(discount)}</span>
               </p>
-              {/* </div> */}
-              {/* <div className='d-flex justify-content-evenly py-2'> */}
               <p className='col-12 col-md-3 d-inline-block text-start mb-0'>
                 <span className='fw-bold text-body-secondary fs-6'>Delivery by: </span>
                 <span className="fw-medium text-secondary">{new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toLocaleDateString()}</span>
@@ -100,11 +99,10 @@ const OrderDetails = () => {
                 <span className="fw-medium text-secondary">{order?.orderStatus?.replace('_', ' ')}</span>
               </p>
               <p className='col-12 col-md-3 d-inline-block text-center text-md-start mb-0'>
-                <button className='fw-medium pt-4 px-0 pt-md-0 bg-transparent link-secondary border-0'
+                <button className='btn fw-medium pt-4 px-0 pt-md-0 text-body-secondary link-light border-0'
                   onClick={cancelOrder}
                 >CANCEL ORDER</button>
               </p>
-              {/* </div> */}
             </div >
         }
       </div >
