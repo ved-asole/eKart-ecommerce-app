@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import fetchData, { postData, updateData } from "../../util/DataFetcher";
-import { showToast } from "../../util/appUtil";
+import fetchData, { updateData } from "../../util/DataFetcher.js";
+import { showToast } from "../../util/appUtil.js";
 
 const initialState = {
   loading: false,
@@ -48,8 +48,6 @@ export const fetchAllOrders = (page, size, sortBy, sortOrder, dispatch, navigate
     fetchData(
       `orders/customer/${customerId}/page?page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}`,
       (data) => {
-        // const ordersJSON = JSON.stringify(data.content);
-        // localStorage.setItem('orders', ordersJSON);
         dispatch(fetchOrdersSuccess(data));
       },
       (error) => {
@@ -62,26 +60,25 @@ export const fetchAllOrders = (page, size, sortBy, sortOrder, dispatch, navigate
   }
 }
 
-export const updateOrder = (dispatch, cartItem) => {
-  if (document.cookie.includes('customerId')
-    // || localStorage.getItem('cartId')
-  ) {
-    // console.log("updateItemInCart : cartItem : " + JSON.stringify(cartItem));
-    // console.log("updateItemInCart : cartItem : " + { ...cartItem, cartId: localStorage.getItem('cartId') });
+export const updateOrder = (dispatch, order, orderId) => {
+  if (document.cookie.includes('customerId') && localStorage.getItem('token')) {
     updateData(
-      `shopping-cart/${localStorage.getItem('cartId')}/items`,
-      { ...cartItem, cartId: localStorage.getItem('cartId') },
+      `orders/${orderId}`,
+      { ...order, orderId: orderId },
       (data) => {
-        dispatch(updateCart(data));
+        dispatch(fetchOrdersSuccess(data));
+        showToast("Order Updated");
       },
       (error) => {
-        console.log(error);
+        console.error(error);
+        dispatch(fetchOrdersFailure(error));
+        showToast("Order Update Failed");
       }
     )
   } else {
-    dispatch(updateCart(cartItem));
+    dispatch(fetchOrdersFailure(order));
+    showToast("Please login to proceed");
   }
-  showToast("Cart Updated");
 }
 
 export const { fetchOrdersRequest, fetchOrdersSuccess, fetchOrdersFailure } = orderSlice.actions;
