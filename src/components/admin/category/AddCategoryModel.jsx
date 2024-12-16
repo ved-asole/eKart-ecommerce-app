@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { fetchCategories } from '../../../redux/slices/categoriesSlice.js';
 import { postData } from '../../../util/DataFetcher.js';
 import { CATEGORIES_JSON_PATH } from '../../../util/commonConstants.js';
