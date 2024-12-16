@@ -23,7 +23,7 @@ const AddUserModel = ({ fetchUsersFn }) => {
     delete data.joiningDate;
     data.role = data.userRole;
     delete data.userRole;
-    data.password = Math.random().toString(36).substring(2, 15);
+    data.password = window.crypto.getRandomValues(new Uint32Array(1)).toString();
     postData(
       'customers',
       data,
