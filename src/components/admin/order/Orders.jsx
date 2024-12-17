@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getFormattedPrice } from '../../../util/appUtil.js'
-import OrderDetailsModel from './OrderDetails.jsx'
-import Pagination from '../../products/Pagination.jsx'
 import { fetchAllOrders } from '../../../redux/slices/orderSlice.js';
+const OrderDetailsModel = lazy(() => import('./OrderDetails.jsx'))
+const Pagination = lazy(() => import('../../products/Pagination.jsx'))
 
 const Orders = () => {
 
