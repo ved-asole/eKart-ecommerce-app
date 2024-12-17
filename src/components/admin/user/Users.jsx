@@ -3,24 +3,29 @@ import fetchData, { deleteData } from '../../../util/DataFetcher.js'
 import { showToast } from '../../../util/appUtil.js'
 const AddUserModel = lazy(() => import('./AddUserModel.jsx'))
 const UpdateUserModel = lazy(() => import('./UpdateUserModel.jsx'))
+const Pagination = lazy(() => import('../../products/Pagination.jsx'))
 
 const Users = () => {
 
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({ customerId: 0 });
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalElements, setTotalElements] = useState(10);
+  const size = 10;
 
   useEffect(() => {
     fetchUsers();
-  }, [])
+  }, [currentPage])
 
   const fetchUsers = () => {
+    let pageNum = currentPage > 0 ? currentPage - 1 : currentPage;
     fetchData(
-      'customers',
+      `customers/page?page=${pageNum}&size=${size}`,
       (data) => {
-        setUsers(data);
+        setUsers(data.content);
+        setTotalElements(data.totalElements);
       },
-      (errorMsg) => { console.log(errorMsg) },
-      "customers"
+      (errorMsg) => { console.log(errorMsg) }
     );
   }
 
@@ -66,10 +71,9 @@ const Users = () => {
                     <td className="w-25 text-start">{customer.email}</td>
                     <td className="w-25">{customer.phoneNumber}</td>
                     <td className="text-start">{customer.role}</td>
-                    {/* <td>{category?.parentCategory?.categoryId}</td> */}
                     <td className="w-25">
-                      <div className='d-block'>
-                        <button className="btn btn-outline-secondary me-0 me-xxl-2 mb-2 mb-xxl-0"
+                      <div className='d-flex flex-column flex-lg-row justify-content-evenly justify-content-lg-center align-items-center'>
+                        <button className="btn btn-outline-secondary me-lg-2 mb-2 mb-lg-0"
                           data-bs-toggle="modal" data-bs-target="#updateUserModal"
                           onClick={() => setUser(customer)}
                         >Edit</button>
@@ -85,6 +89,15 @@ const Users = () => {
           </table>
         </div>
       </section>
+
+      <div id="pagination">
+        <Pagination
+          currentPage={currentPage == 0 ? 1 : currentPage}
+          setCurrentPage={setCurrentPage}
+          itemsPerPage={size}
+          totalItems={totalElements}
+        />
+      </div>
 
       {/* <!-- Add Customer Modal --> */}
       <AddUserModel fetchUsersFn={fetchUsers} />
