@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import fetchData from '../../../util/DataFetcher.js'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { getFormattedPrice } from '../../../util/appUtil.js'
 import OrderDetailsModel from './OrderDetails.jsx'
+import Pagination from '../../products/Pagination.jsx'
+import { fetchAllOrders } from '../../../redux/slices/orderSlice.js';
 
 const Orders = () => {
 
-  const [orders, setOrders] = useState([])
-  const [orderId, setOrderId] = useState(0)
+  const orders = useSelector((state) => state.orders.orders);
+  const [orderId, setOrderId] = useState(0);
+  const page = useSelector((state) => state.orders.page);
+  const size = useSelector((state) => state.orders.size);
+  const totalElements = useSelector((state) => state.orders.totalElements);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    fetchData(
-      "orders",
-      (data) => {
-        setOrders(data)
-      },
-      (errorMsg) => { console.log(errorMsg) },
-      "orders"
-    );
-  }, [])
+    if (currentPage >= 0 || currentPage != page) {
+      let pageNum = currentPage > 0 ? currentPage - 1 : currentPage;
+      fetchAllOrders(pageNum, 10, "orderId", "asc", dispatch, navigate);
+    }
+  }, [currentPage, page]);
 
   return (
     <div>
@@ -59,6 +64,15 @@ const Orders = () => {
           </table>
         </div>
       </section>
+
+      <div id="pagination">
+        <Pagination
+          currentPage={currentPage == 0 ? 1 : currentPage}
+          setCurrentPage={setCurrentPage}
+          itemsPerPage={size}
+          totalItems={totalElements}
+        />
+      </div>
 
       <OrderDetailsModel orderId={orderId} />
 
