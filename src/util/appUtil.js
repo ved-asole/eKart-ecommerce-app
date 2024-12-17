@@ -39,6 +39,7 @@ export const setAxiosInterceptors = (setIsLoading) => {
       if (error?.response?.data?.message?.includes("JWT") || error?.response?.message == "Unauthorized" || error?.response?.status == 401) {
         document.cookie = '';
         delete axios.defaults.headers.common["Authorization"];
+        localStorage.removeItem('token');
         // window.location.href = "/";
       }
       return Promise.reject(new Error(error));
