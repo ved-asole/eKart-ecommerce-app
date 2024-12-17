@@ -11,7 +11,7 @@ const Orders = () => {
   const loading = useSelector((state) => state.orders.loading);
   const totalElements = useSelector((state) => state.orders.totalElements);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(5);
+  const size = 5;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const Orders = () => {
 
 
   return (
-    <div id='orders' className="container d-flex flex-wrap flex-md-nowrap mx-auto px-0 
+    <div id='orders' className="container d-flex flex-wrap flex-md-nowrap mx-auto px-0
     justify-content-center align-items-stretch">
       <div className='container bg-secondary-subtle text-start rounded me-md-2'>
         <h1 className='text-center mt-3'>YOUR ORDERS</h1>
