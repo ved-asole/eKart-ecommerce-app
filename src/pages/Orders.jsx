@@ -10,14 +10,18 @@ const Orders = () => {
   const orders = useSelector((state) => state.orders.orders);
   const loading = useSelector((state) => state.orders.loading);
   const totalElements = useSelector((state) => state.orders.totalElements);
-  const [page, setPage] = useState(0);
+  const page = useSelector((state) => state.orders.page);
+  const [currentPage, setCurrentPage] = useState(0);
   const size = 5;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchAllOrders(page, size, "orderId", "asc", dispatch, navigate);
-  }, [])
+    if (currentPage >= 0 || currentPage != page) {
+      let pageNum = currentPage > 0 ? currentPage - 1 : currentPage;
+      fetchAllOrders(pageNum, size, "orderId", "desc", dispatch, navigate);
+    }
+  }, [currentPage, page]);
 
 
   return (
@@ -42,10 +46,14 @@ const Orders = () => {
             }
           </div>
         }
-        {
-          orders.length > 5 &&
-          <Pagination currentPage={1} setCurrentPage={setPage} productsPerPage={5} totalProducts={totalElements} />
-        }
+        <div id="pagination">
+          <Pagination
+            currentPage={currentPage == 0 ? 1 : currentPage}
+            setCurrentPage={setCurrentPage}
+            itemsPerPage={size}
+            totalItems={totalElements}
+          />
+        </div>
       </div >
     </div >
   )
