@@ -1,5 +1,6 @@
 import React, { lazy } from 'react'
 import { Link } from 'react-router-dom'
+import { PropTypes } from 'prop-types';
 import { getFormattedPrice } from '../../util/appUtil.js'
 const OrderItem = lazy(() => import('./OrderItem.jsx'));
 
@@ -24,6 +25,23 @@ const Order = ({ order }) => {
       </div>
     </div >
   )
+}
+
+Order.propTypes = {
+  order: PropTypes.shape({
+    orderId: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    orderStatus: PropTypes.string.isRequired,
+    orderItems: PropTypes.arrayOf(PropTypes.shape({
+      orderItemId: PropTypes.number.isRequired,
+      product: PropTypes.shape({
+        productId: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired
+      }).isRequired,
+    })).isRequired
+  }).isRequired
 }
 
 export default Order
