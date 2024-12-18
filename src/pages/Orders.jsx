@@ -29,7 +29,7 @@ const Orders = () => {
     justify-content-center align-items-stretch">
       <div className='container bg-secondary-subtle text-start rounded me-md-2'>
         <h1 className='text-center mt-3'>YOUR ORDERS</h1>
-        <hr />
+        <hr className='border-5 mx-4' />
         {loading ? <AppLoader status={true} /> :
           <div id='orders' className="mb-5 mt-3 px-md-2 rounded">
             {
