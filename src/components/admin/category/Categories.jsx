@@ -10,9 +10,9 @@ const UpdateCategoryModel = lazy(() => import('./UpdateCategoryModel.jsx'));
 
 /**
  * Categories component.
- * 
+ *
  * This component renders the Admin Categories section of the app.
- * 
+ *
  * @return {JSX.Element} The rendered Categories component.
  */
 const Categories = () => {
@@ -47,7 +47,7 @@ const Categories = () => {
           <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
         </div>
         <div className="table-responsive">
-          <table className="table table-striped align-middle">
+          <table className="table table-striped table-hover align-middle">
             <thead className="align-middle">
               <tr>
                 <th className="w-10">ID</th>

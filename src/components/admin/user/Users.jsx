@@ -51,7 +51,7 @@ const Users = () => {
           <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
         </div>
         <div className="table-responsive">
-          <table className="table table-striped align-middle">
+          <table className="table table-striped table-hover align-middle">
             <thead className="align-middle">
               <tr>
                 <th className="w-10">ID</th>

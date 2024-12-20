@@ -46,7 +46,7 @@ const Products = () => {
           <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Product</button>
         </div>
         <div className="table-responsive">
-          <table className="table table-responsive table-striped">
+          <table className="table table-responsive table-hover table-striped">
             <thead className="align-middle text-start">
               <tr>
                 <th>ID</th>
