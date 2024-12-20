@@ -1,25 +1,16 @@
 import React, { useEffect, useState } from 'react'
-// import { useSelector } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
 const AppLoader = ({ status, children }) => {
 
   const [isLoading, setIsLoading] = useState(false);
-  // const categoriesLoading = useSelector(state => state.categories.loading);
-  // const productsLoading = useSelector(state => state.products.loading);
-  // const cartLoading = useSelector(state => state.cart.loading);
 
   useEffect(() => {
-    // console.log("isLoading : " + status);
     if (status !== undefined)
-      setIsLoading(status
-        // || categoriesLoading || productsLoading || cartLoading
-      );
-  }, [status
-    // , categoriesLoading, productsLoading, cartLoading
-  ]);
+      setIsLoading(status);
+  }, [status]);
 
   return (
-    // <div id='loader' className='container bg-body-secondary rounded bg-opacity-75'>
     <div id='loader' className={
       'container-fluid bg-dark text-white text-center' +
         isLoading ? 'py-2 px-2 py-md-3 px-md-5 mt-5 mt-md-0' : ''
@@ -38,6 +29,11 @@ const AppLoader = ({ status, children }) => {
       </div>
     </div>
   )
+}
+
+AppLoader.propTypes = {
+  status: PropTypes.bool,
+  children: PropTypes.node
 }
 
 export default AppLoader

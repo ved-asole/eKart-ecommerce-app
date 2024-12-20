@@ -5,6 +5,7 @@ import { fetchCategories } from '../../../redux/slices/categoriesSlice.js';
 const AddProductModel = lazy(() => import('./AddProductModel.jsx'));
 const UpdateProductModel = lazy(() => import('./UpdateProductModel.jsx'));
 const Pagination = lazy(() => import('../../products/Pagination.jsx'));
+const AppLoader = lazy(() => import('../../common/AppLoader.jsx'));
 import { getFormattedPrice } from '../../../util/appUtil.js';
 
 /*
@@ -18,6 +19,7 @@ import { getFormattedPrice } from '../../../util/appUtil.js';
 const Products = () => {
 
   const products = useSelector((state) => state.products.products);
+  const isLoading = useSelector((state) => state.products.loading);
   const categories = useSelector((state) => state.categories.categories);
   const page = useSelector((state) => state.products.page);
   const size = useSelector((state) => state.products.size);
@@ -42,41 +44,45 @@ const Products = () => {
     <div>
       <section id="products-section" className="mt-2">
         <h3>Products</h3>
-        <div className="d-flex justify-content-between mb-3">
-          <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Product</button>
-        </div>
-        <div className="table-responsive">
-          <table className="table table-responsive table-hover table-striped">
-            <thead className="align-middle text-start">
-              <tr>
-                <th>ID</th>
-                <th className='text-center'>Name</th>
-                <th>Price</th>
-                <th className='text-nowrap'>Stock Qty</th>
-                <th className='text-center'>Category</th>
-                <th className='text-center'>Actions</th>
-              </tr>
-            </thead>
-            <tbody className='table-group-divider align-middle text-start'>
-              {products.map((product) => (
-                <tr key={product.productId}>
-                  <td className='text-wrap'>{product.productId}</td>
-                  <td className='text-start text-break'>{product.name}</td>
-                  <td>{getFormattedPrice(product.price)}</td>
-                  <td className='text-center'>{product.qtyInStock}</td>
-                  <td className='text-nowrap'>{categories.find(c => product.categoryId == c.categoryId)?.name}</td>
-                  <td className="w-25 text-center">
-                    <button className="btn btn-outline-secondary me-0 me-md-2 mb-2 mb-lg-0"
-                      data-bs-toggle="modal" data-bs-target="#updateProductModal"
-                      onClick={() => setProductId(product.productId)}
-                    >Edit</button>
-                    <button className="btn btn-outline-danger">Delete</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {isLoading ? <AppLoader status={isLoading} /> :
+          <div className="products">
+            <div className="d-flex justify-content-between mb-3">
+              <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Product</button>
+            </div>
+            <div className="table-responsive">
+              <table className="table table-responsive table-hover table-striped">
+                <thead className="align-middle text-start">
+                  <tr>
+                    <th>ID</th>
+                    <th className='text-center'>Name</th>
+                    <th>Price</th>
+                    <th className='text-nowrap'>Stock Qty</th>
+                    <th className='text-center'>Category</th>
+                    <th className='text-center'>Actions</th>
+                  </tr>
+                </thead>
+                <tbody className='table-group-divider align-middle text-start'>
+                  {products.map((product) => (
+                    <tr key={product.productId}>
+                      <td className='text-wrap'>{product.productId}</td>
+                      <td className='text-start'>{product.name}</td>
+                      <td>{getFormattedPrice(product.price)}</td>
+                      <td className='text-center'>{product.qtyInStock}</td>
+                      <td className='text-nowrap'>{categories.find(c => product.categoryId == c.categoryId)?.name}</td>
+                      <td className="w-25 text-center">
+                        <button className="btn btn-outline-secondary me-0 me-md-2 mb-2 mb-lg-0"
+                          data-bs-toggle="modal" data-bs-target="#updateProductModal"
+                          onClick={() => setProductId(product.productId)}
+                        >Edit</button>
+                        <button className="btn btn-outline-danger">Delete</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        }
       </section>
 
       <div id="pagination">
