@@ -70,9 +70,9 @@ const Users = () => {
                 </thead>
                 <tbody className='table-group-divider align-middle'>
                   {
-                    users?.map(customer => (
+                    users?.map((customer, index) => (
                       <tr key={customer.customerId}>
-                        <td className="w-10">{customer.customerId}</td>
+                        <td className="w-10">{10 * (currentPage > 0 ? currentPage - 1 : currentPage) + index + 1}</td>
                         <td className="w-25">{customer.firstName + " " + customer.lastName}</td>
                         <td className="w-25 text-start">{customer.email}</td>
                         <td className="w-25">{customer.phoneNumber}</td>

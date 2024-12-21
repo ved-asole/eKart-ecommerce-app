@@ -34,9 +34,8 @@ const Products = () => {
 
   useEffect(() => {
     if (currentPage >= 0 || currentPage != page) {
-      currentPage > 0 ?
-        fetchProductsPage(dispatch, currentPage - 1, 10, "productId", "asc")
-        : fetchProductsPage(dispatch, currentPage, 10, "productId", "asc");
+      let pageNum = currentPage > 0 ? currentPage - 1 : currentPage;
+      fetchProductsPage(dispatch, pageNum, 10, "productId", "asc");
     }
   }, [currentPage, page]);
 
@@ -62,9 +61,9 @@ const Products = () => {
                   </tr>
                 </thead>
                 <tbody className='table-group-divider align-middle text-start'>
-                  {products.map((product) => (
+                  {products.map((product, index) => (
                     <tr key={product.productId}>
-                      <td className='text-wrap'>{product.productId}</td>
+                      <td className='text-wrap'>{10 * (currentPage > 0 ? currentPage - 1 : currentPage) + index + 1}</td>
                       <td className='text-start'>{product.name}</td>
                       <td>{getFormattedPrice(product.price)}</td>
                       <td className='text-center'>{product.qtyInStock}</td>
