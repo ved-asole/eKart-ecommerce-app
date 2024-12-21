@@ -1,25 +1,43 @@
 import React, { lazy, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import fetchData, { postData } from '../../util/DataFetcher.js';
-import { showToast } from '../../util/appUtil.js';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { postData } from '../../util/DataFetcher.js';
+import { showToast } from '../../util/appUtil.js';
 const RouteLoadError = lazy(() => import('../../pages/RouteLoadError.jsx'));
 const FormScreen = lazy(() => import('../common/FormScreen.jsx'));
 
 const ResetPassword = () => {
 
   let [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   let token = searchParams.get('token');
   const [isTokenInvalid, setIsTokenInvalid] = useState(false);
   const { register, handleSubmit, formState, reset, getValues } = useForm({ mode: 'onChange' });
   const { errors, isSubmitted, isSubmitting, isSubmitSuccessful, isValid } = formState;
+
+  useEffect(() => {
+    reset();
+    postData(
+      'auth/validate-reset-token',
+      { token: token },
+      () => setIsTokenInvalid(false),
+      () => {
+        setIsTokenInvalid(true);
+        showToast('Invalid or expired token, please try again!');
+      }
+    )
+  }, [token]);
+
 
   const formSubmitHandler = async () => {
     const newPassword = getValues('password');
     postData(
       'auth/reset-password',
       { token, newPassword },
-      () => showToast('Password reset successfully!'),
+      () => {
+        navigate('/auth');
+        showToast('Password reset successfully!')
+      },
       (errorMsg) => {
         if (errorMsg == 'Invalid or expired token') {
           setIsTokenInvalid(true);
@@ -30,18 +48,6 @@ const ResetPassword = () => {
       }
     );
   };
-
-  useEffect(() => {
-    reset();
-    fetchData(
-      'auth/validate-reset-token?token=' + token,
-      () => setIsTokenInvalid(false),
-      () => {
-        setIsTokenInvalid(true);
-        showToast('Invalid or expired token, please try again!');
-      }
-    )
-  }, [token]);
 
   if (!token || isTokenInvalid) {
     return <RouteLoadError message='Invalid link, please try again!' />

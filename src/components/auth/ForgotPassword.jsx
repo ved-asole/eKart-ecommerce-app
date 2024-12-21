@@ -13,11 +13,10 @@ const ForgotPassword = () => {
   const formSubmitHandler = async () => {
     let email = getValues('email');
     postData(
-      'auth/forgot-password?email=' + email,
-      {},
+      'auth/generate-reset-token',
+      { email: email },
       () => {
         setEmailSentSuccessfully(true);
-        console.log(emailSentSuccessfully);
         appendAlert(
           'liveAlertPlaceholder',
           'Password reset email sent successfully',
