@@ -9,20 +9,20 @@ const AppLoader = lazy(() => import('../../common/AppLoader.jsx'))
 
 const Orders = () => {
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const orders = useSelector((state) => state.orders.orders);
   const isLoading = useSelector((state) => state.orders.loading);
-  const [orderId, setOrderId] = useState(0);
   const page = useSelector((state) => state.orders.page);
   const size = useSelector((state) => state.orders.size);
   const totalElements = useSelector((state) => state.orders.totalElements);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [orderId, setOrderId] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     if (currentPage >= 0 || currentPage != page) {
       let pageNum = currentPage > 0 ? currentPage - 1 : currentPage;
-      fetchAllOrders(pageNum, 10, "orderId", "asc", dispatch, navigate);
+      fetchAllOrders(pageNum, 10, "orderId", "desc", dispatch, navigate);
     }
   }, [currentPage, page]);
 
@@ -46,9 +46,9 @@ const Orders = () => {
                 </thead>
                 <tbody className='table-group-divider align-middle text-start'>
                   {
-                    orders?.map(order => (
+                    orders?.map((order, index) => (
                       <tr key={order.orderId}>
-                        <td>{order.orderId}</td>
+                        <td>{10 * (currentPage > 0 ? currentPage - 1 : currentPage) + index + 1}</td>
                         <td>{order.customer.firstName + " " + order.customer.lastName}</td>
                         <td>{order.customer.email}</td>
                         <td>{getFormattedPrice(order.total)}</td>
