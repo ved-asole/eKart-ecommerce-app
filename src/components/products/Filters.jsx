@@ -11,7 +11,7 @@ const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
   // const error = useSelector((state) => state.products.error)
   const dispatch = useDispatch();
   let minPrice = 0;
-  const [maxPrice, setMaxPrice] = useState(150000);
+  const [maxPrice, setMaxPrice] = useState(100000);
 
   const priceChange = (event) => {
     setMaxPrice(event.target.value);
