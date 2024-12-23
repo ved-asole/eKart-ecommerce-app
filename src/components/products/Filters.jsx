@@ -59,6 +59,7 @@ const Filters = ({ getFilteredProducts, setFilteredProducts, categoryId }) => {
     // This useEffect is for any other side effects that need to run when products or categoryId changes.
     if (products.length > 0) {
       setFilteredProducts(products);
+      setMaxPrice(Math.round(Math.max(...products.map((product) => Math.trunc(product.price * (1 - product.discount / 100)))))); // Set the max price to the highest price in the products array.
     } else {
       setFilteredProducts([]);
     }
