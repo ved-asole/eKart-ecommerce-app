@@ -3,13 +3,23 @@ import PropTypes from 'prop-types'
 
 const Pagination = ({ currentPage, setCurrentPage, itemsPerPage, totalItems }) => {
 
-
   const [pageNumbers, setPageNumbers] = useState([]);
 
   useEffect(() => {
-    setPageNumbers([]);
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    let startPage = Math.max(1, currentPage - 5);
+    let endPage = Math.min(totalPages, currentPage + 4);
+
+    if (endPage - startPage < 9) {
+      if (startPage === 1) {
+        endPage = Math.min(totalPages, startPage + 9);
+      } else if (endPage === totalPages) {
+        startPage = Math.max(1, endPage - 9);
+      }
+    }
+
     const pages = [];
-    for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+    for (let i = startPage; i <= endPage; i++) {
       pages.push(i);
     }
     setPageNumbers(pages);
