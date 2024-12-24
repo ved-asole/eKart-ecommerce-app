@@ -7,7 +7,7 @@
 
 
 # Live Link / Demo Link: 🔗
-Access my site at **[ekart.vedasole.cloud](https://ekart.vedasole.cloud)**
+Access my site at **[ekart.vedasole.me](https://ekart.vedasole.me)**
 
 # Table of Content: 📑
 
