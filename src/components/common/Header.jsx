@@ -6,6 +6,7 @@ import { Collapse, Dropdown } from 'bootstrap';
 import { useEffect, useState } from 'react';
 import { fetchPreviousCart } from '../../redux/slices/cartSlice';
 import fetchData from '../../util/DataFetcher';
+import { width } from '@fortawesome/free-brands-svg-icons/fa42Group';
 
 export default function Header() {
 
@@ -85,9 +86,7 @@ export default function Header() {
     else {
       fetchData(
         `products/search?searchKey=${searchKey}`,
-        (data) => setSearchResults(data._embedded.products.map((product) => {
-          return { ...product, name: product.name.substring(0, product.name.indexOf('(')) }
-        })),
+        (data) => setSearchResults(data._embedded.products),
         (errorMsg) => {
           console.log(errorMsg);
           setSearchResults([])
@@ -125,7 +124,7 @@ export default function Header() {
               aria-label="Search"
               value={searchKey}
             />
-            <ul className="dropdown-menu">
+            <ul className="dropdown-menu overflow-hidden w-100">
               {
                 searchResults.length > 0 ?
                   searchResults.map((result) =>
