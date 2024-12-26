@@ -1,8 +1,8 @@
 import axios from "axios";
-import { showToast } from "./appUtil";
-import { clearCart, fetchPreviousCart } from "../redux/slices/cartSlice";
+import { showToast } from "./appUtil.js";
+import { clearCart, fetchPreviousCart } from "../redux/slices/cartSlice.js";
 
-export const processSignUp = (data, setCookie, navigate) => {
+export const processSignUp = (data, setCookie, navigate, reset) => {
   axios.post(
     import.meta.env.VITE_API_URL.concat("customers"),
     {
@@ -31,6 +31,13 @@ export const processSignUp = (data, setCookie, navigate) => {
       navigate('/');
     })
     .catch((error) => {
+      reset({
+        email: data.email,
+        password: data.password,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phoneNumber: data.phoneNumber,
+      })
       console.log(error);
     });
 }

@@ -18,7 +18,7 @@ const AuthForm = () => {
 
   const formSubmitHandler = (data) => {
     removeUserData(removeCookie);
-    if (mode == 'signup') processSignUp(data, setCookie, navigate);
+    if (mode == 'signup') processSignUp(data, setCookie, navigate, reset);
     else if (mode == 'login') processSignIn(data, setCookie, navigate, reset, dispatch);
     else showToast('Invalid request')
   };
