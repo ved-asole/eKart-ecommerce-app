@@ -16,6 +16,7 @@ const OrderDetails = lazy(() => import('./pages/OrderDetails'));
 const ForgotPassword = lazy(() => import('./components/auth/ForgotPassword'));
 const ResetPassword = lazy(() => import('./components/auth/ResetPassword'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel.jsx'));
+const Profile = lazy(() => import('./pages/Profile.jsx'));
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: "forgot-password",
         element: <ForgotPassword />
+      },
+      {
+        path: "profile",
+        element: <ProtectedRoute> <Profile /> </ProtectedRoute>
       },
       {
         path: "paymentConfirmation",
