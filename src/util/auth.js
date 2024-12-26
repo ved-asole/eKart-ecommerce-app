@@ -26,8 +26,7 @@ export const processSignUp = (data, setCookie, navigate, reset) => {
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('token', token);
       localStorage.setItem('cartId', response.data.shoppingCart.cartId);
-      console.log("Logged in successfully");
-      showToast("Logged in successfully");
+      showToast("Signed in successfully");
       navigate('/');
     })
     .catch((error) => {
@@ -38,7 +37,8 @@ export const processSignUp = (data, setCookie, navigate, reset) => {
         lastName: data.lastName,
         phoneNumber: data.phoneNumber,
       })
-      console.log(error);
+      console.error(error);
+      showToast("Error in signing up");
     });
 }
 
@@ -68,8 +68,8 @@ export const processSignIn = (data, setCookie, navigate, reset, dispatch) => {
       navigate('/');
     })
     .catch((error) => {
-      console.log(error);
-      console.log(error?.response?.data?.message);
+      console.error(error);
+      console.error(error?.response?.data?.message);
       showToast("Invalid Credentials");
       reset({
         email: '',
