@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HomeCarousel = () => {
+const HomeCarousel = React.memo(() => {
   return (
     <section id="carouselSection">
       <div id='heroCarousel' className="carousel slide" data-bs-ride="carousel">
@@ -17,11 +17,11 @@ const HomeCarousel = () => {
               className="d-block w-100 mx-auto img-fluid" alt="Banner 1" />
           </div>
           <div className="carousel-item">
-            <img fetchpriority="low" src="/images/carousel/shopping-time-blue.webp"
+            <img fetchpriority="low" loading='lazy' src="/images/carousel/shopping-time-blue.webp"
               className="d-block w-100 mx-auto img-fluid" alt="Banner 2" />
           </div>
           <div className="carousel-item">
-            <img fetchpriority="low" src="/images/carousel/enjoy-purchase-yellow.webp"
+            <img fetchpriority="low" loading='lazy' src="/images/carousel/enjoy-purchase-yellow.webp"
               className="d-block w-100 mx-auto  img-fluid" alt="Banner 3" />
           </div>
         </div>
@@ -36,6 +36,6 @@ const HomeCarousel = () => {
       </div>
     </section>
   )
-}
+})
 
 export default HomeCarousel
