@@ -1,18 +1,20 @@
-import React, { lazy, useState } from 'react'
+import React, { lazy, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const ProductCard = lazy(() => import('../components/products/ProductCard.jsx'));
 const Filters = lazy(() => import('../components/products/Filters.jsx'));
 const Pagination = lazy(() => import('../components/products/Pagination.jsx'));
+const AppLoader = lazy(() => import('../components/common/AppLoader.jsx'));
 
 const Products = () => {
   const [searchParams] = useSearchParams({});
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const productsLoading = useSelector((state) => state.products.loading);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
-
   const getFilteredProducts = () => filteredProducts;
 
-  //Get current products 
+  //Get current products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -32,26 +34,32 @@ const Products = () => {
           <div className='vr d-none d-lg-block'></div>
           <div className='ps-lg-2 pt-2 flex-fill'>
             {
-              filteredProducts.length === 0
-                ?
-                <h3 className='text-center'>No Products Found</h3>
-                :
-                <div id='products'>
-                  <div className="d-flex flex-wrap justify-content-center ms-lg-3 gap-2">
-                    {
-                      currentProducts.map((product) =>
-                        <ProductCard key={product.productId} product={product} />
-                      )
-                    }
-                  </div>
-                  <div>
-                    <Pagination currentPage={currentPage}
-                      setCurrentPage={setCurrentPage}
-                      itemsPerPage={productsPerPage}
-                      totalItems={filteredProducts.length}
-                    />
-                  </div>
-                </div>
+              (() => {
+                if (productsLoading) {
+                  return <AppLoader status={productsLoading} />;
+                } else if (filteredProducts.length === 0) {
+                  return <h3 className='text-center'>No Products Found</h3>;
+                } else {
+                  return (
+                    <div id='products'>
+                      <div className="d-flex flex-wrap justify-content-center ms-lg-3 gap-2">
+                        {
+                          currentProducts.map((product) =>
+                            <ProductCard key={product.productId} product={product} />
+                          )
+                        }
+                      </div>
+                      <div>
+                        <Pagination currentPage={currentPage}
+                          setCurrentPage={setCurrentPage}
+                          itemsPerPage={productsPerPage}
+                          totalItems={filteredProducts.length}
+                        />
+                      </div>
+                    </div>
+                  );
+                }
+              })()
             }
           </div>
         </div>
