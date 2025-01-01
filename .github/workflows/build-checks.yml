@@ -10,6 +10,7 @@ on:
     branches:
       - master
       - develop
+      - EK-* #Run for all branches starting with EK- (For JIRA branches)
 
 jobs:
   build:
