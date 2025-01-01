@@ -23,9 +23,32 @@ Access my site at **[ekart.vedasole.me](https://ekart.vedasole.me)**
 Ekart Ecommerce is an online e-commerce app which provides the facility for online shopping from any location.
 
 # Screenshots: 📷
-![Ekart Shopping](ekart.jpeg)
 
-# Technologies: ☕️ 🐍 ⚛️
+### 1) Home Page 🏠
+
+![Home Page](eKart_shopping_home.png)
+
+### 2) All Products 🛍️
+
+![All Products](eKart_shopping_all-products.png)
+
+### 3) Cart 🛒
+
+![Shopping Cart](eKart_shopping_cart.png)
+
+### 4) Orders 📦
+
+![Orders](eKart_shopping_orders.png)
+
+### 5) Admin Dashboard 📊
+
+![Admin Panel](eKart_shopping_admin-panel.png)
+
+### 6) Payment Gateway 💳
+
+![Payment Gateway](eKart_shopping_payment-gateway.png)
+
+# Technologies: ☕️ ⚛️
 
 - React
 - Vite
