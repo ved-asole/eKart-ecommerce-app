@@ -7,7 +7,7 @@ on:
     branches: [ "master", "develop" ]
     types: [opened, synchronize, reopened]
   workflow_run:
-    workflows: ["Build Checks"]
+    workflows: ["Build Checks - CI"]
     types:
       - completed
 
