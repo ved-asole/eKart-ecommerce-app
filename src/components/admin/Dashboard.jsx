@@ -31,14 +31,16 @@ const Dashboard = () => {
     fetchData(
       'orders/income-by-month',
       (data) => {
-        data.map((dataElement) => {
-          dataElement.date = new Date(dataElement.date).toDateString()
-            .split(' ')[1]
-            .concat(' ')
-            .concat(new Date(dataElement.date).getFullYear());
-          return { x: String(dataElement.date), y: dataElement.income }
+        const formattedData = data.map((dataElement) => {
+          // Parse YYYY-MM format
+          const [year, month] = dataElement.date.split('-');
+          const monthIndex = parseInt(month) - 1;
+          const dateObj = new Date(year, monthIndex);
+          const monthName = dateObj.toLocaleString('en-US', { month: 'short' });
+          const formattedDate = `${monthName} ${year}`;
+          return { x: formattedDate, y: dataElement.income }
         });
-        setTotalIncomeByMonth(data);
+        setTotalIncomeByMonth(formattedData);
       },
       (error) => console.error(error)
     );
@@ -66,15 +68,34 @@ const Dashboard = () => {
     />
   ), []);
 
+  // Calculate dynamic Y-axis domain based on income data
+  const getYAxisDomain = () => {
+    if (totalIncomeByMonth.length === 0) return [0, 1];
+
+    const incomeValues = totalIncomeByMonth.map(item => item.y);
+    const maxIncome = Math.max(...incomeValues);
+    const minIncome = Math.min(...incomeValues);
+
+    // Calculate padding - if min and max are the same, use 20% of max as range
+    let padding;
+    if (maxIncome === minIncome) {
+      padding = maxIncome * 0.2; // 20% of the value as range
+    } else {
+      padding = (maxIncome - minIncome) * 0.1; // 10% of range
+    }
+
+    return [Math.max(0, minIncome - padding), maxIncome + padding];
+  };
+
   return (
     <div className="container rounded bg-secondary-subtle">
       <h3 className="text-center mb-5">Dashboard</h3>
       <div className="row justify-content-between">
         {dashboardElements.map((element, index) => (
           <div key={element.id} className={`col-sm-6 col-xl-4 mb-3
-            ${element.id == 'totalIncome' || element.id == 'totalOrders' ? 'col-xxl-3' : 'col-xxl-2'}`}>
+            ${element.id === 'totalIncome' || element.id === 'totalOrders' ? 'col-xxl-3' : 'col-xxl-2'}`}>
             <div className={`card text-white pt-1
-              ${index % 2 == 0 ? 'bg-primary' : 'bg-secondary'}`
+              ${index % 2 === 0 ? 'bg-primary' : 'bg-secondary'}`
             }>
               <div className="card-body pb-2">
                 <h1 className="card-text">{element.value}</h1>
@@ -109,16 +130,11 @@ const Dashboard = () => {
           title='Total Income'
           theme={VictoryTheme.material}
           padding={{ top: 10, bottom: 60, left: 80, right: 20 }}
-          domainPadding={{ y: 30, x: 30 }}
+          domainPadding={{ y: 20, x: 30 }}
+          domain={{ y: getYAxisDomain() }}
         >
           <VictoryLine
-            data={totalIncomeByMonth.map((data) => {
-              data.date = new Date(data.date).toDateString()
-                .split(' ')[1]
-                .concat(' ')
-                .concat(new Date(data.date).getFullYear());
-              return { x: String(data.date), y: data.income }
-            })}
+            data={totalIncomeByMonth}
             style={{
               data: { stroke: "#c43a31" },
               parent: { border: "1px solid #ccc" },
@@ -129,7 +145,10 @@ const Dashboard = () => {
             }}
           />
           <VictoryAxis
+            dependentAxis
             animate={true}
+            tickCount={5}
+            tickFormat={(value) => `₹${getFormattedPrice(value)}`}
             style={{
               tickLabels: { fill: "grey" },
               axis: { stroke: 'grey' },
@@ -138,11 +157,10 @@ const Dashboard = () => {
           />
           <VictoryAxis
             animate={true}
-            dependentAxis
             style={{
               tickLabels: { fill: "grey" },
               axis: { stroke: 'grey' },
-              grid: { stroke: "lightgrey" },
+              grid: { stroke: "lightgrey" }
             }}
           />
         </VictoryChart>
